@@ -17,6 +17,9 @@ function showAgeGroup(ageGroupId) {
     button.classList.remove('active');
   });
   document.getElementById(ageGroupId).classList.add('active');
+
+  // Scroll to the top of the content area (optional)
+  document.querySelector('.content').scrollTo(0, 0);
 }
 
 // Show the 'home' section by default (or the first age group, or whatever you prefer)
