@@ -1,10 +1,19 @@
-/* General Styles (same as before) */
+/* Define CSS Variables for Colors and Fonts */
+:root {
+  --primary-bg: #333;
+  --primary-color: white;
+  --secondary-bg: #f4f4f4;
+  --secondary-color: #333;
+  --hover-bg: #555;
+}
+
+/* General Styles */
 body {
   font-family: sans-serif;
   margin: 0;
   line-height: 1.6;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: var(--secondary-bg);
+  color: var(--secondary-color);
   display: flex;
 }
 
@@ -14,10 +23,17 @@ body {
   overflow: hidden;
 }
 
-/* Header (same as before) */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+/* Header */
 header {
-  background: #333;
-  color: white;
+  background: var(--primary-bg);
+  color: var(--primary-color);
   padding-top: 1rem;
   padding-bottom: 1rem;
   text-align: center;
@@ -42,21 +58,21 @@ header nav ul li {
 }
 
 header nav ul li a {
-  color: white;
+  color: var(--primary-color);
   text-decoration: none;
   padding: 0.3rem 0.5rem;
 }
 
 header nav ul li a:hover {
-  background: #555;
+  background: var(--hover-bg);
   border-radius: 5px;
 }
 
 /* Sidebar */
 .sidebar {
-  width: 200px;
+  flex: 0 0 200px;
   background: #444;
-  color: white;
+  color: var(--primary-color);
   height: 100vh;
   overflow-y: auto;
 }
@@ -70,22 +86,36 @@ header nav ul li a:hover {
 .sidebar ul li a {
   display: block;
   padding: 0.8rem 1rem;
-  color: white;
+  color: var(--primary-color);
   text-decoration: none;
-  border-bottom: 1px solid #555;
+  border-bottom: 1px solid var(--hover-bg);
 }
 
 .sidebar ul li a:hover {
-  background: #555;
+  background: var(--hover-bg);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
 }
 
 /* Content Area */
 .content {
   flex: 1;
   padding: 2rem;
+  height: 100vh;
 }
 
-/* Age Selection (same as before) */
+@media (max-width: 768px) {
+  .content {
+    padding: 1rem;
+  }
+}
+
+/* Age Selection */
 #age-select {
   text-align: center;
   padding: 2rem 0;
@@ -105,10 +135,16 @@ header nav ul li a:hover {
   border: none;
   border-radius: 10px;
   background-color: #eee;
-  color: #333;
+  color: var(--secondary-color);
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.age-buttons button:hover {
+  background-color: #ddd;
+  transform: scale(1.05);
 }
 
 .age-buttons button img {
@@ -131,7 +167,7 @@ header nav ul li a:hover {
   /* Light teal */
 }
 
-/* Sections (same as before) */
+/* Sections */
 .section {
   padding: 2rem 0;
   border-bottom: 1px solid #ccc;
@@ -142,18 +178,16 @@ header nav ul li a:hover {
   margin-top: 0;
 }
 
-/* Age-Specific Content (initially hide) */
+/* Age-Specific Content (initially hidden) */
 .age-group {
   display: none;
 }
 
-/* Footer (same as before) */
+/* Footer */
 footer {
   text-align: center;
   padding: 1rem 0;
-  background: #333;
-  color: white;
+  background: var(--primary-bg);
+  color: var(--primary-color);
   margin-top: 2rem;
 }
-
-/* Add more styles as needed */
