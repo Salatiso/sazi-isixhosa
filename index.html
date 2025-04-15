@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saz' isiXhosa, no Sapho</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 
 <body>
@@ -14,52 +15,112 @@
     <h1>Saz' isiXhosa, no Sapho</h1>
     <nav>
       <ul>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#vocabulary">Vocabulary</a></li>
-        <li><a href="#phrases">Phrases</a></li>
-        <li><a href="#grammar">Grammar</a></li>
-        <li><a href="#culture">Culture</a></li>
-        <li><a href="#chatbot">Chatbot</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
       </ul>
     </nav>
   </header>
 
-  <div id="introduction" class="section">
-    <h2>Introduction</h2>
+  <div id="age-select" class="section">
+    <h2>Choose Your Learning Level</h2>
+    <div class="age-buttons">
+      <button id="age-3-7" onclick="showAgeGroup('age-3-7')">
+        <img src="images/age-3-7-icon.png" alt="Ages 3-7">
+        Gcob' iincwadi (3-7 yrs)
+      </button>
+      <button id="age-8-11" onclick="showAgeGroup('age-8-11')">
+        <img src="images/age-8-11-icon.png" alt="Ages 8-11">
+        Amagama alula (8-11 yrs)
+      </button>
+      <button id="age-12-15" onclick="showAgeGroup('age-12-15')">
+        <img src="images/age-12-15-icon.png" alt="Ages 12-15">
+        Ulwimi lwethu (12-15 yrs)
+      </button>
+    </div>
+  </div>
+
+  <div id="home" class="section">
+    <h2>Welcome to Our Xhosa Lessons!</h2>
     <p>
-      Welcome to our family's Xhosa learning website!
-      Molo! Siyanamkela kwiwebhusayithi yethu yokufunda isiXhosa!
+      This is where the general introduction and family welcome message will go.
     </p>
     </div>
 
-  <div id="vocabulary" class="section">
-    <h2>Vocabulary</h2>
-    <table id="vocabulary-table">
-      <thead>
-        <tr>
-          <th>English</th>
-          <th>Xhosa</th>
-          <th>Pronunciation</th>
-          <th>Image</th>
-          <th>Audio</th>
-        </tr>
-      </thead>
-      <tbody>
-        </tbody>
-    </table>
+  <div id="about" class="section">
+    <h2>About Us</h2>
+    <p>
+      Learn more about our family and why we created this website.
+    </p>
+    </div>
+
+  <div id="age-3-7" class="age-group">
+    <div id="basics-3-7" class="basics">
+      <h3>Basics</h3>
+      <div id="vocabulary-3-7" class="subsection">
+        <h4>Vocabulary</h4>
+        </div>
+      <div id="numbers-3-7" class="subsection">
+        <h4>Numbers</h4>
+        </div>
+      <div id="time-3-7" class="subsection">
+        <h4>Time</h4>
+        </div>
+    </div>
+    <div id="culture-3-7" class="subsection">
+      <h3>Culture</h3>
+      </div>
+    <div id="activities-3-7" class="subsection">
+      <h3>Activities</h3>
+      </div>
   </div>
 
-  <div id="phrases" class="section">
-    <h2>Phrases</h2>
+  <div id="age-8-11" class="age-group">
+    <div id="basics-8-11" class="basics">
+      <h3>Basics</h3>
+      <div id="vocabulary-8-11" class="subsection">
+        <h4>Vocabulary</h4>
+        </div>
+      <div id="numbers-8-11" class="subsection">
+        <h4>Numbers</h4>
+        </div>
+      <div id="time-8-11" class="subsection">
+        <h4>Time</h4>
+        </div>
     </div>
+    <div id="grammar-8-11" class="subsection">
+      <h3>Grammar</h3>
+      </div>
+    <div id="culture-8-11" class="subsection">
+      <h3>Culture</h3>
+      </div>
+    <div id="activities-8-11" class="subsection">
+      <h3>Activities</h3>
+      </div>
+  </div>
 
-  <div id="grammar" class="section">
-    <h2>Grammar</h2>
+  <div id="age-12-15" class="age-group">
+    <div id="basics-12-15" class="basics">
+      <h3>Basics</h3>
+      <div id="vocabulary-12-15" class="subsection">
+        <h4>Vocabulary</h4>
+        </div>
+      <div id="numbers-12-15" class="subsection">
+        <h4>Numbers</h4>
+        </div>
+      <div id="time-12-15" class="subsection">
+        <h4>Time</h4>
+        </div>
     </div>
-
-  <div id="culture" class="section">
-    <h2>Culture</h2>
-    </div>
+    <div id="grammar-12-15" class="subsection">
+      <h3>Grammar</h3>
+      </div>
+    <div id="culture-12-15" class="subsection">
+      <h3>Culture</h3>
+      </div>
+    <div id="activities-12-15" class="subsection">
+      <h3>Activities</h3>
+      </div>
+  </div>
 
   <div id="chatbot" class="section">
     <h2>Xhosa Chatbot</h2>
@@ -69,9 +130,7 @@
     <p>&copy; 2024 [Your Family Name]</p>
   </footer>
 
-  <script>
-    // You can add some simple JavaScript here later if needed
-  </script>
+  <script src="script.js"></script>
 
 </body>
 
