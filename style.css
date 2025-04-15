@@ -5,7 +5,7 @@ body {
   line-height: 1.6;
   background-color: #f4f4f4;
   color: #333;
-  display: flex; /* Use Flexbox for layout */
+  display: flex;
 }
 
 .container {
@@ -57,8 +57,8 @@ header nav ul li a:hover {
   width: 200px;
   background: #444;
   color: white;
-  height: 100vh; /* Full viewport height */
-  overflow-y: auto; /* Allow scrolling if needed */
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .sidebar ul {
@@ -81,7 +81,7 @@ header nav ul li a:hover {
 
 /* Content Area */
 .content {
-  flex: 1; /* Take remaining space */
+  flex: 1;
   padding: 2rem;
 }
 
@@ -117,15 +117,18 @@ header nav ul li a:hover {
 }
 
 #age-3-7 {
-  background-color: #ffcc80; /* Light orange */
+  background-color: #ffcc80;
+  /* Light orange */
 }
 
 #age-8-11 {
-  background-color: #a7c4a7; /* Light green */
+  background-color: #a7c4a7;
+  /* Light green */
 }
 
 #age-12-15 {
-  background-color: #80cbc4; /* Light teal */
+  background-color: #80cbc4;
+  /* Light teal */
 }
 
 /* Sections (same as before) */
