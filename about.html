@@ -11,10 +11,11 @@
             --secondary-bg: #f4f4f4;
             --secondary-color: #333;
             --hover-bg: #555;
+            --accent-color: #ffcc80;
         }
 
         body {
-            font-family: sans-serif;
+            font-family: 'Quicksand', sans-serif;
             margin: 0;
             line-height: 1.6;
             background-color: var(--secondary-bg);
@@ -72,6 +73,9 @@
             margin-left: 200px;
             padding: 2rem;
             flex: 1;
+            background: url('https://via.placeholder.com/1500x1000?text=Family+Learning+Together') no-repeat center center;
+            background-size: cover;
+            background-opacity: 0.1;
         }
 
         @media (max-width: 768px) {
@@ -82,13 +86,25 @@
         }
 
         .section {
-            padding: 2rem 0;
-            border-bottom: 1px solid #ccc;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
         }
 
         .section h2 {
             font-size: 1.5rem;
             margin-top: 0;
+            color: var(--secondary-color);
+        }
+
+        .section a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .section a:hover {
+            text-decoration: underline;
         }
 
         footer {
@@ -120,12 +136,22 @@
     <div class="content">
         <div id="about" class="section">
             <h2>About Us</h2>
-            <p>Learn more about our family and why we created this website.</p>
+            <p>My name is Salatiso Mdeni, and I am the creator of "Saz' isiXhosa, no Sapho." I was born in Transkei, South Africa, in 1982, and grew up immersed in the rich Xhosa culture of the Eastern Cape. As the founder of <a href="https://flamea.org">flamea.org</a>, I am passionate about education and cultural preservation. I am also working on my personal website, <a href="https://salatiso.github.io/salatiso/">salatiso.com</a>, to share more about my projects and initiatives.</p>
+            <p>This website is a deeply personal project for me, created for my son Sazisi and our family. I noticed the challenges my children faced in learning Xhosa in a modern, globalized world, where formal education often lacks the cultural context and practical skills needed for fluency. Inspired by my own experiences and a desire to connect my family with our heritage, I developed this platform to make Xhosa learning fun, accessible, and family-oriented.</p>
+            <p>My work as an author also inspired this site. I have written several books on Xhosa language and culture, including:</p>
+            <ul>
+                <li><a href="https://play.google.com/books/reader?id=VU__EAAAQBAJ&hl=en">"IsiXhosa for Beginners"</a> - A foundational guide for young learners starting their Xhosa journey.</li>
+                <li><a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&pg=GBS.PA1923.w.0.0.0.2&hl=en">"Xhosa Phrases and Culture"</a> - A collection of phrases with cultural insights.</li>
+                <li><a href="https://play.google.com/books/reader?id=NscJEQAAQBAJ&pg=GBS.PP1.w.1.0.0&hl=en">"Learning Xhosa Through Stories"</a> - Engaging stories to teach language and traditions.</li>
+                <li><a href="https://play.google.com/books/reader?id=wMkJEQAAQBAJ&pg=GBS.PP1&hl=en">"Xhosa Vocabulary for Kids"</a> - A visual dictionary for children.</li>
+                <li><a href="https://play.google.com/books/reader?id=9sgJEQAAQBAJ&hl=en">"Everyday Xhosa"</a> - Practical language for daily use.</li>
+            </ul>
+            <p>These books form the backbone of the content on this site, providing authentic Xhosa vocabulary, phrases, and cultural knowledge. They are also accessible through our Khokho Chatbot, which allows users to explore the language and culture interactively. "Saz' isiXhosa, no Sapho" (meaning "Sazi speaks Xhosa, and the Family") reflects our family’s commitment to learning together and sharing our heritage with the world.</p>
         </div>
     </div>
 
     <footer>
-        <p>© 2024 Your Family Name</p>
+        <p>© 2024 Mdeni Family</p>
     </footer>
 </body>
 </html>
