@@ -11,10 +11,11 @@
             --secondary-bg: #f4f4f4;
             --secondary-color: #333;
             --hover-bg: #555;
+            --accent-color: #ffcc80;
         }
 
         body {
-            font-family: sans-serif;
+            font-family: 'Quicksand', sans-serif;
             margin: 0;
             line-height: 1.6;
             background-color: var(--secondary-bg);
@@ -72,6 +73,9 @@
             margin-left: 200px;
             padding: 2rem;
             flex: 1;
+            background: url('https://via.placeholder.com/1500x1000?text=Family+Learning+Together') no-repeat center center;
+            background-size: cover;
+            background-opacity: 0.1;
         }
 
         @media (max-width: 768px) {
@@ -104,7 +108,6 @@
         }
 
         .age-buttons a:hover {
-            background-color: #ddd;
             transform: scale(1.05);
         }
 
@@ -126,13 +129,16 @@
         }
 
         .section {
-            padding: 2rem 0;
-            border-bottom: 1px solid #ccc;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
         }
 
         .section h2 {
             font-size: 1.5rem;
             margin-top: 0;
+            color: var(--secondary-color);
         }
 
         footer {
@@ -164,18 +170,19 @@
     <div class="content">
         <div id="age-select" class="section">
             <h2>Choose Your Learning Level</h2>
+            <p>Select an age group for a more interactive and fun learning experience, or explore all content directly from the sidebar!</p>
             <div class="age-buttons">
-                <a href="#" id="age-3-7">
+                <a href="vocabulary-3-7.html" id="age-3-7">
                     <img src="https://via.placeholder.com/40" alt="Icon for Ages 3-7">
                     <span>Icon for Ages 3-7</span>
                     <span>Gcob' iincwadi (3-7 yrs)</span>
                 </a>
-                <a href="#" id="age-8-11">
+                <a href="vocabulary-8-11.html" id="age-8-11">
                     <img src="https://via.placeholder.com/40" alt="Icon for Ages 8-11">
                     <span>Icon for Ages 8-11</span>
                     <span>Amagama alula (8-11 yrs)</span>
                 </a>
-                <a href="#" id="age-12-15">
+                <a href="vocabulary-12-15.html" id="age-12-15">
                     <img src="https://via.placeholder.com/40" alt="Icon for Ages 12-15">
                     <span>Icon for Ages 12-15</span>
                     <span>Ulwimi lwethu (12-15 yrs)</span>
@@ -185,7 +192,7 @@
     </div>
 
     <footer>
-        <p>© 2024 Your Family Name</p>
+        <p>© 2024 Mdeni Family</p>
     </footer>
 </body>
 </html>
