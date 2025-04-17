@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saz' isiXhosa, no Sapho - Grammar</title>
+    <style>
+        :root {
+            --primary-bg: #333;
+            --primary-color: white;
+            --secondary-bg: #f4f4f4;
+            --secondary-color: #333;
+            --hover-bg: #555;
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            background-color: var(--secondary-bg);
+            color: var(--secondary-color);
+            display: flex;
+        }
+
+        .sidebar {
+            flex: 0 0 200px;
+            background: #444;
+            color: var(--primary-color);
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+        }
+
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin: 1rem;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .sidebar ul li a {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--hover-bg);
+        }
+
+        .sidebar ul li a:hover {
+            background: var(--hover-bg);
+        }
+
+        .sidebar ul li a.active {
+            background: var(--hover-bg);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+        }
+
+        .content {
+            margin-left: 200px;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+        }
+
+        .section {
+            padding: 2rem 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: var(--primary-bg);
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Saz' isiXhosa, no Sapho</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="age-levels.html">Age Levels</a></li>
+            <li><a href="vocabulary.html">Vocabulary</a></li>
+            <li><a href="phrases.html">Phrases</a></li>
+            <li><a href="numbers.html">Numbers</a></li>
+            <li><a href="time.html">Time</a></li>
+            <li><a href="grammar.html" class="active">Grammar</a></li>
+            <li><a href="culture.html">Culture</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="khokho.html">Khokho Asks</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div id="grammar" class="section">
+            <h2>Grammar</h2>
+            <p>Explore the rules and structure of the Xhosa language.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Your Family Name</p>
+    </footer>
+</body>
+</html>
