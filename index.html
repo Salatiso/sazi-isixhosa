@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saz' isiXhosa, no Sapho</title>
+    <title>Saz' isiXhosa, no Sapho - Home</title>
     <style>
-        /* Define CSS Variables for Colors and Fonts */
         :root {
             --primary-bg: #333;
             --primary-color: white;
@@ -14,7 +13,6 @@
             --hover-bg: #555;
         }
 
-        /* General Styles */
         body {
             font-family: sans-serif;
             margin: 0;
@@ -24,7 +22,6 @@
             display: flex;
         }
 
-        /* Sidebar */
         .sidebar {
             flex: 0 0 200px;
             background: #444;
@@ -58,6 +55,11 @@
             background: var(--hover-bg);
         }
 
+        .sidebar ul li a.active {
+            background: var(--hover-bg);
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 width: 100%;
@@ -66,7 +68,6 @@
             }
         }
 
-        /* Content Area */
         .content {
             margin-left: 200px;
             padding: 2rem;
@@ -80,61 +81,9 @@
             }
         }
 
-        /* Age Selection */
-        #age-select {
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .age-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .age-buttons button {
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px;
-            background-color: #eee;
-            color: var(--secondary-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-            width: 150px;
-        }
-
-        .age-buttons button:hover {
-            background-color: #ddd;
-            transform: scale(1.05);
-        }
-
-        .age-buttons button img {
-            max-width: 40px;
-            margin-bottom: 0.5rem;
-        }
-
-        #age-3-7 {
-            background-color: #ffcc80;
-        }
-
-        #age-8-11 {
-            background-color: #a7c4a7;
-        }
-
-        #age-12-15 {
-            background-color: #80cbc4;
-        }
-
-        /* Sections */
         .section {
             padding: 2rem 0;
             border-bottom: 1px solid #ccc;
-            display: none;
         }
 
         .section h2 {
@@ -142,12 +91,6 @@
             margin-top: 0;
         }
 
-        /* Show active section */
-        .section.active {
-            display: block;
-        }
-
-        /* Footer */
         footer {
             text-align: center;
             padding: 1rem 0;
@@ -157,141 +100,32 @@
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
     <div class="sidebar">
         <h1>Saz' isiXhosa, no Sapho</h1>
         <ul>
-            <li><a href="#home" onclick="showAgeGroup('home')">Home</a></li>
-            <li><a href="#about" onclick="showAgeGroup('about')">About Us</a></li>
-            <li><a href="#age-select" onclick="showAgeGroup('age-select')">Age Levels</a></li>
-            <li><a href="#vocabulary" onclick="showAgeGroup('vocabulary')">Vocabulary</a></li>
-            <li><a href="#phrases" onclick="showAgeGroup('phrases')">Phrases</a></li>
-            <li><a href="#numbers" onclick="showAgeGroup('numbers')">Numbers</a></li>
-            <li><a href="#time" onclick="showAgeGroup('time')">Time</a></li>
-            <li><a href="#grammar" onclick="showAgeGroup('grammar')">Grammar</a></li>
-            <li><a href="#culture" onclick="showAgeGroup('culture')">Culture</a></li>
-            <li><a href="#activities" onclick="showAgeGroup('activities')">Activities</a></li>
-            <li><a href="#khokho" onclick="showAgeGroup('khokho')">Khokho Asks</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="age-levels.html">Age Levels</a></li>
+            <li><a href="vocabulary.html">Vocabulary</a></li>
+            <li><a href="phrases.html">Phrases</a></li>
+            <li><a href="numbers.html">Numbers</a></li>
+            <li><a href="time.html">Time</a></li>
+            <li><a href="grammar.html">Grammar</a></li>
+            <li><a href="culture.html">Culture</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="khokho.html">Khokho Asks</a></li>
         </ul>
     </div>
 
-    <!-- Content -->
     <div class="content">
-        <div id="home" class="section active">
+        <div id="home" class="section">
             <h2>Welcome to Our Xhosa Lessons!</h2>
             <p>This is where the general introduction and family welcome message will go.</p>
         </div>
-
-        <div id="about" class="section">
-            <h2>About Us</h2>
-            <p>Learn more about our family and why we created this website.</p>
-        </div>
-
-        <div id="age-select" class="section">
-            <h2>Choose Your Learning Level</h2>
-            <div class="age-buttons">
-                <button id="age-3-7" data-age-group="age-3-7" onclick="showAgeGroup('age-3-7')">
-                    <img src="https://via.placeholder.com/40" alt="Icon for Ages 3-7">
-                    <span>Icon for Ages 3-7</span>
-                    <span>Gcob' iincwadi (3-7 yrs)</span>
-                </button>
-                <button id="age-8-11" data-age-group="age-8-11" onclick="showAgeGroup('age-8-11')">
-                    <img src="https://via.placeholder.com/40" alt="Icon for Ages 8-11">
-                    <span>Icon for Ages 8-11</span>
-                    <span>Amagama alula (8-11 yrs)</span>
-                </button>
-                <button id="age-12-15" data-age-group="age-12-15" onclick="showAgeGroup('age-12-15')">
-                    <img src="https://via.placeholder.com/40" alt="Icon for Ages 12-15">
-                    <span>Icon for Ages 12-15</span>
-                    <span>Ulwimi lwethu (12-15 yrs)</span>
-                </button>
-            </div>
-        </div>
-
-        <div id="vocabulary" class="section">
-            <h2>Vocabulary</h2>
-            <p>English Xhosa Pronunciation Image Audio</p>
-        </div>
-
-        <div id="phrases" class="section">
-            <h2>Phrases</h2>
-        </div>
-
-        <div id="numbers" class="section">
-            <h2>Numbers</h2>
-        </div>
-
-        <div id="time" class="section">
-            <h2>Time</h2>
-        </div>
-
-        <div id="grammar" class="section">
-            <h2>Grammar</h2>
-        </div>
-
-        <div id="culture" class="section">
-            <h2>Culture</h2>
-        </div>
-
-        <div id="activities" class="section">
-            <h2>Activities</h2>
-        </div>
-
-        <div id="khokho" class="section">
-            <h2>Khokho Asks</h2>
-        </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>© 2024 Your Family Name</p>
     </footer>
-
-    <!-- JavaScript -->
-    <script>
-        function showAgeGroup(ageGroupId) {
-            if (!ageGroupId) {
-                console.error("No age group ID provided.");
-                return;
-            }
-
-            // Hide all sections
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-                section.setAttribute('aria-hidden', 'true');
-            });
-
-            // Show the selected section
-            const selectedSection = document.getElementById(ageGroupId);
-            if (selectedSection) {
-                selectedSection.classList.add('active');
-                selectedSection.setAttribute('aria-hidden', 'false');
-            } else {
-                console.error(`Section with ID '${ageGroupId}' not found.`);
-            }
-
-            // Update active state of buttons (for age selection)
-            const ageButtons = document.querySelectorAll('.age-buttons button');
-            ageButtons.forEach(button => {
-                button.classList.remove('active');
-            });
-            const button = document.querySelector(`button[data-age-group="${ageGroupId}"]`);
-            if (button) {
-                button.classList.add('active');
-            }
-
-            // Scroll to top of content area
-            const content = document.querySelector('.content');
-            if (content) {
-                content.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        // Show the 'home' section by default
-        document.addEventListener('DOMContentLoaded', () => {
-            showAgeGroup('home');
-        });
-    </script>
 </body>
 </html>
