@@ -11,10 +11,11 @@
             --secondary-bg: #f4f4f4;
             --secondary-color: #333;
             --hover-bg: #555;
+            --accent-color: #ffcc80;
         }
 
         body {
-            font-family: sans-serif;
+            font-family: 'Quicksand', sans-serif;
             margin: 0;
             line-height: 1.6;
             background-color: var(--secondary-bg);
@@ -72,6 +73,9 @@
             margin-left: 200px;
             padding: 2rem;
             flex: 1;
+            background: url('https://via.placeholder.com/1500x1000?text=Family+Learning+Together') no-repeat center center;
+            background-size: cover;
+            background-opacity: 0.1;
         }
 
         @media (max-width: 768px) {
@@ -82,13 +86,16 @@
         }
 
         .section {
-            padding: 2rem 0;
-            border-bottom: 1px solid #ccc;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
         }
 
         .section h2 {
             font-size: 1.5rem;
             margin-top: 0;
+            color: var(--secondary-color);
         }
 
         footer {
@@ -120,12 +127,12 @@
     <div class="content">
         <div id="home" class="section">
             <h2>Welcome to Our Xhosa Lessons!</h2>
-            <p>This is where the general introduction and family welcome message will go.</p>
+            <p>Join our family in learning the beautiful Xhosa language! This website, created by Salatiso Mdeni for his son Sazisi and family, offers fun and engaging lessons for all ages. Explore vocabulary, phrases, numbers, and more, while discovering the rich culture of the Xhosa people. Start your journey today!</p>
         </div>
     </div>
 
     <footer>
-        <p>© 2024 Your Family Name</p>
+        <p>© 2024 Mdeni Family</p>
     </footer>
 </body>
 </html>
