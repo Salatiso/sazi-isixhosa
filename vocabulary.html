@@ -11,10 +11,11 @@
             --secondary-bg: #f4f4f4;
             --secondary-color: #333;
             --hover-bg: #555;
+            --accent-color: #ffcc80;
         }
 
         body {
-            font-family: sans-serif;
+            font-family: 'Quicksand', sans-serif;
             margin: 0;
             line-height: 1.6;
             background-color: var(--secondary-bg);
@@ -72,6 +73,9 @@
             margin-left: 200px;
             padding: 2rem;
             flex: 1;
+            background: url('https://via.placeholder.com/1500x1000?text=Family+Learning+Together') no-repeat center center;
+            background-size: cover;
+            background-opacity: 0.1;
         }
 
         @media (max-width: 768px) {
@@ -82,13 +86,89 @@
         }
 
         .section {
-            padding: 2rem 0;
-            border-bottom: 1px solid #ccc;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
         }
 
         .section h2 {
             font-size: 1.5rem;
             margin-top: 0;
+            color: var(--secondary-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .xhosa-cell {
+            display: none;
+        }
+
+        .xhosa-cell.visible {
+            display: table-cell;
+        }
+
+        .feedback {
+            color: green;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .feedback.visible {
+            display: block;
+        }
+
+        .quiz-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .quiz-section img {
+            max-width: 50px;
+            margin-right: 1rem;
+        }
+
+        .quiz-question {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 0.5rem;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
         footer {
@@ -120,12 +200,154 @@
     <div class="content">
         <div id="vocabulary" class="section">
             <h2>Vocabulary</h2>
-            <p>English Xhosa Pronunciation Image Audio</p>
+            <p>Learn Xhosa vocabulary words with your family! Type the Xhosa word, check your answer, or reveal it to hear the pronunciation.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>English</th>
+                        <th>Xhosa</th>
+                        <th>Action</th>
+                        <th>Pronunciation</th>
+                        <th>Cultural Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="https://via.placeholder.com/50?text=Mother" alt="Mother"></td>
+                        <td>Mother</td>
+                        <td>
+                            <input type="text" id="input-mother" placeholder="Type Xhosa word">
+                            <span class="xhosa-cell" data-answer="Mama">Mama</span>
+                            <div class="feedback" id="feedback-mother"></div>
+                        </td>
+                        <td>
+                            <button onclick="checkAnswer('mother', 'Mama')">Check</button>
+                            <button onclick="revealAnswer('mother')">Reveal</button>
+                        </td>
+                        <td>
+                            <audio controls style="display:none;" id="audio-mother">
+                                <source src="audio/vocabulary/all/mama.mp3" type="audio/mp3">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </td>
+                        <td>Mama is a term of respect used for all mother figures in the family.</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://via.placeholder.com/50?text=Book" alt="Book"></td>
+                        <td>Book</td>
+                        <td>
+                            <input type="text" id="input-book" placeholder="Type Xhosa word">
+                            <span class="xhosa-cell" data-answer="Incwadi">Incwadi</span>
+                            <div class="feedback" id="feedback-book"></div>
+                        </td>
+                        <td>
+                            <button onclick="checkAnswer('book', 'Incwadi')">Check</button>
+                            <button onclick="revealAnswer('book')">Reveal</button>
+                        </td>
+                        <td>
+                            <audio controls style="display:none;" id="audio-book">
+                                <source src="audio/vocabulary/all/incwadi.mp3" type="audio/mp3">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </td>
+                        <td>Books are often shared during family storytelling sessions.</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://via.placeholder.com/50?text=Happiness" alt="Happiness"></td>
+                        <td>Happiness</td>
+                        <td>
+                            <input type="text" id="input-happiness" placeholder="Type Xhosa word">
+                            <span class="xhosa-cell" data-answer="Ulonwabo">Ulonwabo</span>
+                            <div class="feedback" id="feedback-happiness"></div>
+                        </td>
+                        <td>
+                            <button onclick="checkAnswer('happiness', 'Ulonwabo')">Check</button>
+                            <button onclick="revealAnswer('happiness')">Reveal</button>
+                        </td>
+                        <td>
+                            <audio controls style="display:none;" id="audio-happiness">
+                                <source src="audio/vocabulary/all/ulonwabo.mp3" type="audio/mp3">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </td>
+                        <td>Ulonwabo reflects the joy of family gatherings.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="quiz-section">
+                <h3>Quick Quiz</h3>
+                <div class="quiz-question">
+                    <img src="https://via.placeholder.com/50?text=Dog" alt="Dog">
+                    <span>What is "Dog" in Xhosa?</span>
+                    <input type="text" id="quiz-input-1" placeholder="Type Xhosa word">
+                    <button onclick="checkQuizAnswer(1, 'Inja')">Check</button>
+                    <button onclick="revealQuizAnswer(1, 'Inja')">Reveal</button>
+                </div>
+                <div id="quiz-feedback-1" class="feedback"></div>
+                <audio controls style="display:none;" id="quiz-audio-1">
+                    <source src="audio/vocabulary/all/inja.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2024 Your Family Name</p>
+        <p>© 2024 Mdeni Family</p>
     </footer>
+
+    <script>
+        function checkAnswer(id, correctAnswer) {
+            const input = document.getElementById(`input-${id}`).value.trim();
+            const feedback = document.getElementById(`feedback-${id}`);
+            const xhosaCell = document.querySelector(`#input-${id}`).parentElement.querySelector('.xhosa-cell');
+            const audio = document.getElementById(`audio-${id}`);
+
+            if (input.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Congratulations!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = `Nice try! The correct word is ${correctAnswer}.`;
+                feedback.style.color = "red";
+            }
+            feedback.classList.add('visible');
+            xhosaCell.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function revealAnswer(id) {
+            const xhosaCell = document.querySelector(`#input-${id}`).parentElement.querySelector('.xhosa-cell');
+            const audio = document.getElementById(`audio-${id}`);
+            xhosaCell.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function checkQuizAnswer(index, correctAnswer) {
+            const input = document.getElementById(`quiz-input-${index}`).value.trim();
+            const feedback = document.getElementById(`quiz-feedback-${index}`);
+            const audio = document.getElementById(`quiz-audio-${index}`);
+
+            if (input.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Congratulations!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = `Nice try! The correct word is ${correctAnswer}.`;
+                feedback.style.color = "red";
+            }
+            feedback.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function revealQuizAnswer(index, correctAnswer) {
+            const feedback = document.getElementById(`quiz-feedback-${index}`);
+            const audio = document.getElementById(`quiz-audio-${index}`);
+            feedback.textContent = `The correct word is ${correctAnswer}.`;
+            feedback.style.color = "blue";
+            feedback.classList.add('visible');
+            audio.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
