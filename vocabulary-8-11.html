@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saz' isiXhosa, no Sapho - Vocabulary (Ages 8-11)</title>
+    <style>
+        :root {
+            --primary-bg: #333;
+            --primary-color: white;
+            --secondary-bg: #f4f4f4;
+            --secondary-color: #333;
+            --hover-bg: #555;
+            --accent-color: #a7c4a7;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            background-color: var(--secondary-bg);
+            color: var(--secondary-color);
+            display: flex;
+        }
+
+        .sidebar {
+            flex: 0 0 200px;
+            background: #444;
+            color: var(--primary-color);
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+        }
+
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin: 1rem;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .sidebar ul li a {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--hover-bg);
+        }
+
+        .sidebar ul li a:hover {
+            background: var(--hover-bg);
+        }
+
+        .sidebar ul li a.active {
+            background: var(--hover-bg);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+        }
+
+        .content {
+            margin-left: 200px;
+            padding: 2rem;
+            flex: 1;
+            background: url('https://via.placeholder.com/1500x1000?text=Playful+Learning') no-repeat center center;
+            background-size: cover;
+            background-opacity: 0.1;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+        }
+
+        .section {
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+
+        .section a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .section a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .xhosa-cell {
+            display: none;
+        }
+
+        .xhosa-cell.visible {
+            display: table-cell;
+        }
+
+        .feedback {
+            color: green;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .feedback.visible {
+            display: block;
+        }
+
+        .quiz-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .quiz-question {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-question img {
+            max-width: 75px;
+            margin-right: 1rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 0.5rem;
+        }
+
+        button:hover {
+            background-color: #8ab892;
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: var(--primary-bg);
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Saz' isiXhosa, no Sapho</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="age-levels.html">Age Levels</a></li>
+            <li><a href="vocabulary.html">Vocabulary</a></li>
+            <li><a href="phrases.html">Phrases</a></li>
+            <li><a href="numbers.html">Numbers</a></li>
+            <li><a href="time.html">Time</a></li>
+            <li><a href="grammar.html">Grammar</a></li>
+            <li><a href="culture.html">Culture</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="khokho.html">Khokho Asks</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div id="vocabulary-8-11" class="section">
+            <h2>Vocabulary (Ages 8-11)</h2>
+            <p>Hey there, learners! Let's discover everyday Xhosa words with pictures. Type the Xhosa word, check your answer, or reveal it to hear how it sounds! <a href="vocabulary.html">View All Vocabulary</a></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>English</th>
+                        <th>Xhosa</th>
+                        <th>Action</th>
+                        <th>Pronunciation</th>
+                        <th>Cultural Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="https://via.placeholder.com/50?text=Book" alt="Book"></td>
+                        <td>Book</td>
+                        <td>
+                            <input type="text" id="input-book-8-11" placeholder="Type Xhosa word">
+                            <span class="xhosa-cell" data-answer="Incwadi">Incwadi</span>
+                            <div class="feedback" id="feedback-book-8-11"></div>
+                        </td>
+                        <td>
+                            <button onclick="checkAnswer('book-8-11', 'Incwadi')">Check</button>
+                            <button onclick="revealAnswer('book-8-11')">Reveal</button>
+                        </td>
+                        <td>
+                            <audio controls style="display:none;" id="audio-book-8-11">
+                                <source src="audio/vocabulary/8-11/incwadi.mp3" type="audio/mp3">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </td>
+                        <td>Books are often shared during family storytelling sessions.</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://via.placeholder.com/50?text=School" alt="School"></td>
+                        <td>School</td>
+                        <td>
+                            <input type="text" id="input-school-8-11" placeholder="Type Xhosa word">
+                            <span class="xhosa-cell" data-answer="Isikolo">Isikolo</span>
+                            <div class="feedback" id="feedback-school-8-11"></div>
+                        </td>
+                        <td>
+                            <button onclick="checkAnswer('school-8-11', 'Isikolo')">Check</button>
+                            <button onclick="revealAnswer('school-8-11')">Reveal</button>
+                        </td>
+                        <td>
+                            <audio controls style="display:none;" id="audio-school-8-11">
+                                <source src="audio/vocabulary/8-11/isikolo.mp3" type="audio/mp3">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </td>
+                        <td>School is a place where kids learn Xhosa songs and stories.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="quiz-section">
+                <h3>Quick Quiz</h3>
+                <div class="quiz-question">
+                    <img src="https://via.placeholder.com/75?text=House" alt="House">
+                    <span>What is "House" in Xhosa?</span>
+                    <input type="text" id="quiz-input-1-8-11" placeholder="Type Xhosa word">
+                    <button onclick="checkQuizAnswer('1-8-11', 'Indlu')">Check</button>
+                    <button onclick="revealQuizAnswer('1-8-11', 'Indlu')">Reveal</button>
+                </div>
+                <div id="quiz-feedback-1-8-11" class="feedback"></div>
+                <audio controls style="display:none;" id="quiz-audio-1-8-11">
+                    <source src="audio/vocabulary/8-11/indlu.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Mdeni Family</p>
+    </footer>
+
+    <script>
+        function checkAnswer(id, correctAnswer) {
+            const input = document.getElementById(`input-${id}`).value.trim();
+            const feedback = document.getElementById(`feedback-${id}`);
+            const xhosaCell = document.querySelector(`#input-${id}`).parentElement.querySelector('.xhosa-cell');
+            const audio = document.getElementById(`audio-${id}`);
+
+            if (input.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Congratulations!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = `Nice try! The correct word is ${correctAnswer}.`;
+                feedback.style.color = "red";
+            }
+            feedback.classList.add('visible');
+            xhosaCell.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function revealAnswer(id) {
+            const xhosaCell = document.querySelector(`#input-${id}`).parentElement.querySelector('.xhosa-cell');
+            const audio = document.getElementById(`audio-${id}`);
+            xhosaCell.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function checkQuizAnswer(index, correctAnswer) {
+            const input = document.getElementById(`quiz-input-${index}`).value.trim();
+            const feedback = document.getElementById(`quiz-feedback-${index}`);
+            const audio = document.getElementById(`quiz-audio-${index}`);
+
+            if (input.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Congratulations!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = `Nice try! The correct word is ${correctAnswer}.`;
+                feedback.style.color = "red";
+            }
+            feedback.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function revealQuizAnswer(index, correctAnswer) {
+            const feedback = document.getElementById(`quiz-feedback-${index}`);
+            const audio = document.getElementById(`quiz-audio-${index}`);
+            feedback.textContent = `The correct word is ${correctAnswer}.`;
+            feedback.style.color = "blue";
+            feedback.classList.add('visible');
+            audio.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
