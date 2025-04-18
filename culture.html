@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saz' isiXhosa, no Sapho - Inkqubo Yenkcubeko</title>
+    <style>
+        :root {
+            --primary-bg: #444;
+            --primary-color: white;
+            --secondary-bg: #f4f4f4;
+            --secondary-color: #333;
+            --hover-bg: #555;
+            --accent-color: #ffcc80;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            background-color: var(--secondary-bg);
+            color: var(--secondary-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            flex: 0 0 200px;
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin: 1rem;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .sidebar ul li a {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--hover-bg);
+        }
+
+        .sidebar ul li a:hover {
+            background: var(--hover-bg);
+        }
+
+        .sidebar ul li a.active {
+            background: var(--hover-bg);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .main-container {
+                flex-direction: column;
+            }
+        }
+
+        .content {
+            flex: 1;
+            padding: 2rem;
+            background: url('images/Sazi_Grandma.jpg') no-repeat center center;
+            background-size: cover;
+            background-opacity: 0.1;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 1rem;
+            }
+        }
+
+        .section {
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+
+        .culture-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .culture-tabs button {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-bg);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .culture-tabs button.active {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .culture-tabs button:hover {
+            background-color: var(--hover-bg);
+        }
+
+        .culture-content {
+            display: none;
+        }
+
+        .culture-content.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .xhosa-cell {
+            display: none;
+        }
+
+        .xhosa-cell.visible {
+            display: table-cell;
+        }
+
+        .feedback {
+            color: green;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .feedback.visible {
+            display: block;
+        }
+
+        .quiz-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .quiz-question {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 0.5rem;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            header nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .culture-tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <h1>Saz' isiXhosa, no Sapho</h1>
+            <ul>
+                <li><a href="age-levels.html">Age Levels</a></li>
+                <li><a href="vocabulary.html">Vocabulary</a></li>
+                <li><a href="phrases.html">Phrases</a></li>
+                <li><a href="numbers.html">Numbers</a></li>
+                <li><a href="time.html">Time</a></li>
+                <li><a href="grammar.html">Grammar</a></li>
+                <li><a href="culture.html" class="active">Culture</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="khokho.html">Khokho Asks</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div id="culture" class="section">
+                <h2>Inkqubo Yenkcubeko (Cultural Practices)</h2>
+                <p>Sazi’s family practices like *Imbeleko* welcome babies, just like we welcomed his 8-month-old cousin! Explore Xhosa traditions with Sazi and his cousins to learn how we honor our Transkei roots. Choose a category or try a quiz to test your knowledge!</p>
+                <div class="culture-tabs">
+                    <button class="tab-button active" onclick="showCategory('life-milestones')">Life Milestones</button>
+                    <button class="tab-button" onclick="showCategory('daily-traditions')">Daily Traditions</button>
+                    <button class="tab-button" onclick="showCategory('spiritual-mourning')">Spiritual and Mourning</button>
+                    <button onclick="startCultureQuiz()">Culture Quiz</button>
+                </div>
+                <div id="life-milestones" class="culture-content active">
+                    <p>These practices mark important moments in life, from birth to marriage, bringing our family together.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>When Performed</th>
+                                <th>Pronunciation</th>
+                                <th>Cultural Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="input-birth" placeholder="Type practice name">
+                                    <span class="xhosa-cell" data-answer="Ukuzalwa Komntwana">Ukuzalwa Komntwana</span>
+                                    <div class="feedback" id="feedback-birth"></div>
+                                </td>
+                                <td>Isiganeko esibaluleke kakhulu kwintsapho nakuluntu. Iinkcubeko ezahlukeneyo zilandela ukuzalwa, njengokubhiyozela nokunika umntwana igama.</td>
+                                <td>Emva kokuzalwa komntwana.</td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-birth">
+                                        <source src="audio/culture/all/ukuzalwa_komntwana.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                                <td>Sazi’s 8-month-old cousin was welcomed with a special name!</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="input-imbeleko" placeholder="Type practice name">
+                                    <span class="xhosa-cell" data-answer="Imbeleko">Imbeleko</span>
+                                    <div class="feedback" id="feedback-imbeleko"></div>
+                                </td>
+                                <td>Umntwana osanda kuzalwa ukhuselwa kwaye waziswa ngokusemthethweni kuluntu. Kudla ngokubandakanya isidlo esincinci.</td>
+                                <td>Kwiiveki okanye iinyanga zokuqala zobomi bomntwana.</td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-imbeleko">
+                                        <source src="audio/culture/all/imbeleko.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                                <td>Our family gathers to celebrate new babies like Sazi.</td>
+                            </tr>
+                            <!-- Add remaining Life Milestones practices (e.g., Intonjane, Unkaluka, Umtshato, Ukulobola, Ukungenisa Umakoti) -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="daily-traditions" class="culture-content">
+                    <p>These traditions shape our daily lives, teaching respect and community.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>When Performed</th>
+                                <th>Pronunciation</th>
+                                <th>Cultural Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="input-intlonipho" placeholder="Type practice name">
+                                    <span class="xhosa-cell" data-answer="Intlonipho">Intlonipho</span>
+                                    <div class="feedback" id="feedback-intlonipho"></div>
+                                </td>
+                                <td>Ukuhlonipha abantu abadala kubaluleke kakhulu. Kubonakala ngendlela yokuthetha, isimo sengqondo, nezenzo.</td>
+                                <td>Ubomi bonke.</td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-intlonipho">
+                                        <source src="audio/culture/all/intlonipho.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                                <td>Sazi learns *Intlonipho* to honor his grandmother’s wisdom.</td>
+                            </tr>
+                            <!-- Add remaining Daily Traditions practices (e.g., Ukhuseleko, Ukukhula, Ukuthomba, Ukunyuselwa Esuthwini, Imisebenzi Yasendlini, Iindwendwe) -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="spiritual-mourning" class="culture-content">
+                    <p>These practices honor our ancestors and guide us through loss.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>When Performed</th>
+                                <th>Pronunciation</th>
+                                <th>Cultural Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" id="input-ukuzila" placeholder="Type practice name">
+                                    <span class="xhosa-cell" data-answer="Ukuzila">Ukuzila</span>
+                                    <div class="feedback" id="feedback-ukuzila"></div>
+                                </td>
+                                <td>Xa kufiwe, intsapho eshiyekileyo kunye noluntu bayazila ukubonisa intlungu nokuhlonipha umfi.</td>
+                                <td>Emva kokufa komntu.</td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-ukuzila">
+                                        <source src="audio/culture/all/ukuzila.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                                <td>Sazi’s family honors the departed with *Ukuzila*.</td>
+                            </tr>
+                            <!-- Add remaining Spiritual and Mourning practices (e.g., Umngcwabo, Izila Emva Komngcwabo, Ukukhumbula Abafileyo, Amasiko Okucoca, Ukubuza Izigqibo Kwabaphambili) -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="quiz-section" id="quizSection" style="display:none;">
+                    <h3>Culture Quiz</h3>
+                    <div id="quizQuestions"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Mdeni Family</p>
+    </footer>
+
+    <script>
+        const practices = [
+            { category: 'life-milestones', name: 'Ukuzalwa Komntwana', description: 'Isiganeko esibaluleke kakhulu kwintsapho nakuluntu. Iinkcubeko ezahlukeneyo zilandela ukuzalwa.', when: 'Emva kokuzalwa komntwana.', id: 'birth', note: 'Sazi’s 8-month-old cousin was welcomed with a special name!' },
+            { category: 'life-milestones', name: 'Imbeleko', description: 'Umntwana osanda kuzalwa ukhuselwa kwaye waziswa ngokusemthethweni kuluntu.', when: 'Kwiiveki okanye iinyanga zokuqala zobomi bomntwana.', id: 'imbeleko', note: 'Our family gathers to celebrate new babies like Sazi.' },
+            { category: 'daily-traditions', name: 'Intlonipho', description: 'Ukuhlonipha abantu abadala kubaluleke kakhulu. Kubonakala ngendlela yokuthetha.', when: 'Ubomi bonke.', id: 'intlonipho', note: 'Sazi learns *Intlonipho* to honor his grandmother’s wisdom.' },
+            { category: 'spiritual-mourning', name: 'Ukuzila', description: 'Xa kufiwe, intsapho eshiyekileyo kunye noluntu bayazila ukubonisa intlungu.', when: 'Emva kokufa komntu.', id: 'ukuzila', note: 'Sazi’s family honors the departed with *Ukuzila*.' },
+            // Add remaining ~16 practices
+        ];
+
+        function showCategory(category) {
+            document.querySelectorAll('.culture-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(category).classList.add('active');
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`button[onclick="showCategory('${category}')"]`).classList.add('active');
+            document.getElementById('quizSection').style.display = 'none';
+        }
+
+        function startCultureQuiz() {
+            const quizSection = document.getElementById('quizSection');
+            const quizQuestions = document.getElementById('quizQuestions');
+            quizSection.style.display = 'block';
+            quizQuestions.innerHTML = '';
+
+            const shuffledPractices = practices.sort(() => 0.5 - Math.random()).slice(0, 3);
+            const questions = [
+                { text: `What is the name for the practice of ${shuffledPractices[0].description.split('.')[0]}?`, answer: shuffledPractices[0].name, id: shuffledPractices[0].id, note: shuffledPractices[0].note },
+                { text: `When is "${shuffledPractices[1].name}" performed?`, answer: shuffledPractices[1].when, id: `${shuffledPractices[1].id}-when`, note: shuffledPractices[1].note },
+                { text: `What practice involves ${shuffledPractices[2].description.split('.')[0]}?`, answer: shuffledPractices[2].name, id: shuffledPractices[2].id, note: shuffledPractices[2].note }
+            ];
+
+            questions.forEach((question, index) => {
+                const div = document.createElement('div');
+                div.className = 'quiz-question';
+                div.innerHTML = `
+                    <span>${question.text}</span>
+                    <input type="text" id="quiz-input-${index}" placeholder="Type answer">
+                    <button onclick="checkQuizAnswer(${index}, '${question.answer}')">Check</button>
+                    <button onclick="revealQuizAnswer(${index}, '${question.answer}', '${question.note}')">Reveal</button>
+                    <div id="quiz-feedback-${index}" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-${index}">
+                        <source src="audio/culture/all/${question.id}.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                `;
+                quizQuestions.appendChild(div);
+            });
+        }
+
+        function checkAnswer(id, correctAnswer) {
+            const input = document.getElementById(`input-${id}`).value.trim();
+            const feedback = document.getElementById(`feedback-${id}`);
+            const xhosaCell = document.querySelector(`#input-${id}`).parentElement.querySelector('.xhosa-cell');
+            const audio = document.getElementById(`audio-${id}`);
+
+            if (input.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Congratulations!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = `Nice try! The correct answer is ${correctAnswer}.`;
+                feedback.style.color = "red";
+            }
+            feedback.classList.add('visible');
+            xhosaCell.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function revealAnswer(id) {
+            const xhosaCell = document.querySelector(`#input-${id}`).parentElement.querySelector('.xhosa-cell');
+            const audio = document.getElementById(`audio-${id}`);
+            xhosaCell.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function checkQuizAnswer(index, correctAnswer) {
+            const input = document.getElementById(`quiz-input-${index}`).value.trim();
+            const feedback = document.getElementById(`quiz-feedback-${index}`);
+            const audio = document.getElementById(`quiz-audio-${index}`);
+
+            if (input.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Congratulations!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = `Nice try! The correct answer is ${correctAnswer}.`;
+                feedback.style.color = "red";
+            }
+            feedback.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function revealQuizAnswer(index, correctAnswer, note) {
+            const feedback = document.getElementById(`quiz-feedback-${index}`);
+            const audio = document.getElementById(`quiz-audio-${index}`);
+            feedback.textContent = `The correct answer is ${correctAnswer}. ${note}`;
+            feedback.style.color = "blue";
+            feedback.classList.add('visible');
+            audio.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
