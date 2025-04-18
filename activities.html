@@ -6,40 +6,76 @@
     <title>Saz' isiXhosa, no Sapho - Activities</title>
     <style>
         :root {
-            --primary-bg: #333;
+            --primary-bg: #444;
             --primary-color: white;
             --secondary-bg: #f4f4f4;
             --secondary-color: #333;
             --hover-bg: #555;
+            --accent-color: #ffcc80;
         }
 
         body {
-            font-family: sans-serif;
+            font-family: 'Quicksand', sans-serif;
             margin: 0;
             line-height: 1.6;
             background-color: var(--secondary-bg);
             color: var(--secondary-color);
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .site-title {
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        header {
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
         }
 
         .sidebar {
             flex: 0 0 200px;
-            background: #444;
+            background: var(--primary-bg);
             color: var(--primary-color);
-            height: 100vh;
-            position: fixed;
+            height: 100%;
             overflow-y: auto;
-        }
-
-        .sidebar h1 {
-            font-size: 1.5rem;
-            margin: 1rem;
-            text-align: center;
         }
 
         .sidebar ul {
             padding: 0;
-            margin: 0;
+            margin: 1rem 0;
             list-style: none;
         }
 
@@ -66,29 +102,129 @@
                 height: auto;
                 position: relative;
             }
+
+            .main-container {
+                flex-direction: column;
+            }
         }
 
         .content {
-            margin-left: 200px;
-            padding: 2rem;
             flex: 1;
+            padding: 2rem;
+            background: url('/img/Sazi_Grandma.jpg') no-repeat center center;
+            background-size: cover;
+            background-opacity: 0.1;
         }
 
         @media (max-width: 768px) {
             .content {
-                margin-left: 0;
                 padding: 1rem;
             }
         }
 
         .section {
-            padding: 2rem 0;
-            border-bottom: 1px solid #ccc;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
         }
 
         .section h2 {
             font-size: 1.5rem;
             margin-top: 0;
+            color: var(--secondary-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .translation {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+        }
+
+        .xhosa-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .xhosa-text:hover::after {
+            content: attr(data-english);
+            position: absolute;
+            top: -2rem;
+            left: 0;
+            background: #333;
+            color: white;
+            padding: 0.3rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+
+        .xhosa-cell {
+            display: none;
+        }
+
+        .xhosa-cell.visible {
+            display: table-cell;
+        }
+
+        .feedback {
+            color: green;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .feedback.visible {
+            display: block;
+        }
+
+        .quiz-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .quiz-question {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 0.5rem;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
         footer {
@@ -96,36 +232,207 @@
             padding: 1rem 0;
             background: var(--primary-bg);
             color: var(--primary-color);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            header nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h1>Saz' isiXhosa, no Sapho</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="age-levels.html">Age Levels</a></li>
-            <li><a href="vocabulary.html">Vocabulary</a></li>
-            <li><a href="phrases.html">Phrases</a></li>
-            <li><a href="numbers.html">Numbers</a></li>
-            <li><a href="time.html">Time</a></li>
-            <li><a href="grammar.html">Grammar</a></li>
-            <li><a href="culture.html">Culture</a></li>
-            <li><a href="activities.html" class="active">Activities</a></li>
-            <li><a href="khokho.html">Khokho Asks</a></li>
-        </ul>
-    </div>
+    <h1 class="site-title">Saz' isiXhosa, no Sapho</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="content">
-        <div id="activities" class="section">
-            <h2>Activities</h2>
-            <p>Engage in fun activities to practice your Xhosa skills.</p>
+    <div class="main-container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="age-levels.html">Age Levels</a></li>
+                <li><a href="vocabulary.html">Vocabulary</a></li>
+                <li><a href="phrases.html">Phrases</a></li>
+                <li><a href="numbers.html">Numbers</a></li>
+                <li><a href="time.html">Time</a></li>
+                <li><a href="grammar.html">Grammar</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="activities.html" class="active">Activities</a></li>
+                <li><a href="khokho.html">Khokho Asks</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div id="activities" class="section">
+                <h2>Activities</h2>
+                <p>Join Sazi and his cousins in fun Xhosa games and activities! Type the activity name, check your answer, or reveal it to play along. These games, like telling folk tales, bring our family together in Transkei!</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>When/Where Played</th>
+                            <th>Pronunciation</th>
+                            <th>Cultural Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="translation">Telling Folk Tales</span>
+                                <span class="xhosa-text" data-english="Telling Folk Tales">
+                                    <input type="text" id="input-folk-tales" placeholder="Type Xhosa activity">
+                                    <span class="xhosa-cell" data-answer="Ukuxoxa Iintsomi">Ukuxoxa Iintsomi</span>
+                                    <div class="feedback" id="feedback-folk-tales"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">At night, elders tell children folk tales that teach morals and pass down culture.</span>
+                                <span class="xhosa-text" data-english="At night, elders tell children folk tales that teach morals and pass down culture.">Ngobusuku, abantu abadala bahlala bexoxa iintsomi kubantwana. Ezi ntsomi zifundisa izifundo zokuziphatha kwaye zidlulisela ilifa lenkcubeko.</span>
+                            </td>
+                            <td>
+                                <span class="translation">At night, after dinner.</span>
+                                <span class="xhosa-text" data-english="At night, after dinner.">Ngobusuku, emva kwesidlo sangokuhlwa.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-folk-tales">
+                                    <source src="/audio/activities/all/ukuxoxa_iintsomi.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                            <td>Sazi loves hearing his grandmother’s stories!</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">Skipping Rope</span>
+                                <span class="xhosa-text" data-english="Skipping Rope">
+                                    <input type="text" id="input-skipping-rope" placeholder="Type Xhosa activity">
+                                    <span class="xhosa-cell" data-answer="Umgusha">Umgusha</span>
+                                    <div class="feedback" id="feedback-skipping-rope"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">A game played with a long rope swung by two people, with one jumping over it.</span>
+                                <span class="xhosa-text" data-english="A game played with a long rope swung by two people, with one jumping over it.">Umdlalo odlalwa ngentambo ende ejikeleziswa ngabantu ababini, omnye umntu atsho agxume phezu kwayo.</span>
+                            </td>
+                            <td>
+                                <span class="translation">During playtime in open spaces.</span>
+                                <span class="xhosa-text" data-english="During playtime in open spaces.">Ngexesha lokudlala emini, kuyo nayiphi na indawo evulekileyo.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-skipping-rope">
+                                    <source src="/audio/activities/all/umgusha.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                            <td>Sazi’s cousins jump rope together!</td>
+                        </tr>
+                        <!-- Add remaining activities (e.g., Ankle Races/Ukugijima Ngeqakala, Playing with Clay/Ukudlala Ngodongwe, Sliding on the Ground/Ukutyibiliza Emhlabeni, Playing with Sticks/Ukudlala Izinti, Traditional Songs and Dances/Ukudlala Iingoma Nemidaniso Yesintu, Morabaraba/Diketo, Stick Fighting/Intonga, Traditional Music/Umculo Wesintu, Traditional Dances/Imidaniso Yesintu, Weaving/Ukuluka, Grinding Maize/Ukuchuba Amagqabi, Recounting Oral History/Ukubalisa Amabali Emveli) -->
+                    </tbody>
+                </table>
+
+                <div class="quiz-section">
+                    <h3>Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <span>What is the name for telling folk tales?</span>
+                        <input type="text" id="quiz-input-1" placeholder="Type Xhosa activity">
+                        <button onclick="checkQuizAnswer(1, 'Ukuxoxa Iintsomi')">Check</button>
+                        <button onclick="revealQuizAnswer(1, 'Ukuxoxa Iintsomi', 'Telling Folk Tales')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-1" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-1">
+                        <source src="/audio/activities/all/ukuxoxa_iintsomi.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="quiz-question">
+                        <span>When is "Umgusha" played?</span>
+                        <input type="text" id="quiz-input-2" placeholder="Type when played">
+                        <button onclick="checkQuizAnswer(2, 'Ngexesha lokudlala emini, kuyo nayiphi na indawo evulekileyo')">Check</button>
+                        <button onclick="revealQuizAnswer(2, 'Ngexesha lokudlala emini, kuyo nayiphi na indawo evulekileyo', 'During playtime in open spaces')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-2" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-2">
+                        <source src="/audio/activities/all/umgusha.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="quiz-question">
+                        <span>What activity involves playing with clay?</span>
+                        <input type="text" id="quiz-input-3" placeholder="Type Xhosa activity">
+                        <button onclick="checkQuizAnswer(3, 'Ukudlala Ngodongwe')">Check</button>
+                        <button onclick="revealQuizAnswer(3, 'Ukudlala Ngodongwe', 'Playing with Clay')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-3" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-3">
+                        <source src="/audio/activities/all/ukudlala_ngodongwe.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2024 Your Family Name</p>
+        <p>© 2025 Mdeni Family</p>
     </footer>
+
+    <script>
+        function checkAnswer(id, correctAnswer) {
+            const input = document.getElementById(`input-${id}`).value.trim();
+            const feedback = document.getElementById(`feedback-${id}`);
+            const xhosaCell = document.querySelector(`#input-${id}`).parentElement.querySelector('.xhosa-cell');
+            const audio = document.getElementById(`audio-${id}`);
+
+            if (input.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Congratulations!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = `Nice try! The correct activity is ${correctAnswer}.`;
+                feedback.style.color = "red";
+            }
+            feedback.classList.add('visible');
+            xhosaCell.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function revealAnswer(id) {
+            const xhosaCell = document.querySelector(`#input-${id}`).parentElement.querySelector('.xhosa-cell');
+            const audio = document.getElementById(`audio-${id}`);
+            xhosaCell.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function checkQuizAnswer(index, correctAnswer) {
+            const input = document.getElementById(`quiz-input-${index}`).value.trim();
+            const feedback = document.getElementById(`quiz-feedback-${index}`);
+            const audio = document.getElementById(`quiz-audio-${index}`);
+
+            if (input.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Congratulations!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = `Nice try! The correct answer is ${correctAnswer}.`;
+                feedback.style.color = "red";
+            }
+            feedback.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function revealQuizAnswer(index, correctAnswer, englishTranslation) {
+            const feedback = document.getElementById(`quiz-feedback-${index}`);
+            const audio = document.getElementById(`quiz-audio-${index}`);
+            feedback.textContent = `The correct answer is ${correctAnswer} (${englishTranslation}).`;
+            feedback.style.color = "blue";
+            feedback.classList.add('visible');
+            audio.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
