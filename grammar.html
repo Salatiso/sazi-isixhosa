@@ -403,6 +403,21 @@
                             <!-- Add ~10–15 more examples -->
                         </tbody>
                     </table>
+
+                    <div class="quiz-section">
+    <h3>Quick Quiz</h3>
+    <div class="quiz-question">
+        <span>What is "I speak" in Xhosa?</span>
+        <input type="text" id="quiz-input-1" placeholder="Type Xhosa sentence">
+        <button onclick="checkQuizAnswer(1, 'Ndithetha')">Check</button>
+        <button onclick="revealQuizAnswer(1, 'Ndithetha', 'I speak')">Reveal</button>
+    </div>
+    <div id="quiz-feedback-1" class="feedback"></div>
+    <audio controls style="display:none;" id="quiz-audio-1">
+        <source src="/audio/grammar/all/ndithetha.mp3" type="audio/mp3">
+    </audio>
+    <!-- Add 2 more questions -->
+</div>
                 </div>
                 <!-- Add remaining categories (verb-conjugation, adjectives, possessives, demonstratives, sentence-structures, questions) -->
                 <div class="quiz-section" id="quizSection" style="display:none;">
