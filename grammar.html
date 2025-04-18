@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn Xhosa grammar with Sazi's family. Explore sentence structures, noun classes, and more through interactive examples and quizzes.">
     <title>Saz' isiXhosa, no Sapho - Grammar</title>
     <style>
         :root {
@@ -24,6 +23,15 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+        }
+
+        .site-title {
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 2rem;
         }
 
         header {
@@ -67,7 +75,7 @@
 
         .sidebar ul {
             padding: 0;
-            margin: 0;
+            margin: 1rem 0;
             list-style: none;
         }
 
@@ -79,28 +87,38 @@
             border-bottom: 1px solid var(--hover-bg);
         }
 
-        .sidebar ul li a:hover,
+        .sidebar ul li a:hover {
+            background: var(--hover-bg);
+        }
+
         .sidebar ul li a.active {
             background: var(--hover-bg);
             font-weight: bold;
-        }
-
-        .content {
-            flex: 1;
-            padding: 2rem;
-            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
-                        url('images/Sazi_Grandma.jpg') no-repeat center center;
-            background-size: cover;
         }
 
         @media (max-width: 768px) {
             .sidebar {
                 width: 100%;
                 height: auto;
+                position: relative;
             }
 
             .main-container {
                 flex-direction: column;
+            }
+        }
+
+        .content {
+            flex: 1;
+            padding: 2rem;
+            background: url('/img/Sazi_Grandma.jpg') no-repeat center center;
+            background-size: cover;
+            background-opacity: 0.1;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 1rem;
             }
         }
 
@@ -111,14 +129,19 @@
             margin-bottom: 1rem;
         }
 
-        .grammar-tabs {
+        .section h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+
+        .tabs {
             display: flex;
             gap: 1rem;
-            flex-wrap: wrap;
             margin-bottom: 1rem;
         }
 
-        .grammar-tabs button {
+        .tabs button {
             padding: 0.5rem 1rem;
             background-color: var(--primary-bg);
             color: var(--primary-color);
@@ -128,9 +151,21 @@
             font-weight: bold;
         }
 
-        .grammar-tabs button.active {
+        .tabs button.active {
             background-color: var(--accent-color);
             color: var(--secondary-color);
+        }
+
+        .tabs button:hover {
+            background-color: var(--hover-bg);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         table {
@@ -150,6 +185,32 @@
             color: var(--secondary-color);
         }
 
+        .xhosa-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .xhosa-text:hover::after {
+            content: attr(data-english);
+            position: absolute;
+            top: -2rem;
+            left: 0;
+            background: #333;
+            color: white;
+            padding: 0.3rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+
+        .xhosa-cell {
+            display: none;
+        }
+
+        .xhosa-cell.visible {
+            display: table-cell;
+        }
+
         .feedback {
             color: green;
             font-weight: bold;
@@ -157,15 +218,65 @@
             display: none;
         }
 
+        .feedback.visible {
+            display: block;
+        }
+
+        .quiz-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .quiz-question {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 0.5rem;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
         footer {
             text-align: center;
             padding: 1rem 0;
             background: var(--primary-bg);
             color: var(--primary-color);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            header nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
+    <h1 class="site-title">Saz' isiXhosa, no Sapho</h1>
     <header>
         <nav>
             <ul>
@@ -194,67 +305,561 @@
         <div class="content">
             <div id="grammar" class="section">
                 <h2>Grammar</h2>
-                <p>Join Salatiso and Sazi’s family in learning Xhosa grammar!</p>
-                <div class="grammar-tabs">
-                    <button class="tab-button active" onclick="showCategory('sentence-structure')" aria-label="Show Sentence Structure">Sentence Structure</button>
-                    <button class="tab-button" onclick="showCategory('noun-classes')" aria-label="Show Noun Classes">Noun Classes</button>
-                    <button onclick="startGrammarQuiz()" aria-label="Start Grammar Quiz">Grammar Quiz</button>
+                <p>Explore Xhosa grammar with Sazi and his cousins! Click a category, type the example, check your answer, or reveal it to hear how it sounds.</p>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="showTab('sentence-structure')">Sentence Structure</button>
+                    <button class="tab-button" onclick="showTab('noun-classes')">Noun Classes</button>
+                    <button class="tab-button" onclick="showTab('verb-conjugation')">Verb Conjugation</button>
+                    <button class="tab-button" onclick="showTab('adjectives')">Adjectives</button>
+                    <button class="tab-button" onclick="showTab('possessives')">Possessives</button>
+                    <button class="tab-button" onclick="showTab('demonstratives')">Demonstratives</button>
+                    <button class="tab-button" onclick="showTab('questions')">Questions</button>
+                    <button class="tab-button" onclick="showTab('sentence-structures')">Sentence Structures</button>
                 </div>
-                <div id="sentence-structure" class="grammar-content active">
-                    <p>Xhosa sentences usually follow a Subject-Verb-Object order, like “I speak Xhosa.” Try these examples!</p>
+                <div id="sentence-structure" class="tab-content active">
                     <table>
                         <thead>
                             <tr>
                                 <th>English</th>
                                 <th>Xhosa</th>
-                                <th>Action</th>
+                                <th>Description</th>
                                 <th>Pronunciation</th>
-                                <th>Cultural Note</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>I speak Xhosa</td>
+                                <td>I speak</td>
                                 <td>
-                                    <input type="text" id="input-speak-xhosa" placeholder="Type Xhosa sentence">
-                                    <div class="feedback" id="feedback-speak-xhosa"></div>
+                                    <input type="text" id="input-i-speak" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Ndithetha">Ndithetha</span>
+                                    <div class="feedback" id="feedback-i-speak"></div>
                                 </td>
                                 <td>
-                                    <button onclick="checkAnswer('speak-xhosa', 'Ndithetha isiXhosa')">Check</button>
+                                    <span class="xhosa-text" data-english="Subject-Verb order, present tense.">Ukulandelelana kwesihloko nesenzi, ixesha langoku.</span>
                                 </td>
-                                <td></td>
-                                <td>Sazi shares stories!</td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-i-speak">
+                                        <source src="/audio/grammar/all/ndithetha.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
                             </tr>
+                            <tr>
+                                <td>The child eats</td>
+                                <td>
+                                    <input type="text" id="input-child-eats" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Umntwana uyatya">Umntwana uyatya</span>
+                                    <div class="feedback" id="feedback-child-eats"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Subject-Verb-Object order, present tense.">Ukulandelelana kwesihloko nesenzi nesenzwa, ixesha langoku.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-child-eats">
+                                        <source src="/audio/grammar/all/umntwana_uyatya.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>We are happy</td>
+                                <td>
+                                    <input type="text" id="input-we-are-happy" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Siyonwabile">Siyonwabile</span>
+                                    <div class="feedback" id="feedback-we-are-happy"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Subject-Copula-Adjective order, present tense.">Ukulandelelana kwesihloko nesibanjalo nesichazi, ixesha langoku.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-we-are-happy">
+                                        <source src="/audio/grammar/all/siyonwabile.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <!-- Add ~10 more sentence structure entries -->
                         </tbody>
                     </table>
+                </div>
+                <div id="noun-classes" class="tab-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>English</th>
+                                <th>Xhosa</th>
+                                <th>Description</th>
+                                <th>Pronunciation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Person</td>
+                                <td>
+                                    <input type="text" id="input-person" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Umntu">Umntu</span>
+                                    <div class="feedback" id="feedback-person"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Singular, Class 1 noun prefix um-.">Isinye, isiqalo sesibizo somntu somklasa woku-1 um-.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-person">
+                                        <source src="/audio/grammar/all/umntu.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>People</td>
+                                <td>
+                                    <input type="text" id="input-people" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Abantu">Abantu</span>
+                                    <div class="feedback" id="feedback-people"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Plural, Class 2 noun prefix aba-.">Isininzi, isiqalo sesibizo somntu somklasa wes-2 aba-.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-people">
+                                        <source src="/audio/grammar/all/abantu.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tree</td>
+                                <td>
+                                    <input type="text" id="input-tree" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Umthi">Umthi</span>
+                                    <div class="feedback" id="feedback-tree"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Singular, Class 3 noun prefix um-.">Isinye, isiqalo sesibizo sezityalo nomthi somklasa wes-3 um-.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-tree">
+                                        <source src="/audio/grammar/all/umthi.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Trees</td>
+                                <td>
+                                    <input type="text" id="input-trees" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Imithi">Imithi</span>
+                                    <div class="feedback" id="feedback-trees"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Plural, Class 4 noun prefix imi-.">Isininzi, isiqalo sesibizo sezityalo nomthi somklasa wes-4 imi-.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-trees">
+                                        <source src="/audio/grammar/all/imithi.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <!-- Add ~15 more noun class entries -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="verb-conjugation" class="tab-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>English</th>
+                                <th>Xhosa</th>
+                                <th>Description</th>
+                                <th>Pronunciation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>I am speaking</td>
+                                <td>
+                                    <input type="text" id="input-i-am-speaking" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Ndiyathetha">Ndiyathetha</span>
+                                    <div class="feedback" id="feedback-i-am-speaking"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Present continuous, 1st person singular.">Ixesha langoku eliqhubekayo, umntu wokuqala kwisinye.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-i-am-speaking">
+                                        <source src="/audio/grammar/all/ndiyathetha.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>You are speaking</td>
+                                <td>
+                                    <input type="text" id="input-you-are-speaking" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Uyathetha">Uyathetha</span>
+                                    <div class="feedback" id="feedback-you-are-speaking"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Present continuous, 2nd person singular.">Ixesha langoku eliqhubekayo, umntu wesibini kwisinye.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-you-are-speaking">
+                                        <source src="/audio/grammar/all/uyathetha.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <!-- Add ~15 more verb conjugation entries -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="adjectives" class="tab-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>English</th>
+                                <th>Xhosa</th>
+                                <th>Description</th>
+                                <th>Pronunciation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Big</td>
+                                <td>
+                                    <input type="text" id="input-big" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Khulu">Khulu</span>
+                                    <div class="feedback" id="feedback-big"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Adjective, agrees with noun class.">Isichazi, siyavumelana nesibizo somklasa.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-big">
+                                        <source src="/audio/grammar/all/khulu.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Small</td>
+                                <td>
+                                    <input type="text" id="input-small" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Ncinci">Ncinci</span>
+                                    <div class="feedback" id="feedback-small"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Adjective, agrees with noun class.">Isichazi, siyavumelana nesibizo somklasa.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-small">
+                                        <source src="/audio/grammar/all/ncinci.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <!-- Add ~10 more adjective entries -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="possessives" class="tab-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>English</th>
+                                <th>Xhosa</th>
+                                <th>Description</th>
+                                <th>Pronunciation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>My book</td>
+                                <td>
+                                    <input type="text" id="input-my-book" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Incwadi yam">Incwadi yam</span>
+                                    <div class="feedback" id="feedback-my-book"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Possessive pronoun, agrees with noun class.">Isimelabizo sobumnini, siyavumelana nesibizo somklasa.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-my-book">
+                                        <source src="/audio/grammar/all/incwadi_yam.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Your book</td>
+                                <td>
+                                    <input type="text" id="input-your-book" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Incwadi yakho">Incwadi yakho</span>
+                                    <div class="feedback" id="feedback-your-book"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Possessive pronoun, agrees with noun class.">Isimelabizo sobumnini, siyavumelana nesibizo somklasa.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-your-book">
+                                        <source src="/audio/grammar/all/incwadi_yakho.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <!-- Add ~10 more possessive entries -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="demonstratives" class="tab-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>English</th>
+                                <th>Xhosa</th>
+                                <th>Description</th>
+                                <th>Pronunciation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>This person</td>
+                                <td>
+                                    <input type="text" id="input-this-person" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Lo mntu">Lo mntu</span>
+                                    <div class="feedback" id="feedback-this-person"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Demonstrative pronoun, agrees with noun class.">Isimelabizo sokubonisa, siyavumelana nesibizo somklasa.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-this-person">
+                                        <source src="/audio/grammar/all/lo_mntu.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>That person</td>
+                                <td>
+                                    <input type="text" id="input-that-person" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Lowo mntu">Lowo mntu</span>
+                                    <div class="feedback" id="feedback-that-person"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Demonstrative pronoun, agrees with noun class.">Isimelabizo sokubonisa, siyavumelana nesibizo somklasa.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-that-person">
+                                        <source src="/audio/grammar/all/lowo_mntu.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <!-- Add ~10 more demonstrative entries -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="questions" class="tab-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>English</th>
+                                <th>Xhosa</th>
+                                <th>Description</th>
+                                <th>Pronunciation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Who is this?</td>
+                                <td>
+                                    <input type="text" id="input-who-is-this" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Ngubani lo?">Ngubani lo?</span>
+                                    <div class="feedback" id="feedback-who-is-this"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Question word ngubani (who) with demonstrative.">Isimelabizo sombuzo ngubani sibonisa ukuba umntu okanye into ekuthethwa ngayo ikufuphi.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-who-is-this">
+                                        <source src="/audio/grammar/all/ngubani_lo.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>What is this?</td>
+                                <td>
+                                    <input type="text" id="input-what-is-this" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Yintoni le?">Yintoni le?</span>
+                                    <div class="feedback" id="feedback-what-is-this"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Question word yintoni (what) with demonstrative.">Isimelabizo sombuzo yintoni sibonisa ukuba into ekuthethwa ngayo ikufuphi.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-what-is-this">
+                                        <source src="/audio/grammar/all/yintoni_le.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <!-- Add ~10 more question entries -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="sentence-structures" class="tab-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>English</th>
+                                <th>Xhosa</th>
+                                <th>Description</th>
+                                <th>Pronunciation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>The dog is running</td>
+                                <td>
+                                    <input type="text" id="input-dog-is-running" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Inja iyabaleka">Inja iyabaleka</span>
+                                    <div class="feedback" id="feedback-dog-is-running"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Subject-Verb structure, present continuous.">Isakhiwo sesihloko nesenzi, ixesha langoku eliqhubekayo.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-dog-is-running">
+                                        <source src="/audio/grammar/all/inja_iyabaleka.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>I see the house</td>
+                                <td>
+                                    <input type="text" id="input-i-see-house" placeholder="Type Xhosa example">
+                                    <span class="xhosa-cell" data-answer="Ndiyabona indlu">Ndiyabona indlu</span>
+                                    <div class="feedback" id="feedback-i-see-house"></div>
+                                </td>
+                                <td>
+                                    <span class="xhosa-text" data-english="Subject-Verb-Object structure, present tense.">Isakhiwo sesihloko nesenzi nesenzwa, ixesha langoku.</span>
+                                </td>
+                                <td>
+                                    <audio controls style="display:none;" id="audio-i-see-house">
+                                        <source src="/audio/grammar/all/ndiyabona_indlu.mp3" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                            <!-- Add ~10 more sentence structure entries -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="quiz-section">
+                    <h3>Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <span>What is "I speak" in Xhosa?</span>
+                        <input type="text" id="quiz-input-1" placeholder="Type Xhosa example">
+                        <button onclick="checkQuizAnswer(1, 'Ndithetha')">Check</button>
+                        <button onclick="revealQuizAnswer(1, 'Ndithetha', 'I speak')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-1" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-1">
+                        <source src="/audio/grammar/all/ndithetha.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="quiz-question">
+                        <span>What is "Umntu" in English?</span>
+                        <input type="text" id="quiz-input-2" placeholder="Type English example">
+                        <button onclick="checkQuizAnswer(2, 'Person')">Check</button>
+                        <button onclick="revealQuizAnswer(2, 'Person', 'Umntu')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-2" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-2">
+                        <source src="/audio/grammar/all/umntu.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="quiz-question">
+                        <span>How do you say "We are happy" in Xhosa?</span>
+                        <input type="text" id="quiz-input-3" placeholder="Type Xhosa example">
+                        <button onclick="checkQuizAnswer(3, 'Siyonwabile')">Check</button>
+                        <button onclick="revealQuizAnswer(3, 'Siyonwabile', 'We are happy')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-3" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-3">
+                        <source src="/audio/grammar/all/siyonwabile.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2024 Mdeni Family</p>
+        <p>© 2025 Mdeni Family</p>
     </footer>
 
     <script>
-        function showCategory(category) {
-            document.querySelectorAll('.grammar-content').forEach(content => content.classList.remove('active'));
-            document.getElementById(category).classList.add('active');
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
             document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            document.querySelector(`button[onclick="showCategory('${category}')"]`).classList.add('active');
+            document.querySelector(`button[onclick="showTab('${tabId}')"]`).classList.add('active');
         }
 
         function checkAnswer(id, correctAnswer) {
             const input = document.getElementById(`input-${id}`).value.trim();
             const feedback = document.getElementById(`feedback-${id}`);
+            const xhosaCell = document.querySelector(`#input-${id}`).parentElement.querySelector('.xhosa-cell');
+            const audio = document.getElementById(`audio-${id}`);
+
             if (input.toLowerCase() === correctAnswer.toLowerCase()) {
-                feedback.textContent = "Correct!";
+                feedback.textContent = "Congratulations!";
                 feedback.style.color = "green";
             } else {
-                feedback.textContent = `The correct answer is: ${correctAnswer}`;
+                feedback.textContent = `Nice try! The correct example is ${correctAnswer}.`;
                 feedback.style.color = "red";
             }
-            feedback.style.display = "block";
+            feedback.classList.add('visible');
+            xhosaCell.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function revealAnswer(id) {
+            const xhosaCell = document.querySelector(`#input-${id}`).parentElement.querySelector('.xhosa-cell');
+            const audio = document.getElementById(`audio-${id}`);
+            xhosaCell.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function checkQuizAnswer(index, correctAnswer) {
+            const input = document.getElementById(`quiz-input-${index}`).value.trim();
+            const feedback = document.getElementById(`quiz-feedback-${index}`);
+            const audio = document.getElementById(`quiz-audio-${index}`);
+
+            if (input.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Congratulations!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = `Nice try! The correct answer is ${correctAnswer}.`;
+                feedback.style.color = "red";
+            }
+            feedback.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function revealQuizAnswer(index, correctAnswer, englishTranslation) {
+            const feedback = document.getElementById(`quiz-feedback-${index}`);
+            const audio = document.getElementById(`quiz-audio-${index}`);
+            feedback.textContent = `The correct answer is ${correctAnswer} (${englishTranslation}).`;
+            feedback.style.color = "blue";
+            feedback.classList.add('visible');
+            audio.style.display = 'block';
         }
     </script>
 </body>
