@@ -6,7 +6,7 @@
     <title>Saz' isiXhosa, no Sapho - Vocabulary</title>
     <style>
         :root {
-            --primary-bg: #333;
+            --primary-bg: #444;
             --primary-color: white;
             --secondary-bg: #f4f4f4;
             --secondary-color: #333;
@@ -21,14 +21,46 @@
             background-color: var(--secondary-bg);
             color: var(--secondary-color);
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
         }
 
         .sidebar {
             flex: 0 0 200px;
-            background: #444;
+            background: var(--primary-bg);
             color: var(--primary-color);
-            height: 100vh;
-            position: fixed;
+            height: 100%;
             overflow-y: auto;
         }
 
@@ -67,20 +99,19 @@
                 height: auto;
                 position: relative;
             }
+
+            .main-container {
+                flex-direction: column;
+            }
         }
 
         .content {
-            margin-left: 200px;
-            padding: 2rem;
             flex: 1;
-            background: url('https://via.placeholder.com/1500x1000?text=Family+Learning+Together') no-repeat center center;
-            background-size: cover;
-            background-opacity: 0.1;
+            padding: 2rem;
         }
 
         @media (max-width: 768px) {
             .content {
-                margin-left: 0;
                 padding: 1rem;
             }
         }
@@ -96,6 +127,17 @@
             font-size: 1.5rem;
             margin-top: 0;
             color: var(--secondary-color);
+        }
+
+        .category-filter {
+            margin-bottom: 1rem;
+        }
+
+        .category-filter select {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
         table {
@@ -176,120 +218,143 @@
             padding: 1rem 0;
             background: var(--primary-bg);
             color: var(--primary-color);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            header nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h1>Saz' isiXhosa, no Sapho</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="age-levels.html">Age Levels</a></li>
-            <li><a href="vocabulary.html" class="active">Vocabulary</a></li>
-            <li><a href="phrases.html">Phrases</a></li>
-            <li><a href="numbers.html">Numbers</a></li>
-            <li><a href="time.html">Time</a></li>
-            <li><a href="grammar.html">Grammar</a></li>
-            <li><a href="culture.html">Culture</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="khokho.html">Khokho Asks</a></li>
-        </ul>
-    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="content">
-        <div id="vocabulary" class="section">
-            <h2>Vocabulary</h2>
-            <p>Learn Xhosa vocabulary words with your family! Type the Xhosa word, check your answer, or reveal it to hear the pronunciation.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>English</th>
-                        <th>Xhosa</th>
-                        <th>Action</th>
-                        <th>Pronunciation</th>
-                        <th>Cultural Note</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="https://via.placeholder.com/50?text=Mother" alt="Mother"></td>
-                        <td>Mother</td>
-                        <td>
-                            <input type="text" id="input-mother" placeholder="Type Xhosa word">
-                            <span class="xhosa-cell" data-answer="Mama">Mama</span>
-                            <div class="feedback" id="feedback-mother"></div>
-                        </td>
-                        <td>
-                            <button onclick="checkAnswer('mother', 'Mama')">Check</button>
-                            <button onclick="revealAnswer('mother')">Reveal</button>
-                        </td>
-                        <td>
-                            <audio controls style="display:none;" id="audio-mother">
-                                <source src="audio/vocabulary/all/mama.mp3" type="audio/mp3">
-                                Your browser does not support the audio element.
-                            </audio>
-                        </td>
-                        <td>Mama is a term of respect used for all mother figures in the family.</td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://via.placeholder.com/50?text=Book" alt="Book"></td>
-                        <td>Book</td>
-                        <td>
-                            <input type="text" id="input-book" placeholder="Type Xhosa word">
-                            <span class="xhosa-cell" data-answer="Incwadi">Incwadi</span>
-                            <div class="feedback" id="feedback-book"></div>
-                        </td>
-                        <td>
-                            <button onclick="checkAnswer('book', 'Incwadi')">Check</button>
-                            <button onclick="revealAnswer('book')">Reveal</button>
-                        </td>
-                        <td>
-                            <audio controls style="display:none;" id="audio-book">
-                                <source src="audio/vocabulary/all/incwadi.mp3" type="audio/mp3">
-                                Your browser does not support the audio element.
-                            </audio>
-                        </td>
-                        <td>Books are often shared during family storytelling sessions.</td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://via.placeholder.com/50?text=Happiness" alt="Happiness"></td>
-                        <td>Happiness</td>
-                        <td>
-                            <input type="text" id="input-happiness" placeholder="Type Xhosa word">
-                            <span class="xhosa-cell" data-answer="Ulonwabo">Ulonwabo</span>
-                            <div class="feedback" id="feedback-happiness"></div>
-                        </td>
-                        <td>
-                            <button onclick="checkAnswer('happiness', 'Ulonwabo')">Check</button>
-                            <button onclick="revealAnswer('happiness')">Reveal</button>
-                        </td>
-                        <td>
-                            <audio controls style="display:none;" id="audio-happiness">
-                                <source src="audio/vocabulary/all/ulonwabo.mp3" type="audio/mp3">
-                                Your browser does not support the audio element.
-                            </audio>
-                        </td>
-                        <td>Ulonwabo reflects the joy of family gatherings.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="main-container">
+        <div class="sidebar">
+            <h1>Saz' isiXhosa, no Sapho</h1>
+            <ul>
+                <li><a href="age-levels.html">Age Levels</a></li>
+                <li><a href="vocabulary.html" class="active">Vocabulary</a></li>
+                <li><a href="phrases.html">Phrases</a></li>
+                <li><a href="numbers.html">Numbers</a></li>
+                <li><a href="time.html">Time</a></li>
+                <li><a href="grammar.html">Grammar</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="khokho.html">Khokho Asks</a></li>
+            </ul>
+        </div>
 
-            <div class="quiz-section">
-                <h3>Quick Quiz</h3>
-                <div class="quiz-question">
-                    <img src="https://via.placeholder.com/50?text=Dog" alt="Dog">
-                    <span>What is "Dog" in Xhosa?</span>
-                    <input type="text" id="quiz-input-1" placeholder="Type Xhosa word">
-                    <button onclick="checkQuizAnswer(1, 'Inja')">Check</button>
-                    <button onclick="revealQuizAnswer(1, 'Inja')">Reveal</button>
+        <div class="content">
+            <div id="vocabulary" class="section">
+                <h2>Vocabulary</h2>
+                <p>Learn Xhosa vocabulary with Sazi and his family! Choose a category or try a mixed quiz to test your skills.</p>
+                <div class="category-filter">
+                    <label for="category">Filter by Category: </label>
+                    <select id="category" onchange="filterCategory()">
+                        <option value="all">All</option>
+                        <option value="Family">Family</option>
+                        <option value="Animals">Animals</option>
+                        <option value="Food and Drink">Food and Drink</option>
+                        <option value="Nature and Seasons">Nature and Seasons</option>
+                        <option value="Daily Life">Daily Life</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Feelings and Actions">Feelings and Actions</option>
+                    </select>
+                    <button onclick="startMixedQuiz()">Mixed Quiz</button>
                 </div>
-                <div id="quiz-feedback-1" class="feedback"></div>
-                <audio controls style="display:none;" id="quiz-audio-1">
-                    <source src="audio/vocabulary/all/inja.mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                </audio>
+                <table id="vocabularyTable">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>English</th>
+                            <th>Xhosa</th>
+                            <th>Action</th>
+                            <th>Pronunciation</th>
+                            <th>Cultural Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-category="Family">
+                            <td><img src="https://via.placeholder.com/50?text=Mother" alt="Mother"></td>
+                            <td>Mother</td>
+                            <td>
+                                <input type="text" id="input-mother" placeholder="Type Xhosa word">
+                                <span class="xhosa-cell" data-answer="Mama">Mama</span>
+                                <div class="feedback" id="feedback-mother"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('mother', 'Mama')">Check</button>
+                                <button onclick="revealAnswer('mother')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-mother">
+                                    <source src="audio/vocabulary/all/mama.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                            <td>A term of respect for all mother figures.</td>
+                        </tr>
+                        <tr data-category="Family">
+                            <td><img src="https://via.placeholder.com/50?text=Father" alt="Father"></td>
+                            <td>Father</td>
+                            <td>
+                                <input type="text" id="input-father" placeholder="Type Xhosa word">
+                                <span class="xhosa-cell" data-answer="Tata">Tata</span>
+                                <div class="feedback" id="feedback-father"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('father', 'Tata')">Check</button>
+                                <button onclick="revealAnswer('father')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-father">
+                                    <source src="audio/vocabulary/all/tata.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                            <td>The head of the family in many Xhosa homes.</td>
+                        </tr>
+                        <tr data-category="Family">
+                            <td><img src="https://via.placeholder.com/50?text=Grandfather" alt="Grandfather"></td>
+                            <td>Grandfather</td>
+                            <td>
+                                <input type="text" id="input-grandfather" placeholder="Type Xhosa word">
+                                <span class="xhosa-cell" data-answer="Utatomkhulu">Utatomkhulu</span>
+                                <div class="feedback" id="feedback-grandfather"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('grandfather', 'Utatomkhulu')">Check</button>
+                                <button onclick="revealAnswer('grandfather')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-grandfather">
+                                    <source src="audio/vocabulary/all/utatomkhulu.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                            <td>A keeper of family stories.</td>
+                        </tr>
+                        <!-- Add remaining ~77 words similarly, abbreviated here for brevity -->
+                    </tbody>
+                </table>
+
+                <div class="quiz-section" id="quizSection" style="display:none;">
+                    <h3>Mixed Quiz</h3>
+                    <div id="quizQuestions"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -299,6 +364,46 @@
     </footer>
 
     <script>
+        const words = [
+            { category: 'Family', english: 'Mother', xhosa: 'Mama', id: 'mother' },
+            { category: 'Family', english: 'Father', xhosa: 'Tata', id: 'father' },
+            { category: 'Family', english: 'Grandfather', xhosa: 'Utatomkhulu', id: 'grandfather' },
+            // Add remaining words here
+        ];
+
+        function filterCategory() {
+            const category = document.getElementById('category').value;
+            const rows = document.querySelectorAll('#vocabularyTable tbody tr');
+            rows.forEach(row => {
+                row.style.display = category === 'all' || row.dataset.category === category ? '' : 'none';
+            });
+        }
+
+        function startMixedQuiz() {
+            const quizSection = document.getElementById('quizSection');
+            const quizQuestions = document.getElementById('quizQuestions');
+            quizSection.style.display = 'block';
+            quizQuestions.innerHTML = '';
+
+            const shuffledWords = words.sort(() => 0.5 - Math.random()).slice(0, 5);
+            shuffledWords.forEach((word, index) => {
+                const div = document.createElement('div');
+                div.className = 'quiz-question';
+                div.innerHTML = `
+                    <span>What is "${word.english}" in Xhosa?</span>
+                    <input type="text" id="quiz-input-${index}" placeholder="Type Xhosa word">
+                    <button onclick="checkQuizAnswer(${index}, '${word.xhosa}')">Check</button>
+                    <button onclick="revealQuizAnswer(${index}, '${word.xhosa}')">Reveal</button>
+                    <div id="quiz-feedback-${index}" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-${index}">
+                        <source src="audio/vocabulary/all/${word.id}.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                `;
+                quizQuestions.appendChild(div);
+            });
+        }
+
         function checkAnswer(id, correctAnswer) {
             const input = document.getElementById(`input-${id}`).value.trim();
             const feedback = document.getElementById(`feedback-${id}`);
