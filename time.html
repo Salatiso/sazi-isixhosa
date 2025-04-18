@@ -6,40 +6,76 @@
     <title>Saz' isiXhosa, no Sapho - Time</title>
     <style>
         :root {
-            --primary-bg: #333;
+            --primary-bg: #444;
             --primary-color: white;
             --secondary-bg: #f4f4f4;
             --secondary-color: #333;
             --hover-bg: #555;
+            --accent-color: #ffcc80;
         }
 
         body {
-            font-family: sans-serif;
+            font-family: 'Quicksand', sans-serif;
             margin: 0;
             line-height: 1.6;
             background-color: var(--secondary-bg);
             color: var(--secondary-color);
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .site-title {
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        header {
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
         }
 
         .sidebar {
             flex: 0 0 200px;
-            background: #444;
+            background: var(--primary-bg);
             color: var(--primary-color);
-            height: 100vh;
-            position: fixed;
+            height: 100%;
             overflow-y: auto;
-        }
-
-        .sidebar h1 {
-            font-size: 1.5rem;
-            margin: 1rem;
-            text-align: center;
         }
 
         .sidebar ul {
             padding: 0;
-            margin: 0;
+            margin: 1rem 0;
             list-style: none;
         }
 
@@ -66,29 +102,129 @@
                 height: auto;
                 position: relative;
             }
+
+            .main-container {
+                flex-direction: column;
+            }
         }
 
         .content {
-            margin-left: 200px;
-            padding: 2rem;
             flex: 1;
+            padding: 2rem;
+            background: url('/img/Sazi_Grandma.jpg') no-repeat center center;
+            background-size: cover;
+            background-opacity: 0.1;
         }
 
         @media (max-width: 768px) {
             .content {
-                margin-left: 0;
                 padding: 1rem;
             }
         }
 
         .section {
-            padding: 2rem 0;
-            border-bottom: 1px solid #ccc;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
         }
 
         .section h2 {
             font-size: 1.5rem;
             margin-top: 0;
+            color: var(--secondary-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .translation {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+        }
+
+        .xhosa-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .xhosa-text:hover::after {
+            content: attr(data-english);
+            position: absolute;
+            top: -2rem;
+            left: 0;
+            background: #333;
+            color: white;
+            padding: 0.3rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+
+        .xhosa-cell {
+            display: none;
+        }
+
+        .xhosa-cell.visible {
+            display: table-cell;
+        }
+
+        .feedback {
+            color: green;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .feedback.visible {
+            display: block;
+        }
+
+        .quiz-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .quiz-question {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 0.5rem;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
         footer {
@@ -96,36 +232,515 @@
             padding: 1rem 0;
             background: var(--primary-bg);
             color: var(--primary-color);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            header nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h1>Saz' isiXhosa, no Sapho</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="age-levels.html">Age Levels</a></li>
-            <li><a href="vocabulary.html">Vocabulary</a></li>
-            <li><a href="phrases.html">Phrases</a></li>
-            <li><a href="numbers.html">Numbers</a></li>
-            <li><a href="time.html" class="active">Time</a></li>
-            <li><a href="grammar.html">Grammar</a></li>
-            <li><a href="culture.html">Culture</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="khokho.html">Khokho Asks</a></li>
-        </ul>
-    </div>
+    <h1 class="site-title">Saz' isiXhosa, no Sapho</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="content">
-        <div id="time" class="section">
-            <h2>Time</h2>
-            <p>Learn how to tell time and use time-related expressions in Xhosa.</p>
+    <div class="main-container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="age-levels.html">Age Levels</a></li>
+                <li><a href="vocabulary.html">Vocabulary</a></li>
+                <li><a href="phrases.html">Phrases</a></li>
+                <li><a href="numbers.html">Numbers</a></li>
+                <li><a href="time.html" class="active">Time</a></li>
+                <li><a href="grammar.html">Grammar</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="ask-khulu.html">Ask Khulu</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div id="time" class="section">
+                <h2>Time</h2>
+                <p>Explore Xhosa time expressions and months with Sazi and his cousins! Type the term, check your answer, or reveal it to hear how it sounds.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>When Used</th>
+                            <th>Pronunciation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="translation">January</span>
+                                <span class="xhosa-text" data-english="January">
+                                    <input type="text" id="input-january" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="EyoMqungu">EyoMqungu</span>
+                                    <div class="feedback" id="feedback-january"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">Month of the Tambuki Grass, marking the start of the year.</span>
+                                <span class="xhosa-text" data-english="Month of the Tambuki Grass, marking the start of the year.">Inyanga yengca yaseTambuki, eqala unyaka.</span>
+                            </td>
+                            <td>
+                                <span class="translation">First month of the year.</span>
+                                <span class="xhosa-text" data-english="First month of the year.">Inyanga yokuqala yonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-january">
+                                    <source src="/audio/time/all/eyomqungu.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">February</span>
+                                <span class="xhosa-text" data-english="February">
+                                    <input type="text" id="input-february" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="EyoMdumba">EyoMdumba</span>
+                                    <div class="feedback" id="feedback-february"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">Month of the grain harvest.</span>
+                                <span class="xhosa-text" data-english="Month of the grain harvest.">Inyanga yokuqokelela amabele.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Second month of the year.</span>
+                                <span class="xhosa-text" data-english="Second month of the year.">Inyanga yesibini yonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-february">
+                                    <source src="/audio/time/all/eyomdumba.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">March</span>
+                                <span class="xhosa-text" data-english="March">
+                                    <input type="text" id="input-march" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="EyoKwindla">EyoKwindla</span>
+                                    <div class="feedback" id="feedback-march"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">Month of the first fruits, a time for harvests.</span>
+                                <span class="xhosa-text" data-english="Month of the first fruits, a time for harvests.">Inyanga yeziqhamo zokuqala, ixesha lokuvuna.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Third month of the year.</span>
+                                <span class="xhosa-text" data-english="Third month of the year.">Inyanga yesithathu yonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-march">
+                                    <source src="/audio/time/all/eyokwindla.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">April</span>
+                                <span class="xhosa-text" data-english="April">
+                                    <input type="text" id="input-april" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="uTshaz’iimpuzi">uTshaz’iimpuzi</span>
+                                    <div class="feedback" id="feedback-april"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">Month of the fading pumpkins.</span>
+                                <span class="xhosa-text" data-english="Month of the fading pumpkins.">Inyanga yamathanga ashwabanisayo.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Fourth month of the year.</span>
+                                <span class="xhosa-text" data-english="Fourth month of the year.">Inyanga yesine yonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-april">
+                                    <source src="/audio/time/all/utshaziimpuzi.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">May</span>
+                                <span class="xhosa-text" data-english="May">
+                                    <input type="text" id="input-may" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="EyeCanzibe">EyeCanzibe</span>
+                                    <div class="feedback" id="feedback-may"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">Month of the Canopus star, signaling cooler weather.</span>
+                                <span class="xhosa-text" data-english="Month of the Canopus star, signaling cooler weather.">Inyanga yenkanyezi yaseCanzibe, ebonisa imozulu epholileyo.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Fifth month of the year.</span>
+                                <span class="xhosa-text" data-english="Fifth month of the year.">Inyanga yesihlanu yonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-may">
+                                    <source src="/audio/time/all/eyecanzibe.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">June</span>
+                                <span class="xhosa-text" data-english="June">
+                                    <input type="text" id="input-june" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="EyeSilimela">EyeSilimela</span>
+                                    <div class="feedback" id="feedback-june"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">Month of the Pleiades star cluster.</span>
+                                <span class="xhosa-text" data-english="Month of the Pleiades star cluster.">Inyanga yeqela lenkanyezi laseSilimela.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Sixth month of the year.</span>
+                                <span class="xhosa-text" data-english="Sixth month of the year.">Inyanga yesithandathu yonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-june">
+                                    <source src="/audio/time/all/eyesilimela.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">July</span>
+                                <span class="xhosa-text" data-english="July">
+                                    <input type="text" id="input-july" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="EyeKhala">EyeKhala</span>
+                                    <div class="feedback" id="feedback-july"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">Month of the aloe bloom.</span>
+                                <span class="xhosa-text" data-english="Month of the aloe bloom.">Inyanga yokuqhakaza kwekhala.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Seventh month of the year.</span>
+                                <span class="xhosa-text" data-english="Seventh month of the year.">Inyanga yesixhenxe yonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-july">
+                                    <source src="/audio/time/all/eyekhala.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">August</span>
+                                <span class="xhosa-text" data-english="August">
+                                    <input type="text" id="input-august" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="EyeThupha">EyeThupha</span>
+                                    <div class="feedback" id="feedback-august"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">Month of the budding plants.</span>
+                                <span class="xhosa-text" data-english="Month of the budding plants.">Inyanga yezityalo ezithomblayo.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Eighth month of the year.</span>
+                                <span class="xhosa-text" data-english="Eighth month of the year.">Inyanga yesibhozo yonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-august">
+                                    <source src="/audio/time/all/eyethupha.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">September</span>
+                                <span class="xhosa-text" data-english="September">
+                                    <input type="text" id="input-september" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="EyoMsintsi">EyoMsintsi</span>
+                                    <div class="feedback" id="feedback-september"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">Month of the spring blossoms.</span>
+                                <span class="xhosa-text" data-english="Month of the spring blossoms.">Inyanga yeentyatyambo zentwasahlobo.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Ninth month of the year.</span>
+                                <span class="xhosa-text" data-english="Ninth month of the year.">Inyanga yesithoba yonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-september">
+                                    <source src="/audio/time/all/eyomsintsi.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">October</span>
+                                <span class="xhosa-text" data-english="October">
+                                    <input type="text" id="input-october" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="EyeDwarha">EyeDwarha</span>
+                                    <div class="feedback" id="feedback-october"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">Month of the flowering plants.</span>
+                                <span class="xhosa-text" data-english="Month of the flowering plants.">Inyanga yezityalo eziqhakazayo.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Tenth month of the year.</span>
+                                <span class="xhosa-text" data-english="Tenth month of the year.">Inyanga yeshumi yonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-october">
+                                    <source src="/audio/time/all/eyedwarha.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">November</span>
+                                <span class="xhosa-text" data-english="November">
+                                    <input type="text" id="input-november" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="EyeNkanga">EyeNkanga</span>
+                                    <div class="feedback" id="feedback-november"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">Month of the small birds.</span>
+                                <span class="xhosa-text" data-english="Month of the small birds.">Inyanga yeentaka ezincinci.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Eleventh month of the year.</span>
+                                <span class="xhosa-text" data-english="Eleventh month of the year.">Inyanga yeshumi elinanye yonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-november">
+                                    <source src="/audio/time/all/eyenkanga.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">December</span>
+                                <span class="xhosa-text" data-english="December">
+                                    <input type="text" id="input-december" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="EyoMnga">EyoMnga</span>
+                                    <div class="feedback" id="feedback-december"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">Month of the acacia trees.</span>
+                                <span class="xhosa-text" data-english="Month of the acacia trees.">Inyanga yemithi yeminga.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Twelfth month of the year.</span>
+                                <span class="xhosa-text" data-english="Twelfth month of the year.">Inyanga yeshumi elinambini yonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-december">
+                                    <source src="/audio/time/all/eyomnga.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">Monday</span>
+                                <span class="xhosa-text" data-english="Monday">
+                                    <input type="text" id="input-monday" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="UMvulo">UMvulo</span>
+                                    <div class="feedback" id="feedback-monday"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">The first day of the week.</span>
+                                <span class="xhosa-text" data-english="The first day of the week.">Usuku lokuqala lweveki.</span>
+                            </td>
+                            <td>
+                                <span class="translation">First day after Sunday.</span>
+                                <span class="xhosa-text" data-english="First day after Sunday.">Usuku lokuqala emva kweCawe.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-monday">
+                                    <source src="/audio/time/all/umvulo.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">Morning</span>
+                                <span class="xhosa-text" data-english="Morning">
+                                    <input type="text" id="input-morning" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="Kusasa">Kusasa</span>
+                                    <div class="feedback" id="feedback-morning"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">The start of the day, when the sun rises.</span>
+                                <span class="xhosa-text" data-english="The start of the day, when the sun rises.">Ukuqala kosuku, xa ilanga liphuma.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Early part of the day.</span>
+                                <span class="xhosa-text" data-english="Early part of the day.">Inxalenye yokuqala yosuku.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-morning">
+                                    <source src="/audio/time/all/kusasa.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="translation">Summer</span>
+                                <span class="xhosa-text" data-english="Summer">
+                                    <input type="text" id="input-summer" placeholder="Type Xhosa term">
+                                    <span class="xhosa-cell" data-answer="Ihlobo">Ihlobo</span>
+                                    <div class="feedback" id="feedback-summer"></div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="translation">The warm season of the year.</span>
+                                <span class="xhosa-text" data-english="The warm season of the year.">Ixesha elishushu lonyaka.</span>
+                            </td>
+                            <td>
+                                <span class="translation">Warm months of the year.</span>
+                                <span class="xhosa-text" data-english="Warm months of the year.">Iinyanga ezishushu zonyaka.</span>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-summer">
+                                    <source src="/audio/time/all/ihlobo.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="quiz-section">
+                    <h3>Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <span>What is "January" in Xhosa?</span>
+                        <input type="text" id="quiz-input-1" placeholder="Type Xhosa term">
+                        <button onclick="checkQuizAnswer(1, 'EyoMqungu')">Check</button>
+                        <button onclick="revealQuizAnswer(1, 'EyoMqungu', 'January')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-1" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-1">
+                        <source src="/audio/time/all/eyomqungu.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="quiz-question">
+                        <span>What does "EyoKwindla" mean?</span>
+                        <input type="text" id="quiz-input-2" placeholder="Type meaning">
+                        <button onclick="checkQuizAnswer(2, 'March')">Check</button>
+                        <button onclick="revealQuizAnswer(2, 'March', 'EyoKwindla')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-2" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-2">
+                        <source src="/audio/time/all/eyokwindla.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="quiz-question">
+                        <span>When is "Kusasa" used?</span>
+                        <input type="text" id="quiz-input-3" placeholder="Type when used">
+                        <button onclick="checkQuizAnswer(3, 'Early part of the day')">Check</button>
+                        <button onclick="revealQuizAnswer(3, 'Early part of the day', 'Morning')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-3" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-3">
+                        <source src="/audio/time/all/kusasa.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2024 Your Family Name</p>
+        <p>© 2025 Mdeni Family</p>
     </footer>
+
+    <script>
+        function checkAnswer(id, correctAnswer) {
+            const input = document.getElementById(`input-${id}`).value.trim();
+            const feedback = document.getElementById(`feedback-${id}`);
+            const xhosaCell = document.querySelector(`#input-${id}`).parentElement.querySelector('.xhosa-cell');
+            const audio = document.getElementById(`audio-${id}`);
+
+            if (input.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Congratulations!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = `Nice try! The correct term is ${correctAnswer}.`;
+                feedback.style.color = "red";
+            }
+            feedback.classList.add('visible');
+            xhosaCell.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function revealAnswer(id) {
+            const xhosaCell = document.querySelector(`#input-${id}`).parentElement.querySelector('.xhosa-cell');
+            const audio = document.getElementById(`audio-${id}`);
+            xhosaCell.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function checkQuizAnswer(index, correctAnswer) {
+            const input = document.getElementById(`quiz-input-${index}`).value.trim();
+            const feedback = document.getElementById(`quiz-feedback-${index}`);
+            const audio = document.getElementById(`quiz-audio-${index}`);
+
+            if (input.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Congratulations!";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = `Nice try! The correct answer is ${correctAnswer}.`;
+                feedback.style.color = "red";
+            }
+            feedback.classList.add('visible');
+            audio.style.display = 'block';
+        }
+
+        function revealQuizAnswer(index, correctAnswer, englishTranslation) {
+            const feedback = document.getElementById(`quiz-feedback-${index}`);
+            const audio = document.getElementById(`quiz-audio-${index}`);
+            feedback.textContent = `The correct answer is ${correctAnswer} (${englishTranslation}).`;
+            feedback.style.color = "blue";
+            feedback.classList.add('visible');
+            audio.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
