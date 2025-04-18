@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saz' isiXhosa, no Sapho - Vocabulary (Ages 8-11)</title>
+    <title>Saz' isiXhosa, no Sapho - Vocabulary Ages 8-11</title>
     <style>
         :root {
-            --primary-bg: #333;
+            --primary-bg: #444;
             --primary-color: white;
             --secondary-bg: #f4f4f4;
             --secondary-color: #333;
             --hover-bg: #555;
-            --accent-color: #a7c4a7;
+            --accent-color: #ffcc80;
         }
 
         body {
@@ -21,14 +21,46 @@
             background-color: var(--secondary-bg);
             color: var(--secondary-color);
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
         }
 
         .sidebar {
             flex: 0 0 200px;
-            background: #444;
+            background: var(--primary-bg);
             color: var(--primary-color);
-            height: 100vh;
-            position: fixed;
+            height: 100%;
             overflow-y: auto;
         }
 
@@ -67,20 +99,22 @@
                 height: auto;
                 position: relative;
             }
+
+            .main-container {
+                flex-direction: column;
+            }
         }
 
         .content {
-            margin-left: 200px;
-            padding: 2rem;
             flex: 1;
-            background: url('https://via.placeholder.com/1500x1000?text=Playful+Learning') no-repeat center center;
+            padding: 2rem;
+            background: url('images/Sazi_Grandma.jpg') no-repeat center center;
             background-size: cover;
             background-opacity: 0.1;
         }
 
         @media (max-width: 768px) {
             .content {
-                margin-left: 0;
                 padding: 1rem;
             }
         }
@@ -98,15 +132,6 @@
             color: var(--secondary-color);
         }
 
-        .section a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
-
-        .section a:hover {
-            text-decoration: underline;
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
@@ -122,6 +147,10 @@
         th {
             background-color: var(--accent-color);
             color: var(--secondary-color);
+        }
+
+        img {
+            max-width: 50px;
         }
 
         .xhosa-cell {
@@ -150,15 +179,15 @@
             border-radius: 10px;
         }
 
+        .quiz-section img {
+            max-width: 50px;
+            margin-right: 1rem;
+        }
+
         .quiz-question {
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
-        }
-
-        .quiz-question img {
-            max-width: 75px;
-            margin-right: 1rem;
         }
 
         button {
@@ -171,7 +200,7 @@
         }
 
         button:hover {
-            background-color: #8ab892;
+            background-color: #e6b800;
         }
 
         input[type="text"] {
@@ -185,100 +214,151 @@
             padding: 1rem 0;
             background: var(--primary-bg);
             color: var(--primary-color);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            header nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h1>Saz' isiXhosa, no Sapho</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="age-levels.html">Age Levels</a></li>
-            <li><a href="vocabulary.html">Vocabulary</a></li>
-            <li><a href="phrases.html">Phrases</a></li>
-            <li><a href="numbers.html">Numbers</a></li>
-            <li><a href="time.html">Time</a></li>
-            <li><a href="grammar.html">Grammar</a></li>
-            <li><a href="culture.html">Culture</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="khokho.html">Khokho Asks</a></li>
-        </ul>
-    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="content">
-        <div id="vocabulary-8-11" class="section">
-            <h2>Vocabulary (Ages 8-11)</h2>
-            <p>Hey there, learners! Let's discover everyday Xhosa words with pictures. Type the Xhosa word, check your answer, or reveal it to hear how it sounds! <a href="vocabulary.html">View All Vocabulary</a></p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>English</th>
-                        <th>Xhosa</th>
-                        <th>Action</th>
-                        <th>Pronunciation</th>
-                        <th>Cultural Note</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="https://via.placeholder.com/50?text=Book" alt="Book"></td>
-                        <td>Book</td>
-                        <td>
-                            <input type="text" id="input-book-8-11" placeholder="Type Xhosa word">
-                            <span class="xhosa-cell" data-answer="Incwadi">Incwadi</span>
-                            <div class="feedback" id="feedback-book-8-11"></div>
-                        </td>
-                        <td>
-                            <button onclick="checkAnswer('book-8-11', 'Incwadi')">Check</button>
-                            <button onclick="revealAnswer('book-8-11')">Reveal</button>
-                        </td>
-                        <td>
-                            <audio controls style="display:none;" id="audio-book-8-11">
-                                <source src="audio/vocabulary/8-11/incwadi.mp3" type="audio/mp3">
-                                Your browser does not support the audio element.
-                            </audio>
-                        </td>
-                        <td>Books are often shared during family storytelling sessions.</td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://via.placeholder.com/50?text=School" alt="School"></td>
-                        <td>School</td>
-                        <td>
-                            <input type="text" id="input-school-8-11" placeholder="Type Xhosa word">
-                            <span class="xhosa-cell" data-answer="Isikolo">Isikolo</span>
-                            <div class="feedback" id="feedback-school-8-11"></div>
-                        </td>
-                        <td>
-                            <button onclick="checkAnswer('school-8-11', 'Isikolo')">Check</button>
-                            <button onclick="revealAnswer('school-8-11')">Reveal</button>
-                        </td>
-                        <td>
-                            <audio controls style="display:none;" id="audio-school-8-11">
-                                <source src="audio/vocabulary/8-11/isikolo.mp3" type="audio/mp3">
-                                Your browser does not support the audio element.
-                            </audio>
-                        </td>
-                        <td>School is a place where kids learn Xhosa songs and stories.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="main-container">
+        <div class="sidebar">
+            <h1>Saz' isiXhosa, no Sapho</h1>
+            <ul>
+                <li><a href="age-levels.html">Age Levels</a></li>
+                <li><a href="vocabulary.html">Vocabulary</a></li>
+                <li><a href="phrases.html">Phrases</a></li>
+                <li><a href="numbers.html">Numbers</a></li>
+                <li><a href="time.html">Time</a></li>
+                <li><a href="grammar.html">Grammar</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="khokho.html">Khokho Asks</a></li>
+            </ul>
+        </div>
 
-            <div class="quiz-section">
-                <h3>Quick Quiz</h3>
-                <div class="quiz-question">
-                    <img src="https://via.placeholder.com/75?text=House" alt="House">
-                    <span>What is "House" in Xhosa?</span>
-                    <input type="text" id="quiz-input-1-8-11" placeholder="Type Xhosa word">
-                    <button onclick="checkQuizAnswer('1-8-11', 'Indlu')">Check</button>
-                    <button onclick="revealQuizAnswer('1-8-11', 'Indlu')">Reveal</button>
+        <div class="content">
+            <div id="vocabulary-8-11" class="section">
+                <h2>Vocabulary for Ages 8–11</h2>
+                <p>Explore Xhosa words with Sazi’s cousins to talk about school, food, and more! Type the word, check your answer, or reveal it to hear the sound. These words help our family connect every day.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>English</th>
+                            <th>Xhosa</th>
+                            <th>Action</th>
+                            <th>Pronunciation</th>
+                            <th>Cultural Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50?text=Grandfather" alt="Grandfather"></td>
+                            <td>Grandfather</td>
+                            <td>
+                                <input type="text" id="input-grandfather" placeholder="Type Xhosa word">
+                                <span class="xhosa-cell" data-answer="Utatomkhulu">Utatomkhulu</span>
+                                <div class="feedback" id="feedback-grandfather"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('grandfather', 'Utatomkhulu')">Check</button>
+                                <button onclick="revealAnswer('grandfather')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-grandfather">
+                                    <source src="audio/vocabulary/all/utatomkhulu.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                            <td>Utatomkhulu shares family stories.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50?text=Water" alt="Water"></td>
+                            <td>Water</td>
+                            <td>
+                                <input type="text" id="input-water" placeholder="Type Xhosa word">
+                                <span class="xhosa-cell" data-answer="Amanzi">Amanzi</span>
+                                <div class="feedback" id="feedback-water"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('water', 'Amanzi')">Check</button>
+                                <button onclick="revealAnswer('water')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-water">
+                                    <source src="audio/vocabulary/all/amanzi.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                            <td>Amanzi is vital for our family meals.</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/50?text=School" alt="School"></td>
+                            <td>School</td>
+                            <td>
+                                <input type="text" id="input-school" placeholder="Type Xhosa word">
+                                <span class="xhosa-cell" data-answer="Isikolo">Isikolo</span>
+                                <div class="feedback" id="feedback-school"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('school', 'Isikolo')">Check</button>
+                                <button onclick="revealAnswer('school')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-school">
+                                    <source src="audio/vocabulary/all/isikolo.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                            <td>Isikolo is where we learn Xhosa!</td>
+                        </tr>
+                        <!-- Add remaining ~17 words (e.g., Umakhulu, Umalume, Umakazi, Inyama, Isiqhamo, Imifuno, Imoto, Ibhasi, Uloliwe, Ucango, Ifestile, Ibhayisekile, Indlela, Indlu, Inkwenkwezi, Imvula, Ukufunda, Umzala) -->
+                    </tbody>
+                </table>
+
+                <div class="quiz-section">
+                    <h3>Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <img src="https://via.placeholder.com/50?text=House" alt="House">
+                        <span>What is "House" in Xhosa?</span>
+                        <input type="text" id="quiz-input-1" placeholder="Type Xhosa word">
+                        <button onclick="checkQuizAnswer(1, 'Indlu')">Check</button>
+                        <button onclick="revealQuizAnswer(1, 'Indlu')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-1" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-1">
+                        <source src="audio/vocabulary/all/indlu.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="quiz-question">
+                        <img src="https://via.placeholder.com/50?text=Meat" alt="Meat">
+                        <span>What is "Meat" in Xhosa?</span>
+                        <input type="text" id="quiz-input-2" placeholder="Type Xhosa word">
+                        <button onclick="checkQuizAnswer(2, 'Inyama')">Check</button>
+                        <button onclick="revealQuizAnswer(2, 'Inyama')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-2" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-2">
+                        <source src="audio/vocabulary/all/inyama.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
                 </div>
-                <div id="quiz-feedback-1-8-11" class="feedback"></div>
-                <audio controls style="display:none;" id="quiz-audio-1-8-11">
-                    <source src="audio/vocabulary/8-11/indlu.mp3" type="audio/mp3">
-                    Your browser does not support the audio element.
-                </audio>
             </div>
         </div>
     </div>
