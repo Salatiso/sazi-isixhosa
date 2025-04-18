@@ -141,6 +141,95 @@
             text-decoration: underline;
         }
 
+        .more-content {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .more-content.visible {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .read-more {
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .read-more:hover {
+            background-color: #e6b800;
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .carousel-item img {
+            max-width: 200px;
+            border-radius: 10px;
+        }
+
+        .carousel-item h3 {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .carousel-item p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .carousel-item a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .carousel-item a:hover {
+            text-decoration: underline;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-nav button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .carousel-nav button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
         footer {
             text-align: center;
             padding: 1rem 0;
@@ -149,7 +238,16 @@
             width: 100%;
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         @media (max-width: 768px) {
+            .carousel-item img {
+                max-width: 150px;
+            }
+
             header nav ul {
                 flex-direction: column;
                 gap: 1rem;
@@ -187,10 +285,100 @@
         <div class="content">
             <div id="about" class="section">
                 <h2>About Us</h2>
-                <p>I’m Salatiso Lonwabo Mdeni, and my greatest joy is being a father to my son, Sazi. Everything I do—whether it’s building this website, writing books, or sharing stories—is to give Sazi and his cousins a connection to our Xhosa heritage. Born in 1982 in Transkei, South Africa, I grew up in Fort Malan and Nqabane, surrounded by the rolling hills and the rhythm of Xhosa songs, stories, and proverbs. After my father’s death in 1993, my mother raised me and my siblings with her unwritten wisdom and the strength of our community. That’s where I learned the power of family, and it’s why I created *Saz' isiXhosa, no Sapho*—“Sazi speaks Xhosa, with the Family”—to ensure Sazi, now seven, and his cousins grow up knowing who they are.</p>
-                <p>This isn’t just my project—it’s a family affair. Sazi’s curiosity lights the way, asking questions that spark our lessons. His cousins—my nephews aged 12, 8, and 4, and nieces aged 6 and 8 months—bring playfulness, testing quizzes and giggling over words like “Molo” (Hello). Their grandmother, my mother, shares her unwritten wisdom, stories of Transkei gatherings that we’re now writing down for the first time. My sisters, the aunts, add their knowledge, from Xhosa traditions to everyday phrases. I provide the platform and guidance, drawing on my 20 years in risk management, property entrepreneurship, and authorship to make this a space where our family’s heritage thrives.</p>
-                <p>My motivation comes from Sazi’s smile when he learns a new Xhosa word, but it’s bigger than us. In South Africa, Xhosa is at risk—schools often focus on global languages, and modern life pulls families apart. I’ve seen this in Johannesburg, where I’ve built my life, and in the challenges I’ve faced to stay present for Sazi, from legal battles to advocating for family-led education. This website is my promise to Sazi, his cousins, and every family: a fun, interactive place to learn Xhosa together, strengthening bonds and preserving our culture. My books, like <a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Zazi_Mzantsi_Afrika_Yazi_inombo_yom?id=9sgJEQAAQBAJ&hl=en">Zazi Mzantsi Afrika</a> and <a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&hl=en">The Homeschooling Father</a>, and my <a href="https://www.youtube.com/@SalatisoAudioBooks">YouTube channel</a> share this culture freely—because it’s about empowering families, not profit.</p>
-                <p>Through *Saz' isiXhosa, no Sapho*, we’re writing our family’s story—Sazi’s first words, his grandmother’s tales, his cousins’ laughter, and the love that ties us together. Join us to learn Xhosa, share your own stories, and keep our heritage alive for the next generation.</p>
+                <p>I’m Salatiso Lonwabo Mdeni, a father to my son Sazi, and this website is my promise to him. Growing up in Transkei’s Fort Malan, I was surrounded by Xhosa songs and stories, shaped by my mother’s wisdom after my father’s passing. Now, I’m building *Saz’ isiXhosa, no Sapho*—Sazi speaks Xhosa, with the Family—to share that heritage with Sazi, his cousins, and our whole family.</p>
+                <p>It’s a family affair: Sazi’s curiosity leads us, his cousins add laughter, their grandmother shares tales we’re writing down, and aunts bring their knowledge. I guide the way, creating a place for us to learn Xhosa together. Want to hear more about our journey and why we’re doing this?</p>
+                <button class="read-more" onclick="toggleMore()">Read More</button>
+                <div class="more-content" id="moreContent">
+                    <p>Born in 1982, I grew up in a Transkei community where Xhosa was the heartbeat of every gathering. After losing my father in 1993, my mother raised us with strength and stories, teaching me the power of family. Today, living in Johannesburg, I see Sazi and his cousins—nephews aged 12, 8, and 4, nieces aged 6 and 8 months—facing a world that pulls them from their roots. Schools often skip Xhosa for global languages, and modern life challenges family time. That’s why I created this site: to give Sazi and his cousins a fun, interactive way to learn Xhosa, while bringing our family closer.</p>
+                    <p>My work as an author and advocate fuels this mission. Books like <a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Zazi_Mzantsi_Afrika_Yazi_inombo_yom?id=9sgJEQAAQBAJ&hl=en">Zazi Mzantsi Afrika</a> and <a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&hl=en">The Homeschooling Father</a> share Xhosa culture and family values, inspired by my own journey—from legal battles to ensure I could be there for Sazi, to 20 years in risk management solving problems. My mother’s unwritten wisdom, once shared under Transkei skies, is now being written here, with Sazi’s grandmother and aunts adding their voices. Through this site and my <a href="https://www.youtube.com/@SalatisoAudioBooks">YouTube channel</a>, we’re keeping Xhosa alive for Sazi, his cousins, and families everywhere, one word at a time.</p>
+                </div>
+
+                <div class="carousel">
+                    <div class="carousel-container" id="carouselContainer">
+                        <div class="carousel-item">
+                            <img src="images/Goliaths_Reckoning.jpg" alt="Goliath's Reckoning">
+                            <h3>Goliath's Reckoning</h3>
+                            <p>My fight for Sazi’s future, advocating for family rights.</p>
+                            <p><a href="https://play.google.com/store/books/details/Salatiso_Lonwabo_Mdeni_Goliath_s_Reckoning?id=RU__EAAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/Beyond_Redress.jpg" alt="Beyond Redress">
+                            <h3>Beyond Redress</h3>
+                            <p>Insights on equality, inspired by our family’s values.</p>
+                            <p><a href="https://play.google.com/books/reader?id=VU__EAAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/The_Homeschooling_Father.jpg" alt="The Homeschooling Father">
+                            <h3>The Homeschooling Father</h3>
+                            <p>Guiding families to teach Xhosa at home.</p>
+                            <p><a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://via.placeholder.com/200?text=Die+Tuisonderrig+Vader" alt="Die Tuisonderrig Vader">
+                            <h3>Die Tuisonderrig Vader</h3>
+                            <p>Homeschooling advice in Afrikaans for families.</p>
+                            <p><a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Die_Tuisonderrig_Vader_Hoekom_en_ho?id=IQAUAAAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://via.placeholder.com/200?text=Ntate+ea+rutang" alt="Ntate ea rutang">
+                            <h3>Ntate ea rutang</h3>
+                            <p>Sesotho guide for fathers teaching their kids.</p>
+                            <p><a href="https://play.google.com/store/books/details/Salatiso_Lonwabo_Mdeni_Ntate_ea_rutang_bana_ba_hae?id=s4suEAAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/Modern_Broke.jpg" alt="Modern, Broke, and Confused">
+                            <h3>Modern, Broke, and Confused</h3>
+                            <p>A humorous take on life’s challenges, rooted in family.</p>
+                            <p><a href="https://play.google.com/store/books/details/Salatiso_Lonwabo_Mdeni_Modern_Broke_and_Confused?id=6xMuEAAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/Getting_to_Know_Yourself.jpg" alt="Getting to Know Yourself as a South African">
+                            <h3>Getting to Know Yourself</h3>
+                            <p>Explore Xhosa identity with our family’s story.</p>
+                            <p><a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Getting_to_Know_Yourself_as_a_South?id=wMkJEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://via.placeholder.com/200?text=Beyond+the+Grave" alt="Beyond the Grave">
+                            <h3>Beyond the Grave</h3>
+                            <p>A journey through Xhosa traditions and spirituality.</p>
+                            <p><a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Beyond_the_Grave_A_Son_s_Journey_Th?id=NscJEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/Safety_First_OHS_Plans.jpg" alt="Safety First: Essentials for Your OHS Career Journey">
+                            <h3>Safety First: OHS Career</h3>
+                            <p>Skills from my career, supporting family safety.</p>
+                            <p><a href="https://play.google.com/store/books/details/Salatiso_Lonwabo_Mdeni_Safety_First_Essentials_for?id=9csJEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/Safety_First_Career.jpg" alt="Safety First: The Essentials of OHS Plans">
+                            <h3>Safety First: OHS Plans</h3>
+                            <p>Protecting families through workplace safety.</p>
+                            <p><a href="https://play.google.com/store/books/details/Salatiso_Lonwabo_Mdeni_Safety_First_The_Essentials?id=OMoJEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/The_Perfect_Cage1.jpg" alt="The Perfect Cage: Isivumo Legacy">
+                            <h3>The Perfect Cage: Isivumo Legacy</h3>
+                            <p>A story of freedom, reflecting our family’s values.</p>
+                            <p><a href="https://play.google.com/store/books/details/Salatiso_Lonwabo_Mdeni_The_Perfect_Cage_Isivumo_Le?id=8MkJEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/Zazi_Mzantsi_Afrika.jpg" alt="Zazi Mzantsi Afrika">
+                            <h3>Zazi Mzantsi Afrika</h3>
+                            <p>Unravel Xhosa history with Sazi’s family.</p>
+                            <p><a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Zazi_Mzantsi_Afrika_Yazi_inombo_yom?id=9sgJEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/The_Homeschooling_Father.jpg" alt="Utata ozifundiselayo ekhayeni">
+                            <h3>Utata ozifundiselayo ekhayeni</h3>
+                            <p>Our homeschooling journey in isiXhosa.</p>
+                            <p><a href="https://play.google.com/store/books/details/Salatiso_Lonwabo_Mdeni_Utata_ozifundiselayo_ekhaye?id=2Z0uEAAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <button onclick="moveCarousel(-1)">❮</button>
+                        <button onclick="moveCarousel(1)">❯</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -198,5 +386,37 @@
     <footer>
         <p>© 2024 Mdeni Family</p>
     </footer>
+
+    <script>
+        function toggleMore() {
+            const moreContent = document.getElementById('moreContent');
+            const button = document.querySelector('.read-more');
+            if (moreContent.classList.contains('visible')) {
+                moreContent.classList.remove('visible');
+                button.textContent = 'Read More';
+            } else {
+                moreContent.classList.add('visible');
+                button.textContent = 'Read Less';
+            }
+        }
+
+        let currentIndex = 0;
+        const items = document.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+
+        function moveCarousel(direction) {
+            currentIndex = (currentIndex + direction + totalItems) % totalItems;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const container = document.getElementById('carouselContainer');
+            container.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        setInterval(() => {
+            moveCarousel(1);
+        }, 5000);
+    </script>
 </body>
 </html>
