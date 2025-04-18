@@ -242,14 +242,14 @@
                 <li><a href="grammar.html">Grammar</a></li>
                 <li><a href="culture.html">Culture</a></li>
                 <li><a href="activities.html">Activities</a></li>
-                <li><a href="khokho.html">Khokho Asks</a></li>
+                <li><a href="ask-khulu.html">Ask Khulu</a></li>
             </ul>
         </div>
 
         <div class="content">
             <div id="numbers" class="section">
                 <h2>Numbers</h2>
-                <p>Count with Sazi and his cousins in Xhosa! Type the number, check your answer, or reveal it to hear how it sounds. These numbers help Sazi count his family’s cows in Transkei!</p>
+                <p>Count with Sazi and his cousins in Xhosa! Type the number, check your answer, or reveal it to hear how it sounds.</p>
                 <table>
                     <thead>
                         <tr>
@@ -257,7 +257,6 @@
                             <th>Xhosa</th>
                             <th>Action</th>
                             <th>Pronunciation</th>
-                            <th>Cultural Note</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -278,7 +277,6 @@
                                     Your browser does not support the audio element.
                                 </audio>
                             </td>
-                            <td>Sazi counts one cow with his cousin!</td>
                         </tr>
                         <tr>
                             <td>Two</td>
@@ -297,9 +295,151 @@
                                     Your browser does not support the audio element.
                                 </audio>
                             </td>
-                            <td>Two cousins play together!</td>
                         </tr>
-                        <!-- Add remaining numbers (Three/Thathu, Four/Ne, Five/Hlanu, Six/Sithandathu, Seven/Isixhenxe, Eight/Isibhozo, Nine/Isithoba, Ten/Ishumi) -->
+                        <tr>
+                            <td>Three</td>
+                            <td>
+                                <input type="text" id="input-three" placeholder="Type Xhosa number">
+                                <span class="xhosa-cell" data-answer="Thathu">Thathu</span>
+                                <div class="feedback" id="feedback-three"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('three', 'Thathu')">Check</button>
+                                <button onclick="revealAnswer('three')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-three">
+                                    <source src="/audio/numbers/all/thathu.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Four</td>
+                            <td>
+                                <input type="text" id="input-four" placeholder="Type Xhosa number">
+                                <span class="xhosa-cell" data-answer="Ne">Ne</span>
+                                <div class="feedback" id="feedback-four"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('four', 'Ne')">Check</button>
+                                <button onclick="revealAnswer('four')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-four">
+                                    <source src="/audio/numbers/all/ne.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Five</td>
+                            <td>
+                                <input type="text" id="input-five" placeholder="Type Xhosa number">
+                                <span class="xhosa-cell" data-answer="Hlanu">Hlanu</span>
+                                <div class="feedback" id="feedback-five"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('five', 'Hlanu')">Check</button>
+                                <button onclick="revealAnswer('five')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-five">
+                                    <source src="/audio/numbers/all/hlanu.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Six</td>
+                            <td>
+                                <input type="text" id="input-six" placeholder="Type Xhosa number">
+                                <span class="xhosa-cell" data-answer="Sithandathu">Sithandathu</span>
+                                <div class="feedback" id="feedback-six"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('six', 'Sithandathu')">Check</button>
+                                <button onclick="revealAnswer('six')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-six">
+                                    <source src="/audio/numbers/all/sithandathu.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Seven</td>
+                            <td>
+                                <input type="text" id="input-seven" placeholder="Type Xhosa number">
+                                <span class="xhosa-cell" data-answer="Isixhenxe">Isixhenxe</span>
+                                <div class="feedback" id="feedback-seven"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('seven', 'Isixhenxe')">Check</button>
+                                <button onclick="revealAnswer('seven')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-seven">
+                                    <source src="/audio/numbers/all/isixhenxe.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Eight</td>
+                            <td>
+                                <input type="text" id="input-eight" placeholder="Type Xhosa number">
+                                <span class="xhosa-cell" data-answer="Isibhozo">Isibhozo</span>
+                                <div class="feedback" id="feedback-eight"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('eight', 'Isibhozo')">Check</button>
+                                <button onclick="revealAnswer('eight')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-eight">
+                                    <source src="/audio/numbers/all/isibhozo.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nine</td>
+                            <td>
+                                <input type="text" id="input-nine" placeholder="Type Xhosa number">
+                                <span class="xhosa-cell" data-answer="Isithoba">Isithoba</span>
+                                <div class="feedback" id="feedback-nine"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('nine', 'Isithoba')">Check</button>
+                                <button onclick="revealAnswer('nine')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-nine">
+                                    <source src="/audio/numbers/all/isithoba.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ten</td>
+                            <td>
+                                <input type="text" id="input-ten" placeholder="Type Xhosa number">
+                                <span class="xhosa-cell" data-answer="Ishumi">Ishumi</span>
+                                <div class="feedback" id="feedback-ten"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('ten', 'Ishumi')">Check</button>
+                                <button onclick="revealAnswer('ten')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-ten">
+                                    <source src="/audio/numbers/all/ishumi.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -309,11 +449,33 @@
                         <span>What is "Six" in Xhosa?</span>
                         <input type="text" id="quiz-input-1" placeholder="Type Xhosa number">
                         <button onclick="checkQuizAnswer(1, 'Sithandathu')">Check</button>
-                        <button onclick="revealQuizAnswer(1, 'Sithandathu')">Reveal</button>
+                        <button onclick="revealQuizAnswer(1, 'Sithandathu', 'Six')">Reveal</button>
                     </div>
                     <div id="quiz-feedback-1" class="feedback"></div>
                     <audio controls style="display:none;" id="quiz-audio-1">
                         <source src="/audio/numbers/all/sithandathu.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="quiz-question">
+                        <span>What is "Mbini" in English?</span>
+                        <input type="text" id="quiz-input-2" placeholder="Type English number">
+                        <button onclick="checkQuizAnswer(2, 'Two')">Check</button>
+                        <button onclick="revealQuizAnswer(2, 'Two', 'Mbini')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-2" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-2">
+                        <source src="/audio/numbers/all/mbini.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="quiz-question">
+                        <span>How do you say "Ten" in Xhosa?</span>
+                        <input type="text" id="quiz-input-3" placeholder="Type Xhosa number">
+                        <button onclick="checkQuizAnswer(3, 'Ishumi')">Check</button>
+                        <button onclick="revealQuizAnswer(3, 'Ishumi', 'Ten')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-3" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-3">
+                        <source src="/audio/numbers/all/ishumi.mp3" type="audio/mp3">
                         Your browser does not support the audio element.
                     </audio>
                 </div>
@@ -360,17 +522,17 @@
                 feedback.textContent = "Congratulations!";
                 feedback.style.color = "green";
             } else {
-                feedback.textContent = `Nice try! The correct number is ${correctAnswer}.`;
+                feedback.textContent = `Nice try! The correct answer is ${correctAnswer}.`;
                 feedback.style.color = "red";
             }
             feedback.classList.add('visible');
             audio.style.display = 'block';
         }
 
-        function revealQuizAnswer(index, correctAnswer) {
+        function revealQuizAnswer(index, correctAnswer, englishTranslation) {
             const feedback = document.getElementById(`quiz-feedback-${index}`);
             const audio = document.getElementById(`quiz-audio-${index}`);
-            feedback.textContent = `The correct number is ${correctAnswer}.`;
+            feedback.textContent = `The correct answer is ${correctAnswer} (${englishTranslation}).`;
             feedback.style.color = "blue";
             feedback.classList.add('visible');
             audio.style.display = 'block';
