@@ -111,7 +111,7 @@
         .content {
             flex: 1;
             padding: 2rem;
-            background: url('/img/Sazi_Shouts.jpg') no-repeat center center;
+            background: url('/img/Sazi_Grandma.jpg') no-repeat center center;
             background-size: cover;
             background-opacity: 0.1;
         }
@@ -144,6 +144,29 @@
             text-decoration: underline;
         }
 
+        .intro-content {
+            display: block;
+        }
+
+        .full-content {
+            display: none;
+        }
+
+        .read-more {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .read-more:hover {
+            background-color: #e6b800;
+        }
+
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -159,8 +182,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .form-group input,
-        .form-group textarea {
+        .form-group input, .form-group textarea {
             width: 100%;
             padding: 0.5rem;
             border: 1px solid #ccc;
@@ -169,15 +191,15 @@
         }
 
         .form-group textarea {
+            height: 150px;
             resize: vertical;
-            min-height: 100px;
         }
 
         .form-group button {
-            padding: 0.8rem 1.5rem;
             background-color: var(--accent-color);
             color: var(--secondary-color);
             border: none;
+            padding: 0.5rem 1rem;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
@@ -210,7 +232,7 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.html" class="active">Contact Us</a></li>
             </ul>
         </nav>
     </header>
@@ -226,35 +248,42 @@
                 <li><a href="grammar.html">Grammar</a></li>
                 <li><a href="culture.html">Culture</a></li>
                 <li><a href="activities.html">Activities</a></li>
-                <li><a href="khokho.html">Khokho Asks</a></li>
+                <li><a href="ask-khulu.html">Ask Khulu</a></li>
             </ul>
         </div>
 
         <div class="content">
             <div id="contact" class="section">
-                <h2>Contact Us</h2>
-                <p>Join Sazi, his cousins, grandmother, and aunts in sharing our Xhosa heritage at <a href="https://sazi.life">sazi.life</a>! Send us your ideas, suggest words or stories to enrich our site, or ask about discounts on my books. Explore free lessons, like <a href="https://youtu.be/Pi8JWTGXj8g?si=oGuxiWwMmBYGitmh">Zazi Mzantsi Afrika</a>, on my <a href="https://www.youtube.com/@SalatisoAudioBooks">YouTube channel</a> to help preserve Xhosa culture!</p>
+                <h2>Connect with Khulu</h2>
+                <div class="intro-content">
+                    <p>Khulu’s heart is always open! Share your stories, suggestions, or questions to help grow our treasure of unwritten Xhosa knowledge.</p>
+                    <button class="read-more" onclick="toggleContent()">Read More</button>
+                </div>
+                <div class="full-content">
+                    <p>Khulu’s heart is always open, dear ones! At <em>Saz’ isiXhosa, no Sapho</em>, we’re weaving a tapestry of Xhosa wisdom, and your voice is a vital thread. Share your stories, suggestions, or questions to help grow our treasure of unwritten knowledge. Khulu loves hearing your Xhosa tales—perhaps a memory of an <em>Imbeleko</em> celebration, a folk tale your grandmother told, or a special place in the Eastern Cape that holds our culture’s spirit. Your feedback, cultural experiences, or even comments on this site help us keep our heritage alive for Sazi, his cousins, and all who cherish Xhosa ways.</p>
+                    <p>Fill out the form below to send Khulu your thoughts. Tell us about a tradition you hold dear, like the joy of <em>Ukuxoxa Iintsomi</em> under the stars, or suggest new ideas to make this site even warmer. Every story, every memory, adds to our family’s legacy. You can also reach us at <a href="mailto:salatiso@sazi.life">salatiso@sazi.life</a> or follow our journey on <a href="https://www.youtube.com/@SalatisoAudioBooks">YouTube</a>. Khulu can’t wait to hear from you—let’s keep our culture thriving together!</p>
+                    <button class="read-more" onclick="toggleContent()">Read Less</button>
+                </div>
+
                 <div class="contact-form">
-                    <form action="https://formspree.io/f/your-form-id" method="POST">
+                    <form action="mailto:salatiso@sazi.life" method="post" enctype="text/plain">
                         <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your email" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" placeholder="Share your ideas, stories, or questions!" required></textarea>
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Share a Xhosa story, cultural experience, suggestion, or comment!" required></textarea>
                         </div>
                         <div class="form-group">
-                            <button type="submit">Send Message</button>
+                            <button type="submit">Send to Khulu</button>
                         </div>
-                        <input type="hidden" name="_to" value="salatiso@sazi.life">
                     </form>
                 </div>
-                <p>Connect with us at <a href="https://flamea.org">flamea.org</a> or follow our journey on <a href="https://www.youtube.com/@SalatisoAudioBooks">YouTube</a>.</p>
             </div>
         </div>
     </div>
@@ -262,5 +291,22 @@
     <footer>
         <p>© 2025 Mdeni Family</p>
     </footer>
+
+    <script>
+        function toggleContent() {
+            const intro = document.querySelector('.intro-content');
+            const full = document.querySelector('.full-content');
+            const button = document.querySelector('.read-more');
+            if (full.style.display === 'none' || full.style.display === '') {
+                intro.style.display = 'none';
+                full.style.display = 'block';
+                button.textContent = 'Read Less';
+            } else {
+                intro.style.display = 'block';
+                full.style.display = 'none';
+                button.textContent = 'Read More';
+            }
+        }
+    </script>
 </body>
 </html>
