@@ -135,6 +135,15 @@
             color: var(--secondary-color);
         }
 
+        .section a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .section a:hover {
+            text-decoration: underline;
+        }
+
         .tabs {
             display: flex;
             gap: 1rem;
@@ -182,6 +191,7 @@
             padding: 0.5rem;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-family: 'Quicksand', sans-serif;
         }
 
         .form-group button {
@@ -191,6 +201,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;
         }
 
         .form-group button:hover {
@@ -206,6 +217,11 @@
 
         .qa-response p, .search-results p {
             margin: 0.5rem 0;
+        }
+
+        .resources {
+            margin-top: 2rem;
+            text-align: center;
         }
 
         footer {
@@ -254,7 +270,7 @@
         <div class="content">
             <div id="ask-khulu" class="section">
                 <h2>Ask Khulu</h2>
-                <p>Ask Khulu, Sazi’s grandmother, your Xhosa questions or search our site! Khulu answers with wisdom from books like <a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Zazi_Mzantsi_Afrika_Yazi_inombo_yom?id=9sgJEQAAQBAJ&hl=en">Zazi Mzantsi Afrika</a>. Try questions like “What is *Molo*?” or search for words like “Imbeleko.”</p>
+                <p>Ask Khulu, Sazi’s grandmother, your Xhosa questions or search our site! Khulu answers with wisdom from books like <a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Zazi_Mzantsi_Afrika_Yazi_inombo_yom?id=9sgJEQAAQBAJ&hl=en">Zazi Mzantsi Afrika</a> and our <a href="/resources/content-database.pdf">content database</a>. Try questions like “What is *Molo*?” or search for words like “Imbeleko.”</p>
                 <div class="tabs">
                     <button class="tab-button active" onclick="showTab('ask')">Ask Khulu</button>
                     <button class="tab-button" onclick="showTab('search')">Search Site</button>
@@ -277,6 +293,11 @@
                         <div class="search-results" id="searchResults"></div>
                     </div>
                 </div>
+                <div class="resources">
+                    <h3>Resources</h3>
+                    <p>Explore our full Xhosa content database, drawn from Salatiso’s books like <a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Zazi_Mzantsi_Afrika_Yazi_inombo_yom?id=9sgJEQAAQBAJ&hl=en">Zazi Mzantsi Afrika</a>.</p>
+                    <a href="/resources/content-database.pdf">Download Database (PDF)</a>
+                </div>
             </div>
         </div>
     </div>
@@ -286,20 +307,84 @@
     </footer>
 
     <script>
+        // Predefined Q&A pairs for specific questions
         const qaDatabase = [
-            { question: 'What is Molo?', answer: '*Molo* means "Hello" in Xhosa, used to greet friends and family. In *Zazi Mzantsi Afrika*, I explain how greetings build community.' },
-            { question: 'Why do we do Imbeleko?', answer: '*Imbeleko* protects and introduces a newborn to the community, often with a feast. In *The Homeschooling Father*, I describe how our family welcomed Sazi this way.' },
-            { question: 'What is Intlonipho?', answer: '*Intlonipho* is respect for elders, shown through speech and actions. In *Zazi Mzantsi Afrika*, I share how Sazi learns this value.' },
-            // Add more Q&A pairs
+            {
+                question: 'What is Molo?',
+                answer: '*Molo* means "Hello" in Xhosa, used to greet friends and family. In *Zazi Mzantsi Afrika*, I explain how greetings build community.'
+            },
+            {
+                question: 'Why do we do Imbeleko?',
+                answer: '*Imbeleko* protects and introduces a newborn to the community, often with a feast. In *The Homeschooling Father*, I describe how our family welcomed Sazi this way.'
+            },
+            {
+                question: 'What is Intlonipho?',
+                answer: '*Intlonipho* is respect for elders, shown through speech and actions. In *Zazi Mzantsi Afrika*, I share how Sazi learns this value.'
+            },
+            {
+                question: 'Tell me a Xhosa story',
+                answer: 'In *Zazi Mzantsi Afrika*, I tell of a young boy who learned courage from his grandmother’s tales under the Transkei stars. Would you like to hear more about Xhosa folk tales?'
+            },
+            {
+                question: 'What does Kusasa mean?',
+                answer: '*Kusasa* means "Morning" in Xhosa, the time when the day begins. In *The Homeschooling Father*, I talk about starting the day with family.'
+            },
+            // Add more Q&A pairs as needed
         ];
 
-        const searchDatabase = [
-            { term: 'Molo', english: 'Hello', source: 'phrases', description: 'Used to greet friends and family.' },
-            { term: 'Inja', english: 'Dog', source: 'vocabulary', description: 'A common household animal.' },
-            { term: 'Imbeleko', english: 'Welcoming a Newborn', source: 'culture', description: 'Protecting and introducing a newborn to the community.' },
-            { term: 'Ukuxoxa Iintsomi', english: 'Telling Folk Tales', source: 'activities', description: 'Elders tell children stories to teach morals.' },
-            // Add more terms from vocabulary, phrases, culture, activities
-        ];
+        // Sample JSON data (replace with fetch from /resources/content-database.json)
+        // This is a placeholder for demonstration; the actual fetch will use the full database
+        const sampleDatabase = {
+            categories: [
+                {
+                    name: 'Vocabulary',
+                    subcategories: [
+                        {
+                            name: 'Family',
+                            entries: [
+                                { id: 'vocabulary_mama', english: 'Mother', xhosa: 'Mama', description: 'A female parent, central to family life.', source: 'Zazi Mzantsi Afrika' },
+                                { id: 'vocabulary_tata', english: 'Father', xhosa: 'Tata', description: 'A male parent, often a teacher in the family.', source: 'The Homeschooling Father' }
+                            ]
+                        },
+                        {
+                            name: 'Animals',
+                            entries: [
+                                { id: 'vocabulary_inja', english: 'Dog', xhosa: 'Inja', description: 'A common household animal.', source: 'Zazi Mzantsi Afrika' }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: 'Phrases',
+                    subcategories: [
+                        {
+                            name: 'Greetings and Introductions',
+                            entries: [
+                                { id: 'phrases_molo', english: 'Hello', xhosa: 'Molo', description: 'Used to greet friends and family.', source: 'Zazi Mzantsi Afrika' }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: 'Culture',
+                    subcategories: [
+                        {
+                            name: 'Life Milestones',
+                            entries: [
+                                { id: 'culture_imbeleko', english: 'Welcoming a Newborn', xhosa: 'Imbeleko', description: 'Protecting and formally introducing a newborn to the community.', when_performed: 'In the first weeks or months of a child’s life.', source: 'Zazi Mzantsi Afrika' }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: 'Activities',
+                    entries: [
+                        { id: 'activities_ukuxoxa_iintsomi', english: 'Telling Folk Tales', xhosa: 'Ukuxoxa Iintsomi', description: 'Elders tell children stories to teach morals.', when_performed: 'At night, after dinner.', source: 'Zazi Mzantsi Afrika' }
+                    ]
+                }
+                // Add remaining categories (Numbers, Time, Grammar)
+            ]
+        };
 
         function showTab(tab) {
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
@@ -308,33 +393,101 @@
             document.querySelector(`button[onclick="showTab('${tab}')"]`).classList.add('active');
         }
 
+        async function loadDatabase() {
+            try {
+                const response = await fetch('/resources/content-database.json');
+                if (!response.ok) throw new Error('Failed to load database');
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading database:', error);
+                // Fallback to sampleDatabase if fetch fails (e.g., during development)
+                return sampleDatabase;
+            }
+        }
+
         function submitQuestion() {
             const input = document.getElementById('qa-input').value.trim().toLowerCase();
             const responseDiv = document.getElementById('qaResponse');
-            const match = qaDatabase.find(q => q.question.toLowerCase().includes(input));
 
-            if (match) {
-                responseDiv.innerHTML = `<p>Khulu says: ${match.answer}</p>`;
-            } else {
-                responseDiv.innerHTML = `<p>Khulu says: I’m not sure about that one, but try asking something like “What is Molo?” or search the site!</p>`;
+            // Check predefined Q&A first
+            const qaMatch = qaDatabase.find(q => q.question.toLowerCase().includes(input));
+            if (qaMatch) {
+                responseDiv.innerHTML = `<p>Khulu says: ${qaMatch.answer}</p>`;
+                return;
             }
+
+            // Query JSON database
+            loadDatabase().then(data => {
+                let answer = 'Khulu says: I’m not sure about that one, but try asking something like “What is Molo?” or search the site!';
+                data.categories.forEach(category => {
+                    if (category.subcategories) {
+                        category.subcategories.forEach(sub => {
+                            sub.entries.forEach(entry => {
+                                if (input.includes(entry.xhosa.toLowerCase()) || input.includes(entry.english.toLowerCase())) {
+                                    answer = `Khulu says: ${entry.xhosa} means "${entry.english}" - ${entry.description} In *${entry.source}*, I explain its importance.`;
+                                }
+                            });
+                        });
+                    } else {
+                        category.entries.forEach(entry => {
+                            if (input.includes(entry.xhosa.toLowerCase()) || input.includes(entry.english.toLowerCase())) {
+                                answer = `Khulu says: ${entry.xhosa} means "${entry.english}" - ${entry.description} In *${entry.source}*, I explain its importance.`;
+                            }
+                        });
+                    }
+                });
+                responseDiv.innerHTML = `<p>${answer}</p>`;
+            }).catch(error => {
+                responseDiv.innerHTML = `<p>Khulu says: Sorry, I’m having trouble finding that answer. Try searching the site!</p>`;
+            });
         }
 
         function searchSite() {
             const input = document.getElementById('search-input').value.trim().toLowerCase();
             const resultsDiv = document.getElementById('searchResults');
-            const matches = searchDatabase.filter(item => 
-                item.term.toLowerCase().includes(input) || 
-                item.english.toLowerCase().includes(input)
-            );
 
-            if (matches.length > 0) {
-                resultsDiv.innerHTML = matches.map(match => `
-                    <p><strong>${match.english} / ${match.term}</strong>: ${match.description} (From ${match.source})</p>
-                `).join('');
-            } else {
-                resultsDiv.innerHTML = `<p>Khulu says: No matches found! Try searching for something like “Imbeleko” or “Molo.”</p>`;
-            }
+            loadDatabase().then(data => {
+                const matches = [];
+                data.categories.forEach(category => {
+                    if (category.subcategories) {
+                        category.subcategories.forEach(sub => {
+                            sub.entries.forEach(entry => {
+                                if (entry.xhosa.toLowerCase().includes(input) || entry.english.toLowerCase().includes(input)) {
+                                    matches.push({
+                                        english: entry.english,
+                                        xhosa: entry.xhosa,
+                                        description: entry.description,
+                                        source: entry.source,
+                                        when: entry.when_performed || entry.when_used || ''
+                                    });
+                                }
+                            });
+                        });
+                    } else {
+                        category.entries.forEach(entry => {
+                            if (entry.xhosa.toLowerCase().includes(input) || entry.english.toLowerCase().includes(input)) {
+                                matches.push({
+                                    english: entry.english,
+                                    xhosa: entry.xhosa,
+                                    description: entry.description,
+                                    source: entry.source,
+                                    when: entry.when_performed || entry.when_used || ''
+                                });
+                            }
+                        });
+                    }
+                });
+
+                if (matches.length > 0) {
+                    resultsDiv.innerHTML = matches.map(match => `
+                        <p><strong>${match.english} / ${match.xhosa}</strong>: ${match.description}${match.when ? ` (${match.when})` : ''} (From *${match.source}*)</p>
+                    `).join('');
+                } else {
+                    resultsDiv.innerHTML = `<p>Khulu says: No matches found! Try searching for something like “Imbeleko” or “Molo.”</p>`;
+                }
+            }).catch(error => {
+                resultsDiv.innerHTML = `<p>Khulu says: Sorry, I’m having trouble searching right now. Try again later!</p>`;
+            });
         }
     </script>
 </body>
