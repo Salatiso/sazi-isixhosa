@@ -6,12 +6,14 @@
     <title>Saz' isiXhosa, no Sapho - Age Levels</title>
     <style>
         :root {
-            --primary-bg: #333;
+            --primary-bg: #444;
             --primary-color: white;
             --secondary-bg: #f4f4f4;
             --secondary-color: #333;
             --hover-bg: #555;
             --accent-color: #ffcc80;
+            --secondary-accent: #a7c4a7;
+            --tertiary-accent: #80cbc4;
         }
 
         body {
@@ -21,14 +23,46 @@
             background-color: var(--secondary-bg);
             color: var(--secondary-color);
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
         }
 
         .sidebar {
             flex: 0 0 200px;
-            background: #444;
+            background: var(--primary-bg);
             color: var(--primary-color);
-            height: 100vh;
-            position: fixed;
+            height: 100%;
             overflow-y: auto;
         }
 
@@ -67,65 +101,24 @@
                 height: auto;
                 position: relative;
             }
+
+            .main-container {
+                flex-direction: column;
+            }
         }
 
         .content {
-            margin-left: 200px;
-            padding: 2rem;
             flex: 1;
-            background: url('https://via.placeholder.com/1500x1000?text=Family+Learning+Together') no-repeat center center;
+            padding: 2rem;
+            background: url('images/Sazi_Grandma.jpg') no-repeat center center;
             background-size: cover;
             background-opacity: 0.1;
         }
 
         @media (max-width: 768px) {
             .content {
-                margin-left: 0;
                 padding: 1rem;
             }
-        }
-
-        .age-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .age-buttons a {
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            border: none;
-            border-radius: 10px;
-            background-color: #eee;
-            color: var(--secondary-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-            width: 150px;
-            text-decoration: none;
-        }
-
-        .age-buttons a:hover {
-            transform: scale(1.05);
-        }
-
-        .age-buttons a img {
-            max-width: 40px;
-            margin-bottom: 0.5rem;
-        }
-
-        #age-3-7 {
-            background-color: #ffcc80;
-        }
-
-        #age-8-11 {
-            background-color: #a7c4a7;
-        }
-
-        #age-12-15 {
-            background-color: #80cbc4;
         }
 
         .section {
@@ -141,52 +134,114 @@
             color: var(--secondary-color);
         }
 
+        .age-cards {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .age-card {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            background-color: var(--accent-color);
+            transition: transform 0.2s;
+        }
+
+        .age-card:hover {
+            transform: scale(1.05);
+        }
+
+        .age-card a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .age-card a:hover {
+            text-decoration: underline;
+        }
+
+        .age-card-3-7 {
+            background-color: var(--accent-color);
+        }
+
+        .age-card-8-11 {
+            background-color: var(--secondary-accent);
+        }
+
+        .age-card-12-15 {
+            background-color: var(--tertiary-accent);
+        }
+
         footer {
             text-align: center;
             padding: 1rem 0;
             background: var(--primary-bg);
             color: var(--primary-color);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            header nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h1>Saz' isiXhosa, no Sapho</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="age-levels.html" class="active">Age Levels</a></li>
-            <li><a href="vocabulary.html">Vocabulary</a></li>
-            <li><a href="phrases.html">Phrases</a></li>
-            <li><a href="numbers.html">Numbers</a></li>
-            <li><a href="time.html">Time</a></li>
-            <li><a href="grammar.html">Grammar</a></li>
-            <li><a href="culture.html">Culture</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="khokho.html">Khokho Asks</a></li>
-        </ul>
-    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="content">
-        <div id="age-select" class="section">
-            <h2>Choose Your Learning Level</h2>
-            <p>Select an age group for a more interactive and fun learning experience, or explore all content directly from the sidebar!</p>
-            <div class="age-buttons">
-                <a href="vocabulary-3-7.html" id="age-3-7">
-                    <img src="https://via.placeholder.com/40" alt="Icon for Ages 3-7">
-                    <span>Icon for Ages 3-7</span>
-                    <span>Gcob' iincwadi (3-7 yrs)</span>
-                </a>
-                <a href="vocabulary-8-11.html" id="age-8-11">
-                    <img src="https://via.placeholder.com/40" alt="Icon for Ages 8-11">
-                    <span>Icon for Ages 8-11</span>
-                    <span>Amagama alula (8-11 yrs)</span>
-                </a>
-                <a href="vocabulary-12-15.html" id="age-12-15">
-                    <img src="https://via.placeholder.com/40" alt="Icon for Ages 12-15">
-                    <span>Icon for Ages 12-15</span>
-                    <span>Ulwimi lwethu (12-15 yrs)</span>
-                </a>
+    <div class="main-container">
+        <div class="sidebar">
+            <h1>Saz' isiXhosa, no Sapho</h1>
+            <ul>
+                <li><a href="age-levels.html" class="active">Age Levels</a></li>
+                <li><a href="vocabulary.html">Vocabulary</a></li>
+                <li><a href="phrases.html">Phrases</a></li>
+                <li><a href="numbers.html">Numbers</a></li>
+                <li><a href="time.html">Time</a></li>
+                <li><a href="grammar.html">Grammar</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="khokho.html">Khokho Asks</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div id="age-levels" class="section">
+                <h2>Age Levels</h2>
+                <p>Help Sazi and his cousins learn Xhosa with lessons tailored for every age! From simple words for young ones like Sazi’s 4-year-old cousin to deeper phrases for his 12-year-old cousin, our family’s journey brings Xhosa to life. Choose an age group below to start!</p>
+                <div class="age-cards">
+                    <div class="age-card age-card-3-7">
+                        <h3>Ages 3–7</h3>
+                        <p>Fun words like “Mama” and “Inja” with big pictures for Sazi and his young cousins.</p>
+                        <a href="vocabulary-3-7.html">Start Learning</a>
+                    </div>
+                    <div class="age-card age-card-8-11">
+                        <h3>Ages 8–11</h3>
+                        <p>Everyday words like “Isikolo” and “Amanzi” for curious kids like Sazi’s 8-year-old cousin.</p>
+                        <a href="vocabulary-8-11.html">Start Learning</a>
+                    </div>
+                    <div class="age-card age-card-12-15">
+                        <h3>Ages 12–15</h3>
+                        <p>Deeper words like “Uthando” and “Isinyanya” for teens like Sazi’s 12-year-old cousin.</p>
+                        <a href="vocabulary-12-15.html">Start Learning</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
