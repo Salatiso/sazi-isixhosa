@@ -25,6 +25,15 @@
             min-height: 100vh;
         }
 
+        .site-title {
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 2rem;
+        }
+
         header {
             background: var(--primary-bg);
             color: var(--primary-color);
@@ -64,15 +73,9 @@
             overflow-y: auto;
         }
 
-        .sidebar h1 {
-            font-size: 1.5rem;
-            margin: 1rem;
-            text-align: center;
-        }
-
         .sidebar ul {
             padding: 0;
-            margin: 0;
+            margin: 1rem 0;
             list-style: none;
         }
 
@@ -108,7 +111,7 @@
         .content {
             flex: 1;
             padding: 2rem;
-            background: url('images/Sazi_Grandma.jpg') no-repeat center center;
+            background: url('/img/Sazi_Grandma.jpg') no-repeat center center;
             background-size: cover;
             background-opacity: 0.1;
         }
@@ -180,6 +183,30 @@
         th {
             background-color: var(--accent-color);
             color: var(--secondary-color);
+        }
+
+        .translation {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+        }
+
+        .xhosa-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .xhosa-text:hover::after {
+            content: attr(data-english);
+            position: absolute;
+            top: -2rem;
+            left: 0;
+            background: #333;
+            color: white;
+            padding: 0.3rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            z-index: 10;
         }
 
         .xhosa-cell {
@@ -254,6 +281,7 @@
     </style>
 </head>
 <body>
+    <h1 class="site-title">Saz' isiXhosa, no Sapho</h1>
     <header>
         <nav>
             <ul>
@@ -266,7 +294,6 @@
 
     <div class="main-container">
         <div class="sidebar">
-            <h1>Saz' isiXhosa, no Sapho</h1>
             <ul>
                 <li><a href="age-levels.html">Age Levels</a></li>
                 <li><a href="vocabulary.html">Vocabulary</a></li>
@@ -305,15 +332,24 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" id="input-birth" placeholder="Type practice name">
-                                    <span class="xhosa-cell" data-answer="Ukuzalwa Komntwana">Ukuzalwa Komntwana</span>
-                                    <div class="feedback" id="feedback-birth"></div>
+                                    <span class="translation">Birth of a Child</span>
+                                    <span class="xhosa-text" data-english="Birth of a Child">
+                                        <input type="text" id="input-birth" placeholder="Type Xhosa practice">
+                                        <span class="xhosa-cell" data-answer="Ukuzalwa Komntwana">Ukuzalwa Komntwana</span>
+                                        <div class="feedback" id="feedback-birth"></div>
+                                    </span>
                                 </td>
-                                <td>Isiganeko esibaluleke kakhulu kwintsapho nakuluntu. Iinkcubeko ezahlukeneyo zilandela ukuzalwa, njengokubhiyozela nokunika umntwana igama.</td>
-                                <td>Emva kokuzalwa komntwana.</td>
+                                <td>
+                                    <span class="translation">A significant event for family and community, celebrating and naming the child, with cleansing rituals.</span>
+                                    <span class="xhosa-text" data-english="A significant event for family and community, celebrating and naming the child, with cleansing rituals.">Isiganeko esibaluleke kakhulu kwintsapho nakuluntu. Iinkcubeko ezahlukeneyo zilandela ukuzalwa, njengokubhiyozela nokunika umntwana igama. Kudla ngokubakho amasiko okucoca umntwana nomama.</span>
+                                </td>
+                                <td>
+                                    <span class="translation">After the birth of a child.</span>
+                                    <span class="xhosa-text" data-english="After the birth of a child.">Emva kokuzalwa komntwana.</span>
+                                </td>
                                 <td>
                                     <audio controls style="display:none;" id="audio-birth">
-                                        <source src="audio/culture/all/ukuzalwa_komntwana.mp3" type="audio/mp3">
+                                        <source src="/audio/culture/all/ukuzalwa_komntwana.mp3" type="audio/mp3">
                                         Your browser does not support the audio element.
                                     </audio>
                                 </td>
@@ -321,15 +357,24 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="text" id="input-imbeleko" placeholder="Type practice name">
-                                    <span class="xhosa-cell" data-answer="Imbeleko">Imbeleko</span>
-                                    <div class="feedback" id="feedback-imbeleko"></div>
+                                    <span class="translation">Welcoming a Newborn</span>
+                                    <span class="xhosa-text" data-english="Welcoming a Newborn">
+                                        <input type="text" id="input-imbeleko" placeholder="Type Xhosa practice">
+                                        <span class="xhosa-cell" data-answer="Imbeleko">Imbeleko</span>
+                                        <div class="feedback" id="feedback-imbeleko"></div>
+                                    </span>
                                 </td>
-                                <td>Umntwana osanda kuzalwa ukhuselwa kwaye waziswa ngokusemthethweni kuluntu. Kudla ngokubandakanya isidlo esincinci.</td>
-                                <td>Kwiiveki okanye iinyanga zokuqala zobomi bomntwana.</td>
+                                <td>
+                                    <span class="translation">Protecting and formally introducing a newborn to the community, often with a small feast.</span>
+                                    <span class="xhosa-text" data-english="Protecting and formally introducing a newborn to the community, often with a small feast.">Umntwana osanda kuzalwa ukhuselwa kwaye waziswa ngokusemthethweni kuluntu. Oku kudla ngokubandakanya isidlo esincinci apho abantu abakufutshane beza kubona umntwana.</span>
+                                </td>
+                                <td>
+                                    <span class="translation">In the first weeks or months of a child’s life.</span>
+                                    <span class="xhosa-text" data-english="In the first weeks or months of a child’s life.">Kwiiveki okanye iinyanga zokuqala zobomi bomntwana.</span>
+                                </td>
                                 <td>
                                     <audio controls style="display:none;" id="audio-imbeleko">
-                                        <source src="audio/culture/all/imbeleko.mp3" type="audio/mp3">
+                                        <source src="/audio/culture/all/imbeleko.mp3" type="audio/mp3">
                                         Your browser does not support the audio element.
                                     </audio>
                                 </td>
@@ -354,21 +399,30 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" id="input-intlonipho" placeholder="Type practice name">
-                                    <span class="xhosa-cell" data-answer="Intlonipho">Intlonipho</span>
-                                    <div class="feedback" id="feedback-intlonipho"></div>
+                                    <span class="translation">Respect</span>
+                                    <span class="xhosa-text" data-english="Respect">
+                                        <input type="text" id="input-intlonipho" placeholder="Type Xhosa practice">
+                                        <span class="xhosa-cell" data-answer="Intlonipho">Intlonipho</span>
+                                        <div class="feedback" id="feedback-intlonipho"></div>
+                                    </span>
                                 </td>
-                                <td>Ukuhlonipha abantu abadala kubaluleke kakhulu. Kubonakala ngendlela yokuthetha, isimo sengqondo, nezenzo.</td>
-                                <td>Ubomi bonke.</td>
+                                <td>
+                                    <span class="translation">Respecting elders is vital, shown through speech, attitude, and actions.</span>
+                                    <span class="xhosa-text" data-english="Respecting elders is vital, shown through speech, attitude, and actions.">Ukuhlonipha abantu abadala kubaluleke kakhulu. Kubonakala ngendlela yokuthetha, isimo sengqondo, nezenzo.</span>
+                                </td>
+                                <td>
+                                    <span class="translation">Throughout life.</span>
+                                    <span class="xhosa-text" data-english="Throughout life.">Ubomi bonke.</span>
+                                </td>
                                 <td>
                                     <audio controls style="display:none;" id="audio-intlonipho">
-                                        <source src="audio/culture/all/intlonipho.mp3" type="audio/mp3">
+                                        <source src="/audio/culture/all/intlonipho.mp3" type="audio/mp3">
                                         Your browser does not support the audio element.
                                     </audio>
                                 </td>
                                 <td>Sazi learns *Intlonipho* to honor his grandmother’s wisdom.</td>
                             </tr>
-                            <!-- Add remaining Daily Traditions practices (e.g., Ukhuseleko, Ukukhula, Ukuthomba, Ukunyuselwa Esuthwini, Imisebenzi Yasendlini, Iindwendwe) -->
+                            <!-- Add remaining Daily Traditions practices -->
                         </tbody>
                     </table>
                 </div>
@@ -387,21 +441,30 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" id="input-ukuzila" placeholder="Type practice name">
-                                    <span class="xhosa-cell" data-answer="Ukuzila">Ukuzila</span>
-                                    <div class="feedback" id="feedback-ukuzila"></div>
+                                    <span class="translation">Mourning</span>
+                                    <span class="xhosa-text" data-english="Mourning">
+                                        <input type="text" id="input-ukuzila" placeholder="Type Xhosa practice">
+                                        <span class="xhosa-cell" data-answer="Ukuzila">Ukuzila</span>
+                                        <div class="feedback" id="feedback-ukuzila"></div>
+                                    </span>
                                 </td>
-                                <td>Xa kufiwe, intsapho eshiyekileyo kunye noluntu bayazila ukubonisa intlungu nokuhlonipha umfi.</td>
-                                <td>Emva kokufa komntu.</td>
+                                <td>
+                                    <span class="translation">When someone passes, the family and community mourn to show grief and respect.</span>
+                                    <span class="xhosa-text" data-english="When someone passes, the family and community mourn to show grief and respect.">Xa kufiwe, intsapho eshiyekileyo kunye noluntu bayazila ukubonisa intlungu nokuhlonipha umfi.</span>
+                                </td>
+                                <td>
+                                    <span class="translation">After someone’s death.</span>
+                                    <span class="xhosa-text" data-english="After someone’s death.">Emva kokufa komntu.</span>
+                                </td>
                                 <td>
                                     <audio controls style="display:none;" id="audio-ukuzila">
-                                        <source src="audio/culture/all/ukuzila.mp3" type="audio/mp3">
+                                        <source src="/audio/culture/all/ukuzila.mp3" type="audio/mp3">
                                         Your browser does not support the audio element.
                                     </audio>
                                 </td>
                                 <td>Sazi’s family honors the departed with *Ukuzila*.</td>
                             </tr>
-                            <!-- Add remaining Spiritual and Mourning practices (e.g., Umngcwabo, Izila Emva Komngcwabo, Ukukhumbula Abafileyo, Amasiko Okucoca, Ukubuza Izigqibo Kwabaphambili) -->
+                            <!-- Add remaining Spiritual and Mourning practices -->
                         </tbody>
                     </table>
                 </div>
@@ -414,16 +477,16 @@
     </div>
 
     <footer>
-        <p>© 2024 Mdeni Family</p>
+        <p>© 2025 Mdeni Family</p>
     </footer>
 
     <script>
         const practices = [
-            { category: 'life-milestones', name: 'Ukuzalwa Komntwana', description: 'Isiganeko esibaluleke kakhulu kwintsapho nakuluntu. Iinkcubeko ezahlukeneyo zilandela ukuzalwa.', when: 'Emva kokuzalwa komntwana.', id: 'birth', note: 'Sazi’s 8-month-old cousin was welcomed with a special name!' },
-            { category: 'life-milestones', name: 'Imbeleko', description: 'Umntwana osanda kuzalwa ukhuselwa kwaye waziswa ngokusemthethweni kuluntu.', when: 'Kwiiveki okanye iinyanga zokuqala zobomi bomntwana.', id: 'imbeleko', note: 'Our family gathers to celebrate new babies like Sazi.' },
-            { category: 'daily-traditions', name: 'Intlonipho', description: 'Ukuhlonipha abantu abadala kubaluleke kakhulu. Kubonakala ngendlela yokuthetha.', when: 'Ubomi bonke.', id: 'intlonipho', note: 'Sazi learns *Intlonipho* to honor his grandmother’s wisdom.' },
-            { category: 'spiritual-mourning', name: 'Ukuzila', description: 'Xa kufiwe, intsapho eshiyekileyo kunye noluntu bayazila ukubonisa intlungu.', when: 'Emva kokufa komntu.', id: 'ukuzila', note: 'Sazi’s family honors the departed with *Ukuzila*.' },
-            // Add remaining ~16 practices
+            { category: 'life-milestones', name: 'Ukuzalwa Komntwana', englishName: 'Birth of a Child', description: 'Isiganeko esibaluleke kakhulu kwintsapho nakuluntu.', englishDescription: 'A significant event for family and community.', when: 'Emva kokuzalwa komntwana.', englishWhen: 'After the birth of a child.', id: 'birth', note: 'Sazi’s 8-month-old cousin was welcomed with a special name!' },
+            { category: 'life-milestones', name: 'Imbeleko', englishName: 'Welcoming a Newborn', description: 'Umntwana osanda kuzalwa ukhuselwa kwaye waziswa ngokusemthethweni kuluntu.', englishDescription: 'Protecting and formally introducing a newborn to the community.', when: 'Kwiiveki okanye iinyanga zokuqala zobomi bomntwana.', englishWhen: 'In the first weeks or months of a child’s life.', id: 'imbeleko', note: 'Our family gathers to celebrate new babies like Sazi.' },
+            { category: 'daily-traditions', name: 'Intlonipho', englishName: 'Respect', description: 'Ukuhlonipha abantu abadala kubaluleke kakhulu.', englishDescription: 'Respecting elders is vital.', when: 'Ubomi bonke.', englishWhen: 'Throughout life.', id: 'intlonipho', note: 'Sazi learns *Intlonipho* to honor his grandmother’s wisdom.' },
+            { category: 'spiritual-mourning', name: 'Ukuzila', englishName: 'Mourning', description: 'Xa kufiwe, intsapho eshiyekileyo kunye noluntu bayazila.', englishDescription: 'When someone passes, the family and community mourn.', when: 'Emva kokufa komntu.', englishWhen: 'After someone’s death.', id: 'ukuzila', note: 'Sazi’s family honors the departed with *Ukuzila*.' },
+            // Add remaining practices
         ];
 
         function showCategory(category) {
@@ -442,9 +505,9 @@
 
             const shuffledPractices = practices.sort(() => 0.5 - Math.random()).slice(0, 3);
             const questions = [
-                { text: `What is the name for the practice of ${shuffledPractices[0].description.split('.')[0]}?`, answer: shuffledPractices[0].name, id: shuffledPractices[0].id, note: shuffledPractices[0].note },
-                { text: `When is "${shuffledPractices[1].name}" performed?`, answer: shuffledPractices[1].when, id: `${shuffledPractices[1].id}-when`, note: shuffledPractices[1].note },
-                { text: `What practice involves ${shuffledPractices[2].description.split('.')[0]}?`, answer: shuffledPractices[2].name, id: shuffledPractices[2].id, note: shuffledPractices[2].note }
+                { text: `What is the name for the practice of ${shuffledPractices[0].englishDescription.split('.')[0]}?`, answer: shuffledPractices[0].name, englishAnswer: shuffledPractices[0].englishName, id: shuffledPractices[0].id },
+                { text: `When is "${shuffledPractices[1].englishName}" performed?`, answer: shuffledPractices[1].when, englishAnswer: shuffledPractices[1].englishWhen, id: `${shuffledPractices[1].id}-when` },
+                { text: `What practice involves ${shuffledPractices[2].englishDescription.split('.')[0]}?`, answer: shuffledPractices[2].name, englishAnswer: shuffledPractices[2].englishName, id: shuffledPractices[2].id }
             ];
 
             questions.forEach((question, index) => {
@@ -454,10 +517,10 @@
                     <span>${question.text}</span>
                     <input type="text" id="quiz-input-${index}" placeholder="Type answer">
                     <button onclick="checkQuizAnswer(${index}, '${question.answer}')">Check</button>
-                    <button onclick="revealQuizAnswer(${index}, '${question.answer}', '${question.note}')">Reveal</button>
+                    <button onclick="revealQuizAnswer(${index}, '${question.answer}', '${question.englishAnswer}')">Reveal</button>
                     <div id="quiz-feedback-${index}" class="feedback"></div>
                     <audio controls style="display:none;" id="quiz-audio-${index}">
-                        <source src="audio/culture/all/${question.id}.mp3" type="audio/mp3">
+                        <source src="/audio/culture/all/${question.id}.mp3" type="audio/mp3">
                         Your browser does not support the audio element.
                     </audio>
                 `;
@@ -475,7 +538,7 @@
                 feedback.textContent = "Congratulations!";
                 feedback.style.color = "green";
             } else {
-                feedback.textContent = `Nice try! The correct answer is ${correctAnswer}.`;
+                feedback.textContent = `Nice try! The correct practice is ${correctAnswer}.`;
                 feedback.style.color = "red";
             }
             feedback.classList.add('visible');
@@ -506,10 +569,10 @@
             audio.style.display = 'block';
         }
 
-        function revealQuizAnswer(index, correctAnswer, note) {
+        function revealQuizAnswer(index, correctAnswer, englishTranslation) {
             const feedback = document.getElementById(`quiz-feedback-${index}`);
             const audio = document.getElementById(`quiz-audio-${index}`);
-            feedback.textContent = `The correct answer is ${correctAnswer}. ${note}`;
+            feedback.textContent = `The correct answer is ${correctAnswer} (${englishTranslation}).`;
             feedback.style.color = "blue";
             feedback.classList.add('visible');
             audio.style.display = 'block';
