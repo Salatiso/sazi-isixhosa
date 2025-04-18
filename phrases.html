@@ -25,6 +25,15 @@
             min-height: 100vh;
         }
 
+        .site-title {
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 2rem;
+        }
+
         header {
             background: var(--primary-bg);
             color: var(--primary-color);
@@ -64,15 +73,9 @@
             overflow-y: auto;
         }
 
-        .sidebar h1 {
-            font-size: 1.5rem;
-            margin: 1rem;
-            text-align: center;
-        }
-
         .sidebar ul {
             padding: 0;
-            margin: 0;
+            margin: 1rem 0;
             list-style: none;
         }
 
@@ -108,7 +111,7 @@
         .content {
             flex: 1;
             padding: 2rem;
-            background: url('images/Sazi_Grandma.jpg') no-repeat center center;
+            background: url('/img/Sazi_Grandma.jpg') no-repeat center center;
             background-size: cover;
             background-opacity: 0.1;
         }
@@ -132,11 +135,11 @@
             color: var(--secondary-color);
         }
 
-        .category-filter {
+        .filter {
             margin-bottom: 1rem;
         }
 
-        .category-filter select {
+        .filter select {
             padding: 0.5rem;
             font-size: 1rem;
             border-radius: 5px;
@@ -228,6 +231,7 @@
     </style>
 </head>
 <body>
+    <h1 class="site-title">Saz' isiXhosa, no Sapho</h1>
     <header>
         <nav>
             <ul>
@@ -240,36 +244,35 @@
 
     <div class="main-container">
         <div class="sidebar">
-    <ul>
-        <li><a href="age-levels.html">Age Levels</a></li>
-        <li><a href="vocabulary.html">Vocabulary</a></li>
-        <li><a href="phrases.html">Phrases</a></li>
-        <li><a href="numbers.html">Numbers</a></li>
-        <li><a href="time.html">Time</a></li>
-        <li><a href="grammar.html">Grammar</a></li>
-        <li><a href="culture.html">Culture</a></li>
-        <li><a href="activities.html">Activities</a></li>
-        <li><a href="khokho.html">Khokho Asks</a></li>
-    </ul>
-</div>
+            <ul>
+                <li><a href="age-levels.html">Age Levels</a></li>
+                <li><a href="vocabulary.html">Vocabulary</a></li>
+                <li><a href="phrases.html" class="active">Phrases</a></li>
+                <li><a href="numbers.html">Numbers</a></li>
+                <li><a href="time.html">Time</a></li>
+                <li><a href="grammar.html">Grammar</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="ask-khulu.html">Ask Khulu</a></li>
+            </ul>
+        </div>
 
         <div class="content">
             <div id="phrases" class="section">
                 <h2>Phrases</h2>
-                <p>Practice Xhosa phrases with Sazi and his family! Choose a category or try a mixed quiz to test your skills, including the unique Xhosa names for months.</p>
-                <div class="category-filter">
+                <p>Learn Xhosa phrases with Sazi and his cousins! Choose a category, type the phrase, check your answer, or reveal it to hear how it sounds.</p>
+                <div class="filter">
                     <label for="category">Filter by Category: </label>
                     <select id="category" onchange="filterCategory()">
                         <option value="all">All</option>
-                        <option value="Greetings and Introductions">Greetings and Introductions</option>
-                        <option value="Needs and Feelings">Needs and Feelings</option>
-                        <option value="Affection and Connection">Affection and Connection</option>
-                        <option value="Directives and Instructions">Directives and Instructions</option>
-                        <option value="Describing People and Objects">Describing People and Objects</option>
-                        <option value="Common Actions">Common Actions</option>
-                        <option value="Months and Seasons">Months and Seasons</option>
+                        <option value="greetings">Greetings & Introductions</option>
+                        <option value="needs">Needs & Feelings</option>
+                        <option value="affection">Affection</option>
+                        <option value="directives">Directives</option>
+                        <option value="descriptions">Descriptions</option>
+                        <option value="actions">Actions</option>
+                        <option value="months-seasons">Months & Seasons</option>
                     </select>
-                    <button onclick="startMixedQuiz()">Mixed Quiz</button>
                 </div>
                 <table id="phrasesTable">
                     <thead>
@@ -278,11 +281,11 @@
                             <th>Xhosa</th>
                             <th>Action</th>
                             <th>Pronunciation</th>
-                            <th>Cultural Note</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-category="Greetings and Introductions">
+                        <!-- Greetings & Introductions -->
+                        <tr data-category="greetings">
                             <td>Hello</td>
                             <td>
                                 <input type="text" id="input-hello" placeholder="Type Xhosa phrase">
@@ -295,32 +298,522 @@
                             </td>
                             <td>
                                 <audio controls style="display:none;" id="audio-hello">
-                                    <source src="audio/phrases/all/molo.mp3" type="audio/mp3">
+                                    <source src="/audio/phrases/all/molo.mp3" type="audio/mp3">
                                     Your browser does not support the audio element.
                                 </audio>
                             </td>
-                            <td>Used to greet friends and family.</td>
                         </tr>
-                        <tr data-category="Greetings and Introductions">
-                            <td>Hello, Father</td>
+                        <tr data-category="greetings">
+                            <td>How are you?</td>
                             <td>
-                                <input type="text" id="input-hello-father" placeholder="Type Xhosa phrase">
-                                <span class="xhosa-cell" data-answer="Molo Tata">Molo Tata</span>
-                                <div class="feedback" id="feedback-hello-father"></div>
+                                <input type="text" id="input-how-are-you" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Unjani?">Unjani?</span>
+                                <div class="feedback" id="feedback-how-are-you"></div>
                             </td>
                             <td>
-                                <button onclick="checkAnswer('hello-father', 'Molo Tata')">Check</button>
-                                <button onclick="revealAnswer('hello-father')">Reveal</button>
+                                <button onclick="checkAnswer('how-are-you', 'Unjani?')">Check</button>
+                                <button onclick="revealAnswer('how-are-you')">Reveal</button>
                             </td>
                             <td>
-                                <audio controls style="display:none;" id="audio-hello-father">
-                                    <source src="audio/phrases/all/molo_tata.mp3" type="audio/mp3">
+                                <audio controls style="display:none;" id="audio-how-are-you">
+                                    <source src="/audio/phrases/all/unjani.mp3" type="audio/mp3">
                                     Your browser does not support the audio element.
                                 </audio>
                             </td>
-                            <td>Simple greeting for young learners.</td>
                         </tr>
-                        <tr data-category="Months and Seasons">
+                        <tr data-category="greetings">
+                            <td>Goodbye</td>
+                            <td>
+                                <input type="text" id="input-goodbye" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Sala kakuhle">Sala kakuhle</span>
+                                <div class="feedback" id="feedback-goodbye"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('goodbye', 'Sala kakuhle')">Check</button>
+                                <button onclick="revealAnswer('goodbye')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-goodbye">
+                                    <source src="/audio/phrases/all/sala_kakuhle.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="greetings">
+                            <td>I’m fine</td>
+                            <td>
+                                <input type="text" id="input-im-fine" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ndiphilile">Ndiphilile</span>
+                                <div class="feedback" id="feedback-im-fine"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('im-fine', 'Ndiphilile')">Check</button>
+                                <button onclick="revealAnswer('im-fine')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-im-fine">
+                                    <source src="/audio/phrases/all/ndiphilile.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="greetings">
+                            <td>Thank you</td>
+                            <td>
+                                <input type="text" id="input-thank-you" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Enkosi">Enkosi</span>
+                                <div class="feedback" id="feedback-thank-you"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('thank-you', 'Enkosi')">Check</button>
+                                <button onclick="revealAnswer('thank-you')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-thank-you">
+                                    <source src="/audio/phrases/all/enkosi.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="greetings">
+                            <td>Please</td>
+                            <td>
+                                <input type="text" id="input-please" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Nceda">Nceda</span>
+                                <div class="feedback" id="feedback-please"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('please', 'Nceda')">Check</button>
+                                <button onclick="revealAnswer('please')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-please">
+                                    <source src="/audio/phrases/all/nceda.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="greetings">
+                            <td>What is your name?</td>
+                            <td>
+                                <input type="text" id="input-what-name" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ngubani igama lakho?">Ngubani igama lakho?</span>
+                                <div class="feedback" id="feedback-what-name"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('what-name', 'Ngubani igama lakho?')">Check</button>
+                                <button onclick="revealAnswer('what-name')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-what-name">
+                                    <source src="/audio/phrases/all/ngubani_igama_lakho.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="greetings">
+                            <td>My name is Sazi</td>
+                            <td>
+                                <input type="text" id="input-my-name-sazi" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Igama lam nguSazi">Igama lam nguSazi</span>
+                                <div class="feedback" id="feedback-my-name-sazi"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('my-name-sazi', 'Igama lam nguSazi')">Check</button>
+                                <button onclick="revealAnswer('my-name-sazi')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-my-name-sazi">
+                                    <source src="/audio/phrases/all/igama_lam_ngusazi.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <!-- Needs & Feelings -->
+                        <tr data-category="needs">
+                            <td>I’m hungry</td>
+                            <td>
+                                <input type="text" id="input-im-hungry" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ndilambile">Ndilambile</span>
+                                <div class="feedback" id="feedback-im-hungry"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('im-hungry', 'Ndilambile')">Check</button>
+                                <button onclick="revealAnswer('im-hungry')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-im-hungry">
+                                    <source src="/audio/phrases/all/ndilambile.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="needs">
+                            <td>I’m thirsty</td>
+                            <td>
+                                <input type="text" id="input-im-thirsty" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ndinxaniwe">Ndinxaniwe</span>
+                                <div class="feedback" id="feedback-im-thirsty"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('im-thirsty', 'Ndinxaniwe')">Check</button>
+                                <button onclick="revealAnswer('im-thirsty')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-im-thirsty">
+                                    <source src="/audio/phrases/all/ndinxaniwe.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="needs">
+                            <td>I’m tired</td>
+                            <td>
+                                <input type="text" id="input-im-tired" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ndidiniwe">Ndidiniwe</span>
+                                <div class="feedback" id="feedback-im-tired"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('im-tired', 'Ndidiniwe')">Check</button>
+                                <button onclick="revealAnswer('im-tired')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-im-tired">
+                                    <source src="/audio/phrases/all/ndidiniwe.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="needs">
+                            <td>I need water</td>
+                            <td>
+                                <input type="text" id="input-need-water" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ndifuna amanzi">Ndifuna amanzi</span>
+                                <div class="feedback" id="feedback-need-water"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('need-water', 'Ndifuna amanzi')">Check</button>
+                                <button onclick="revealAnswer('need-water')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-need-water">
+                                    <source src="/audio/phrases/all/ndifuna_amanzi.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="needs">
+                            <td>I’m happy</td>
+                            <td>
+                                <input type="text" id="input-im-happy" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ndonwabile">Ndonwabile</span>
+                                <div class="feedback" id="feedback-im-happy"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('im-happy', 'Ndonwabile')">Check</button>
+                                <button onclick="revealAnswer('im-happy')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-im-happy">
+                                    <source src="/audio/phrases/all/ndonwabile.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="needs">
+                            <td>I’m sad</td>
+                            <td>
+                                <input type="text" id="input-im-sad" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ndilusizi">Ndilusizi</span>
+                                <div class="feedback" id="feedback-im-sad"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('im-sad', 'Ndilusizi')">Check</button>
+                                <button onclick="revealAnswer('im-sad')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-im-sad">
+                                    <source src="/audio/phrases/all/ndilusizi.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <!-- Affection -->
+                        <tr data-category="affection">
+                            <td>I love you</td>
+                            <td>
+                                <input type="text" id="input-i-love-you" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ndiyakuthanda">Ndiyakuthanda</span>
+                                <div class="feedback" id="feedback-i-love-you"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('i-love-you', 'Ndiyakuthanda')">Check</button>
+                                <button onclick="revealAnswer('i-love-you')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-i-love-you">
+                                    <source src="/audio/phrases/all/ndiyakuthanda.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="affection">
+                            <td>You are beautiful</td>
+                            <td>
+                                <input type="text" id="input-you-are-beautiful" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Umhle">Umhle</span>
+                                <div class="feedback" id="feedback-you-are-beautiful"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('you-are-beautiful', 'Umhle')">Check</button>
+                                <button onclick="revealAnswer('you-are-beautiful')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-you-are-beautiful">
+                                    <source src="/audio/phrases/all/umhle.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="affection">
+                            <td>I miss you</td>
+                            <td>
+                                <input type="text" id="input-i-miss-you" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ndiyakukhumbula">Ndiyakukhumbula</span>
+                                <div class="feedback" id="feedback-i-miss-you"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('i-miss-you', 'Ndiyakukhumbula')">Check</button>
+                                <button onclick="revealAnswer('i-miss-you')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-i-miss-you">
+                                    <source src="/audio/phrases/all/ndiyakukhumbula.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="affection">
+                            <td>Good friend</td>
+                            <td>
+                                <input type="text" id="input-good-friend" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Umhlobo olungileyo">Umhlobo olungileyo</span>
+                                <div class="feedback" id="feedback-good-friend"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('good-friend', 'Umhlobo olungileyo')">Check</button>
+                                <button onclick="revealAnswer('good-friend')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-good-friend">
+                                    <source src="/audio/phrases/all/umhlobo_olungileyo.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <!-- Directives -->
+                        <tr data-category="directives">
+                            <td>Come</td>
+                            <td>
+                                <input type="text" id="input-come" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Yiza">Yiza</span>
+                                <div class="feedback" id="feedback-come"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('come', 'Yiza')">Check</button>
+                                <button onclick="revealAnswer('come')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-come">
+                                    <source src="/audio/phrases/all/yiza.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="directives">
+                            <td>Go</td>
+                            <td>
+                                <input type="text" id="input-go" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Hamba">Hamba</span>
+                                <div class="feedback" id="feedback-go"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('go', 'Hamba')">Check</button>
+                                <button onclick="revealAnswer('go')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-go">
+                                    <source src="/audio/phrases/all/hamba.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="directives">
+                            <td>Sit down</td>
+                            <td>
+                                <input type="text" id="input-sit-down" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Hlala phantsi">Hlala phantsi</span>
+                                <div class="feedback" id="feedback-sit-down"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('sit-down', 'Hlala phantsi')">Check</button>
+                                <button onclick="revealAnswer('sit-down')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-sit-down">
+                                    <source src="/audio/phrases/all/hlala_phantsi.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="directives">
+                            <td>Stand up</td>
+                            <td>
+                                <input type="text" id="input-stand-up" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Phakama">Phakama</span>
+                                <div class="feedback" id="feedback-stand-up"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('stand-up', 'Phakama')">Check</button>
+                                <button onclick="revealAnswer('stand-up')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-stand-up">
+                                    <source src="/audio/phrases/all/phakama.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <!-- Descriptions -->
+                        <tr data-category="descriptions">
+                            <td>It’s hot</td>
+                            <td>
+                                <input type="text" id="input-its-hot" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Kushushu">Kushushu</span>
+                                <div class="feedback" id="feedback-its-hot"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('its-hot', 'Kushushu')">Check</button>
+                                <button onclick="revealAnswer('its-hot')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-its-hot">
+                                    <source src="/audio/phrases/all/kushushu.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="descriptions">
+                            <td>It’s cold</td>
+                            <td>
+                                <input type="text" id="input-its-cold" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Kuyabanda">Kuyabanda</span>
+                                <div class="feedback" id="feedback-its-cold"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('its-cold', 'Kuyabanda')">Check</button>
+                                <button onclick="revealAnswer('its-cold')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-its-cold">
+                                    <source src="/audio/phrases/all/kuyabanda.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="descriptions">
+                            <td>It’s big</td>
+                            <td>
+                                <input type="text" id="input-its-big" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Kukhulu">Kukhulu</span>
+                                <div class="feedback" id="feedback-its-big"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('its-big', 'Kukhulu')">Check</button>
+                                <button onclick="revealAnswer('its-big')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-its-big">
+                                    <source src="/audio/phrases/all/kukhulu.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="descriptions">
+                            <td>It’s small</td>
+                            <td>
+                                <input type="text" id="input-its-small" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Kuncinci">Kuncinci</span>
+                                <div class="feedback" id="feedback-its-small"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('its-small', 'Kuncinci')">Check</button>
+                                <button onclick="revealAnswer('its-small')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-its-small">
+                                    <source src="/audio/phrases/all/kuncinci.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <!-- Actions -->
+                        <tr data-category="actions">
+                            <td>I’m running</td>
+                            <td>
+                                <input type="text" id="input-im-running" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ndiyabaleka">Ndiyabaleka</span>
+                                <div class="feedback" id="feedback-im-running"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('im-running', 'Ndiyabaleka')">Check</button>
+                                <button onclick="revealAnswer('im-running')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-im-running">
+                                    <source src="/audio/phrases/all/ndiyabaleka.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="actions">
+                            <td>I’m eating</td>
+                            <td>
+                                <input type="text" id="input-im-eating" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ndiyatya">Ndiyatya</span>
+                                <div class="feedback" id="feedback-im-eating"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('im-eating', 'Ndiyatya')">Check</button>
+                                <button onclick="revealAnswer('im-eating')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-im-eating">
+                                    <source src="/audio/phrases/all/ndiyatya.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="actions">
+                            <td>I’m sleeping</td>
+                            <td>
+                                <input type="text" id="input-im-sleeping" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ndiyalala">Ndiyalala</span>
+                                <div class="feedback" id="feedback-im-sleeping"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('im-sleeping', 'Ndiyalala')">Check</button>
+                                <button onclick="revealAnswer('im-sleeping')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-im-sleeping">
+                                    <source src="/audio/phrases/all/ndiyalala.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <!-- Months & Seasons -->
+                        <tr data-category="months-seasons">
                             <td>January</td>
                             <td>
                                 <input type="text" id="input-january" placeholder="Type Xhosa phrase">
@@ -333,75 +826,118 @@
                             </td>
                             <td>
                                 <audio controls style="display:none;" id="audio-january">
-                                    <source src="audio/phrases/all/eyomqungu.mp3" type="audio/mp3">
+                                    <source src="/audio/phrases/all/eyomqungu.mp3" type="audio/mp3">
                                     Your browser does not support the audio element.
                                 </audio>
                             </td>
-                            <td>Month of the Tambuki Grass.</td>
                         </tr>
-                        <!-- Add remaining ~58 phrases similarly, abbreviated here for brevity -->
+                        <tr data-category="months-seasons">
+                            <td>February</td>
+                            <td>
+                                <input type="text" id="input-february" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="EyoMdumba">EyoMdumba</span>
+                                <div class="feedback" id="feedback-february"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('february', 'EyoMdumba')">Check</button>
+                                <button onclick="revealAnswer('february')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-february">
+                                    <source src="/audio/phrases/all/eyomdumba.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="months-seasons">
+                            <td>Summer</td>
+                            <td>
+                                <input type="text" id="input-summer" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ihlobo">Ihlobo</span>
+                                <div class="feedback" id="feedback-summer"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('summer', 'Ihlobo')">Check</button>
+                                <button onclick="revealAnswer('summer')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-summer">
+                                    <source src="/audio/phrases/all/ihlobo.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
+                        <tr data-category="months-seasons">
+                            <td>Winter</td>
+                            <td>
+                                <input type="text" id="input-winter" placeholder="Type Xhosa phrase">
+                                <span class="xhosa-cell" data-answer="Ubusika">Ubusika</span>
+                                <div class="feedback" id="feedback-winter"></div>
+                            </td>
+                            <td>
+                                <button onclick="checkAnswer('winter', 'Ubusika')">Check</button>
+                                <button onclick="revealAnswer('winter')">Reveal</button>
+                            </td>
+                            <td>
+                                <audio controls style="display:none;" id="audio-winter">
+                                    <source src="/audio/phrases/all/ubusika.mp3" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 
-                <div class="quiz-section" id="quizSection" style="display:none;">
-                    <h3>Mixed Quiz</h3>
-                    <div id="quizQuestions">
-                        <!-- Quiz questions generated by JavaScript -->
+                <div class="quiz-section">
+                    <h3>Quick Quiz</h3>
+                    <div class="quiz-question">
+                        <span>What is "Hello" in Xhosa?</span>
+                        <input type="text" id="quiz-input-1" placeholder="Type Xhosa phrase">
+                        <button onclick="checkQuizAnswer(1, 'Molo')">Check</button>
+                        <button onclick="revealQuizAnswer(1, 'Molo', 'Hello')">Reveal</button>
                     </div>
+                    <div id="quiz-feedback-1" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-1">
+                        <source src="/audio/phrases/all/molo.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="quiz-question">
+                        <span>What is "Ndiyakuthanda" in English?</span>
+                        <input type="text" id="quiz-input-2" placeholder="Type English phrase">
+                        <button onclick="checkQuizAnswer(2, 'I love you')">Check</button>
+                        <button onclick="revealQuizAnswer(2, 'I love you', 'Ndiyakuthanda')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-2" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-2">
+                        <source src="/audio/phrases/all/ndiyakuthanda.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="quiz-question">
+                        <span>How do you say "How are you?" in Xhosa?</span>
+                        <input type="text" id="quiz-input-3" placeholder="Type Xhosa phrase">
+                        <button onclick="checkQuizAnswer(3, 'Unjani?')">Check</button>
+                        <button onclick="revealQuizAnswer(3, 'Unjani?', 'How are you?')">Reveal</button>
+                    </div>
+                    <div id="quiz-feedback-3" class="feedback"></div>
+                    <audio controls style="display:none;" id="quiz-audio-3">
+                        <source src="/audio/phrases/all/unjani.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2024 Mdeni Family</p>
+        <p>© 2025 Mdeni Family</p>
     </footer>
 
     <script>
-        const phrases = [
-            { category: 'Greetings and Introductions', english: 'Hello', xhosa: 'Molo', id: 'hello', note: 'Used to greet friends and family.' },
-            { category: 'Greetings and Introductions', english: 'Hello, Father', xhosa: 'Molo Tata', id: 'hello-father', note: 'Simple greeting for young learners.' },
-            { category: 'Months and Seasons', english: 'January', xhosa: 'EyoMqungu', id: 'january', note: 'Month of the Tambuki Grass.' },
-            { category: 'Months and Seasons', english: 'Why is March called EyoKwindla?', xhosa: 'Month of the first fruits', id: 'march-meaning', note: 'Cultural explanation for March.' },
-            // Add remaining phrases here
-        ];
-
         function filterCategory() {
             const category = document.getElementById('category').value;
             const rows = document.querySelectorAll('#phrasesTable tbody tr');
             rows.forEach(row => {
                 row.style.display = category === 'all' || row.dataset.category === category ? '' : 'none';
-            });
-        }
-
-        function startMixedQuiz() {
-            const quizSection = document.getElementById('quizSection');
-            const quizQuestions = document.getElementById('quizQuestions');
-            quizSection.style.display = 'block';
-            quizQuestions.innerHTML = '';
-
-            // Ensure at least one month-related question
-            const monthPhrases = phrases.filter(p => p.category === 'Months and Seasons');
-            const otherPhrases = phrases.filter(p => p.category !== 'Months and Seasons');
-            const selectedMonth = monthPhrases[Math.floor(Math.random() * monthPhrases.length)];
-            const selectedOthers = otherPhrases.sort(() => 0.5 - Math.random()).slice(0, 4);
-            const quizPhrases = [selectedMonth, ...selectedOthers];
-
-            quizPhrases.forEach((phrase, index) => {
-                const div = document.createElement('div');
-                div.className = 'quiz-question';
-                div.innerHTML = `
-                    <span>${phrase.english}</span>
-                    <input type="text" id="quiz-input-${index}" placeholder="Type Xhosa phrase">
-                    <button onclick="checkQuizAnswer(${index}, '${phrase.xhosa}')">Check</button>
-                    <button onclick="revealQuizAnswer(${index}, '${phrase.xhosa}', '${phrase.note}')">Reveal</button>
-                    <div id="quiz-feedback-${index}" class="feedback"></div>
-                    <audio controls style="display:none;" id="quiz-audio-${index}">
-                        <source src="audio/phrases/all/${phrase.id}.mp3" type="audio/mp3">
-                        Your browser does not support the audio element.
-                    </audio>
-                `;
-                quizQuestions.appendChild(div);
             });
         }
 
@@ -446,10 +982,10 @@
             audio.style.display = 'block';
         }
 
-        function revealQuizAnswer(index, correctAnswer, note) {
+        function revealQuizAnswer(index, correctAnswer, englishTranslation) {
             const feedback = document.getElementById(`quiz-feedback-${index}`);
             const audio = document.getElementById(`quiz-audio-${index}`);
-            feedback.textContent = `The correct answer is ${correctAnswer}. ${note}`;
+            feedback.textContent = `The correct answer is ${correctAnswer} (${englishTranslation}).`;
             feedback.style.color = "blue";
             feedback.classList.add('visible');
             audio.style.display = 'block';
