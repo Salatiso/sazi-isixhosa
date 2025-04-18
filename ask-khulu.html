@@ -3,43 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saz' isiXhosa, no Sapho - Khokho Asks</title>
+    <title>Saz' isiXhosa, no Sapho - Ask Khulu</title>
     <style>
         :root {
-            --primary-bg: #333;
+            --primary-bg: #444;
             --primary-color: white;
             --secondary-bg: #f4f4f4;
             --secondary-color: #333;
             --hover-bg: #555;
+            --accent-color: #ffcc80;
         }
 
         body {
-            font-family: sans-serif;
+            font-family: 'Quicksand', sans-serif;
             margin: 0;
             line-height: 1.6;
             background-color: var(--secondary-bg);
             color: var(--secondary-color);
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .site-title {
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        header {
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
         }
 
         .sidebar {
             flex: 0 0 200px;
-            background: #444;
+            background: var(--primary-bg);
             color: var(--primary-color);
-            height: 100vh;
-            position: fixed;
+            height: 100%;
             overflow-y: auto;
-        }
-
-        .sidebar h1 {
-            font-size: 1.5rem;
-            margin: 1rem;
-            text-align: center;
         }
 
         .sidebar ul {
             padding: 0;
-            margin: 0;
+            margin: 1rem 0;
             list-style: none;
         }
 
@@ -66,29 +102,110 @@
                 height: auto;
                 position: relative;
             }
+
+            .main-container {
+                flex-direction: column;
+            }
         }
 
         .content {
-            margin-left: 200px;
-            padding: 2rem;
             flex: 1;
+            padding: 2rem;
+            background: url('/img/Sazi_Grandma.jpg') no-repeat center center;
+            background-size: cover;
+            background-opacity: 0.1;
         }
 
         @media (max-width: 768px) {
             .content {
-                margin-left: 0;
                 padding: 1rem;
             }
         }
 
         .section {
-            padding: 2rem 0;
-            border-bottom: 1px solid #ccc;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
         }
 
         .section h2 {
             font-size: 1.5rem;
             margin-top: 0;
+            color: var(--secondary-color);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .tabs button {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-bg);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .tabs button.active {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .tabs button:hover {
+            background-color: var(--hover-bg);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .qa-form, .search-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #e6b800;
+        }
+
+        .qa-response, .search-results {
+            margin-top: 1rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .qa-response p, .search-results p {
+            margin: 0.5rem 0;
         }
 
         footer {
@@ -96,36 +213,129 @@
             padding: 1rem 0;
             background: var(--primary-bg);
             color: var(--primary-color);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            header nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h1>Saz' isiXhosa, no Sapho</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="age-levels.html">Age Levels</a></li>
-            <li><a href="vocabulary.html">Vocabulary</a></li>
-            <li><a href="phrases.html">Phrases</a></li>
-            <li><a href="numbers.html">Numbers</a></li>
-            <li><a href="time.html">Time</a></li>
-            <li><a href="grammar.html">Grammar</a></li>
-            <li><a href="culture.html">Culture</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="khokho.html" class="active">Khokho Asks</a></li>
-        </ul>
-    </div>
+    <h1 class="site-title">Saz' isiXhosa, no Sapho</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="content">
-        <div id="khokho" class="section">
-            <h2>Khokho Asks</h2>
-            <p>Answer questions and learn more with Khokho.</p>
+    <div class="main-container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="age-levels.html">Age Levels</a></li>
+                <li><a href="vocabulary.html">Vocabulary</a></li>
+                <li><a href="phrases.html">Phrases</a></li>
+                <li><a href="numbers.html">Numbers</a></li>
+                <li><a href="time.html">Time</a></li>
+                <li><a href="grammar.html">Grammar</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="ask-khulu.html" class="active">Ask Khulu</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div id="ask-khulu" class="section">
+                <h2>Ask Khulu</h2>
+                <p>Ask Khulu, Sazi’s grandmother, your Xhosa questions or search our site! Khulu answers with wisdom from books like <a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Zazi_Mzantsi_Afrika_Yazi_inombo_yom?id=9sgJEQAAQBAJ&hl=en">Zazi Mzantsi Afrika</a>. Try questions like “What is *Molo*?” or search for words like “Imbeleko.”</p>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="showTab('ask')">Ask Khulu</button>
+                    <button class="tab-button" onclick="showTab('search')">Search Site</button>
+                </div>
+                <div id="ask" class="tab-content active">
+                    <div class="qa-form">
+                        <div class="form-group">
+                            <input type="text" id="qa-input" placeholder="Ask Khulu a question (e.g., What is Molo?)">
+                            <button onclick="submitQuestion()">Ask</button>
+                        </div>
+                        <div class="qa-response" id="qaResponse"></div>
+                    </div>
+                </div>
+                <div id="search" class="tab-content">
+                    <div class="search-form">
+                        <div class="form-group">
+                            <input type="text" id="search-input" placeholder="Search for a word or practice (e.g., Imbeleko)">
+                            <button onclick="searchSite()">Search</button>
+                        </div>
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2024 Your Family Name</p>
+        <p>© 2025 Mdeni Family</p>
     </footer>
+
+    <script>
+        const qaDatabase = [
+            { question: 'What is Molo?', answer: '*Molo* means "Hello" in Xhosa, used to greet friends and family. In *Zazi Mzantsi Afrika*, I explain how greetings build community.' },
+            { question: 'Why do we do Imbeleko?', answer: '*Imbeleko* protects and introduces a newborn to the community, often with a feast. In *The Homeschooling Father*, I describe how our family welcomed Sazi this way.' },
+            { question: 'What is Intlonipho?', answer: '*Intlonipho* is respect for elders, shown through speech and actions. In *Zazi Mzantsi Afrika*, I share how Sazi learns this value.' },
+            // Add more Q&A pairs
+        ];
+
+        const searchDatabase = [
+            { term: 'Molo', english: 'Hello', source: 'phrases', description: 'Used to greet friends and family.' },
+            { term: 'Inja', english: 'Dog', source: 'vocabulary', description: 'A common household animal.' },
+            { term: 'Imbeleko', english: 'Welcoming a Newborn', source: 'culture', description: 'Protecting and introducing a newborn to the community.' },
+            { term: 'Ukuxoxa Iintsomi', english: 'Telling Folk Tales', source: 'activities', description: 'Elders tell children stories to teach morals.' },
+            // Add more terms from vocabulary, phrases, culture, activities
+        ];
+
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`button[onclick="showTab('${tab}')"]`).classList.add('active');
+        }
+
+        function submitQuestion() {
+            const input = document.getElementById('qa-input').value.trim().toLowerCase();
+            const responseDiv = document.getElementById('qaResponse');
+            const match = qaDatabase.find(q => q.question.toLowerCase().includes(input));
+
+            if (match) {
+                responseDiv.innerHTML = `<p>Khulu says: ${match.answer}</p>`;
+            } else {
+                responseDiv.innerHTML = `<p>Khulu says: I’m not sure about that one, but try asking something like “What is Molo?” or search the site!</p>`;
+            }
+        }
+
+        function searchSite() {
+            const input = document.getElementById('search-input').value.trim().toLowerCase();
+            const resultsDiv = document.getElementById('searchResults');
+            const matches = searchDatabase.filter(item => 
+                item.term.toLowerCase().includes(input) || 
+                item.english.toLowerCase().includes(input)
+            );
+
+            if (matches.length > 0) {
+                resultsDiv.innerHTML = matches.map(match => `
+                    <p><strong>${match.english} / ${match.term}</strong>: ${match.description} (From ${match.source})</p>
+                `).join('');
+            } else {
+                resultsDiv.innerHTML = `<p>Khulu says: No matches found! Try searching for something like “Imbeleko” or “Molo.”</p>`;
+            }
+        }
+    </script>
 </body>
 </html>
