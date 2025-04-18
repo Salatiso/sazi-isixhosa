@@ -6,7 +6,7 @@
     <title>Saz' isiXhosa, no Sapho - Home</title>
     <style>
         :root {
-            --primary-bg: #333;
+            --primary-bg: #444;
             --primary-color: white;
             --secondary-bg: #f4f4f4;
             --secondary-color: #333;
@@ -23,14 +23,46 @@
             background-color: var(--secondary-bg);
             color: var(--secondary-color);
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
         }
 
         .sidebar {
             flex: 0 0 200px;
-            background: #444;
+            background: var(--primary-bg);
             color: var(--primary-color);
-            height: 100vh;
-            position: fixed;
+            height: 100%;
             overflow-y: auto;
         }
 
@@ -69,17 +101,19 @@
                 height: auto;
                 position: relative;
             }
+
+            .main-container {
+                flex-direction: column;
+            }
         }
 
         .content {
-            margin-left: 200px;
-            padding: 2rem;
             flex: 1;
+            padding: 2rem;
         }
 
         @media (max-width: 768px) {
             .content {
-                margin-left: 0;
                 padding: 1rem;
             }
         }
@@ -223,6 +257,7 @@
             padding: 1rem 0;
             background: var(--primary-bg);
             color: var(--primary-color);
+            width: 100%;
         }
 
         @keyframes fadeIn {
@@ -242,78 +277,96 @@
             .carousel-item img {
                 max-width: 150px;
             }
+
+            header nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h1>Saz' isiXhosa, no Sapho</h1>
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="age-levels.html">Age Levels</a></li>
-            <li><a href="vocabulary.html">Vocabulary</a></li>
-            <li><a href="phrases.html">Phrases</a></li>
-            <li><a href="numbers.html">Numbers</a></li>
-            <li><a href="time.html">Time</a></li>
-            <li><a href="grammar.html">Grammar</a></li>
-            <li><a href="culture.html">Culture</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="khokho.html">Khokho Asks</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="content">
-        <div class="hero">
-            <h2>Learn Xhosa as a Family!</h2>
-            <p>Join Salatiso and his son Sazi in a fun, interactive journey to discover the Xhosa language and culture together.</p>
-            <a href="age-levels.html">Start Learning Now</a>
+    <div class="main-container">
+        <div class="sidebar">
+            <h1>Saz' isiXhosa, no Sapho</h1>
+            <ul>
+                <li><a href="age-levels.html">Age Levels</a></li>
+                <li><a href="vocabulary.html">Vocabulary</a></li>
+                <li><a href="phrases.html">Phrases</a></li>
+                <li><a href="numbers.html">Numbers</a></li>
+                <li><a href="time.html">Time</a></li>
+                <li><a href="grammar.html">Grammar</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="khokho.html">Khokho Asks</a></li>
+            </ul>
         </div>
 
-        <div class="carousel">
-            <div class="carousel-container" id="carouselContainer">
-                <div class="carousel-item">
-                    <img src="images/Beyond_Redress.jpg" alt="Beyond Redress">
-                    <h3>Beyond Redress</h3>
-                    <p>Explore Xhosa culture through my insights on equality. Watch free lessons on <a href="https://www.youtube.com/@SalatisoAudioBooks">YouTube</a>!</p>
-                    <p><a href="https://play.google.com/books/reader?id=VU__EAAAQBAJ&hl=en">Learn More on Google Play</a></p>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/The_Homeschooling_Father.jpg" alt="The Homeschooling Father">
-                    <h3>The Homeschooling Father</h3>
-                    <p>Discover my journey teaching Xhosa at home. Free content on <a href="https://www.youtube.com/@SalatisoAudioBooks">YouTube</a>!</p>
-                    <p><a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Zazi_Mzantsi_Afrika.jpg" alt="Zazi Mzantsi Afrika">
-                    <h3>Zazi Mzantsi Afrika</h3>
-                    <p>Unravel Xhosa history with my family’s story. See it on <a href="https://youtu.be/Pi8JWTGXj8g?si=oGuxiWwMmBYGitmh">YouTube</a>!</p>
-                    <p><a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Zazi_Mzantsi_Afrika_Yazi_inombo_yom?id=9sgJEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/Getting_to_Know_Yourself.jpg" alt="Getting to Know Yourself as a South African">
-                    <h3>Getting to Know Yourself</h3>
-                    <p>Learn about Xhosa identity through my books. Free videos on <a href="https://www.youtube.com/@SalatisoAudioBooks">YouTube</a>!</p>
-                    <p><a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Getting_to_Know_Yourself_as_a_South?id=wMkJEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
-                </div>
+        <div class="content">
+            <div class="hero">
+                <h2>Learn Xhosa as a Family!</h2>
+                <p>Join Sazi and his family in a fun, interactive journey to discover the Xhosa language and culture together. Learn with Sazi’s cousins, grandmother, and aunts as we share our heritage and write down our unwritten wisdom!</p>
+                <a href="age-levels.html">Start Learning Now</a>
             </div>
-            <div class="carousel-nav">
-                <button onclick="moveCarousel(-1)">❮</button>
-                <button onclick="moveCarousel(1)">❯</button>
-            </div>
-        </div>
 
-        <div class="featured">
-            <div class="featured-card card-vocabulary">
-                <h3>Vocabulary</h3>
-                <p>Learn Xhosa words with fun quizzes and audio pronunciations.</p>
-                <a href="vocabulary.html">Explore Now</a>
+            <div class="carousel">
+                <div class="carousel-container" id="carouselContainer">
+                    <div class="carousel-item">
+                        <img src="images/Beyond_Redress.jpg" alt="Beyond Redress">
+                        <h3>Beyond Redress</h3>
+                        <p>Explore Xhosa culture through my family’s insights on equality. Watch free lessons on <a href="https://www.youtube.com/@SalatisoAudioBooks">YouTube</a>!</p>
+                        <p><a href="https://play.google.com/books/reader?id=VU__EAAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        <!-- Note: Replace with resources/books/Beyond_Redress.pdf if hosted locally -->
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/The_Homeschooling_Father.jpg" alt="The Homeschooling Father">
+                        <h3>The Homeschooling Father</h3>
+                        <p>Discover our family’s journey teaching Xhosa at home. Free content on <a href="https://www.youtube.com/@SalatisoAudioBooks">YouTube</a>!</p>
+                        <p><a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        <!-- Note: Replace with resources/books/The_Homeschooling_Father.pdf if hosted locally -->
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/Zazi_Mzantsi_Afrika.jpg" alt="Zazi Mzantsi Afrika">
+                        <h3>Zazi Mzantsi Afrika</h3>
+                        <p>Unravel Xhosa history with Sazi and his cousins. See it on <a href="https://youtu.be/Pi8JWTGXj8g?si=oGuxiWwMmBYGitmh">YouTube</a>!</p>
+                        <p><a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Zazi_Mzantsi_Afrika_Yazi_inombo_yom?id=9sgJEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        <!-- Note: Replace with resources/books/Zazi_Mzantsi_Afrika.pdf if hosted locally -->
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/Getting_to_Know_Yourself.jpg" alt="Getting to Know Yourself as a South African">
+                        <h3>Getting to Know Yourself</h3>
+                        <p>Learn Xhosa identity with our family’s wisdom. Free videos on <a href="https://www.youtube.com/@SalatisoAudioBooks">YouTube</a>!</p>
+                        <p><a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Getting_to_Know_Yourself_as_a_South?id=wMkJEQAAQBAJ&hl=en">Learn More on Google Play</a></p>
+                        <!-- Note: Replace with resources/books/Getting_to_Know_Yourself.pdf if hosted locally -->
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <button onclick="moveCarousel(-1)">❮</button>
+                    <button onclick="moveCarousel(1)">❯</button>
+                </div>
             </div>
-            <div class="featured-card card-culture">
-                <h3>Culture</h3>
-                <p>Discover Xhosa traditions and stories that bring our heritage to life.</p>
-                <a href="culture.html">Explore Now</a>
+
+            <div class="featured">
+                <div class="featured-card card-vocabulary">
+                    <h3>Vocabulary</h3>
+                    <p>Learn Xhosa words with fun quizzes and audio pronunciations.</p>
+                    <a href="vocabulary.html">Explore Now</a>
+                </div>
+                <div class="featured-card card-culture">
+                    <h3>Culture</h3>
+                    <p>Discover Xhosa traditions and stories that bring our heritage to life.</p>
+                    <a href="culture.html">Explore Now</a>
+                </div>
             </div>
         </div>
     </div>
