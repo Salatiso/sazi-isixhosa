@@ -6,7 +6,7 @@
     <title>Saz' isiXhosa, no Sapho - About Us</title>
     <style>
         :root {
-            --primary-bg: #333;
+            --primary-bg: #444;
             --primary-color: white;
             --secondary-bg: #f4f4f4;
             --secondary-color: #333;
@@ -21,14 +21,46 @@
             background-color: var(--secondary-bg);
             color: var(--secondary-color);
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--primary-bg);
+            color: var(--primary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
         }
 
         .sidebar {
             flex: 0 0 200px;
-            background: #444;
+            background: var(--primary-bg);
             color: var(--primary-color);
-            height: 100vh;
-            position: fixed;
+            height: 100%;
             overflow-y: auto;
         }
 
@@ -67,20 +99,22 @@
                 height: auto;
                 position: relative;
             }
+
+            .main-container {
+                flex-direction: column;
+            }
         }
 
         .content {
-            margin-left: 200px;
-            padding: 2rem;
             flex: 1;
-            background: url('https://via.placeholder.com/1500x1000?text=Family+Learning+Together') no-repeat center center;
+            padding: 2rem;
+            background: url('images/Sazi_Grandma.jpg') no-repeat center center;
             background-size: cover;
             background-opacity: 0.1;
         }
 
         @media (max-width: 768px) {
             .content {
-                margin-left: 0;
                 padding: 1rem;
             }
         }
@@ -112,41 +146,52 @@
             padding: 1rem 0;
             background: var(--primary-bg);
             color: var(--primary-color);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            header nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h1>Saz' isiXhosa, no Sapho</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" class="active">About Us</a></li>
-            <li><a href="age-levels.html">Age Levels</a></li>
-            <li><a href="vocabulary.html">Vocabulary</a></li>
-            <li><a href="phrases.html">Phrases</a></li>
-            <li><a href="numbers.html">Numbers</a></li>
-            <li><a href="time.html">Time</a></li>
-            <li><a href="grammar.html">Grammar</a></li>
-            <li><a href="culture.html">Culture</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="khokho.html">Khokho Asks</a></li>
-        </ul>
-    </div>
-
-    <div class="content">
-        <div id="about" class="section">
-            <h2>About Us</h2>
-            <p>My name is Salatiso Mdeni, and I am the creator of "Saz' isiXhosa, no Sapho." I was born in Transkei, South Africa, in 1982, and grew up immersed in the rich Xhosa culture of the Eastern Cape. As the founder of <a href="https://flamea.org">flamea.org</a>, I am passionate about education and cultural preservation. I am also working on my personal website, <a href="https://salatiso.github.io/salatiso/">salatiso.com</a>, to share more about my projects and initiatives.</p>
-            <p>This website is a deeply personal project for me, created for my son Sazisi and our family. I noticed the challenges my children faced in learning Xhosa in a modern, globalized world, where formal education often lacks the cultural context and practical skills needed for fluency. Inspired by my own experiences and a desire to connect my family with our heritage, I developed this platform to make Xhosa learning fun, accessible, and family-oriented.</p>
-            <p>My work as an author also inspired this site. I have written several books on Xhosa language and culture, including:</p>
+    <header>
+        <nav>
             <ul>
-                <li><a href="https://play.google.com/books/reader?id=VU__EAAAQBAJ&hl=en">"IsiXhosa for Beginners"</a> - A foundational guide for young learners starting their Xhosa journey.</li>
-                <li><a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&pg=GBS.PA1923.w.0.0.0.2&hl=en">"Xhosa Phrases and Culture"</a> - A collection of phrases with cultural insights.</li>
-                <li><a href="https://play.google.com/books/reader?id=NscJEQAAQBAJ&pg=GBS.PP1.w.1.0.0&hl=en">"Learning Xhosa Through Stories"</a> - Engaging stories to teach language and traditions.</li>
-                <li><a href="https://play.google.com/books/reader?id=wMkJEQAAQBAJ&pg=GBS.PP1&hl=en">"Xhosa Vocabulary for Kids"</a> - A visual dictionary for children.</li>
-                <li><a href="https://play.google.com/books/reader?id=9sgJEQAAQBAJ&hl=en">"Everyday Xhosa"</a> - Practical language for daily use.</li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
-            <p>These books form the backbone of the content on this site, providing authentic Xhosa vocabulary, phrases, and cultural knowledge. They are also accessible through our Khokho Chatbot, which allows users to explore the language and culture interactively. "Saz' isiXhosa, no Sapho" (meaning "Sazi speaks Xhosa, and the Family") reflects our family’s commitment to learning together and sharing our heritage with the world.</p>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <h1>Saz' isiXhosa, no Sapho</h1>
+            <ul>
+                <li><a href="age-levels.html">Age Levels</a></li>
+                <li><a href="vocabulary.html">Vocabulary</a></li>
+                <li><a href="phrases.html">Phrases</a></li>
+                <li><a href="numbers.html">Numbers</a></li>
+                <li><a href="time.html">Time</a></li>
+                <li><a href="grammar.html">Grammar</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="khokho.html">Khokho Asks</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div id="about" class="section">
+                <h2>About Us</h2>
+                <p>I’m Salatiso Lonwabo Mdeni, and my greatest joy is being a father to my son, Sazi. Everything I do—whether it’s building this website, writing books, or sharing stories—is to give Sazi and his cousins a connection to our Xhosa heritage. Born in 1982 in Transkei, South Africa, I grew up in Fort Malan and Nqabane, surrounded by the rolling hills and the rhythm of Xhosa songs, stories, and proverbs. After my father’s death in 1993, my mother raised me and my siblings with her unwritten wisdom and the strength of our community. That’s where I learned the power of family, and it’s why I created *Saz' isiXhosa, no Sapho*—“Sazi speaks Xhosa, with the Family”—to ensure Sazi, now seven, and his cousins grow up knowing who they are.</p>
+                <p>This isn’t just my project—it’s a family affair. Sazi’s curiosity lights the way, asking questions that spark our lessons. His cousins—my nephews aged 12, 8, and 4, and nieces aged 6 and 8 months—bring playfulness, testing quizzes and giggling over words like “Molo” (Hello). Their grandmother, my mother, shares her unwritten wisdom, stories of Transkei gatherings that we’re now writing down for the first time. My sisters, the aunts, add their knowledge, from Xhosa traditions to everyday phrases. I provide the platform and guidance, drawing on my 20 years in risk management, property entrepreneurship, and authorship to make this a space where our family’s heritage thrives.</p>
+                <p>My motivation comes from Sazi’s smile when he learns a new Xhosa word, but it’s bigger than us. In South Africa, Xhosa is at risk—schools often focus on global languages, and modern life pulls families apart. I’ve seen this in Johannesburg, where I’ve built my life, and in the challenges I’ve faced to stay present for Sazi, from legal battles to advocating for family-led education. This website is my promise to Sazi, his cousins, and every family: a fun, interactive place to learn Xhosa together, strengthening bonds and preserving our culture. My books, like <a href="https://play.google.com/store/books/details/Salatiso_Mdeni_Zazi_Mzantsi_Afrika_Yazi_inombo_yom?id=9sgJEQAAQBAJ&hl=en">Zazi Mzantsi Afrika</a> and <a href="https://play.google.com/books/reader?id=JQAUEQAAQBAJ&hl=en">The Homeschooling Father</a>, and my <a href="https://www.youtube.com/@SalatisoAudioBooks">YouTube channel</a> share this culture freely—because it’s about empowering families, not profit.</p>
+                <p>Through *Saz' isiXhosa, no Sapho*, we’re writing our family’s story—Sazi’s first words, his grandmother’s tales, his cousins’ laughter, and the love that ties us together. Join us to learn Xhosa, share your own stories, and keep our heritage alive for the next generation.</p>
+            </div>
         </div>
     </div>
 
